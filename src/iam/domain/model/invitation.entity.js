@@ -1,73 +1,57 @@
 /**
- * Invitation entity within the Identity & Access Management bounded context.
- *
- * Represents an invitation created by an administrator for a future user.
- *
+ * @file invitation.entity.js
+ * @description Entidad de dominio Invitation para el contexto IAM de CortiSense.
+ * Representa una invitación enviada por el administrador a un nuevo usuario.
+ */
+
+/**
  * @class Invitation
+ * @description Modela una invitación de acceso al sistema.
+ * Usa atributos privados de JavaScript (#) para encapsulamiento estricto.
  */
 export class Invitation {
-    #id;
-    #email;
-    #role;
-    #status;
-    #createdAt;
+  #id
+  #email
+  #role
+  #status
+  #createdAt
 
-    /**
-     * Creates an invitation entity.
-     *
-     * @param {Object} params - Invitation attributes.
-     * @param {string|null} [params.id=null] - Invitation identifier.
-     * @param {string} [params.email=''] - Invited user email.
-     * @param {string} [params.role='medical_staff'] - Assigned role.
-     * @param {string} [params.status='pending'] - Invitation status.
-     * @param {string} [params.createdAt=''] - Creation date.
-     */
-    constructor({
-                    id = null,
-                    email = "",
-                    role = "medical_staff",
-                    status = "pending",
-                    createdAt = ""
-                }) {
-        this.#id = id;
-        this.#email = email;
-        this.#role = role;
-        this.#status = status;
-        this.#createdAt = createdAt;
-    }
+  /**
+   * @param {Object} data
+   * @param {string|null} data.id
+   * @param {string} data.email
+   * @param {string} data.role - 'medical_staff' | 'clinical_supervisor'
+   * @param {string} data.status - 'pending' | 'accepted'
+   * @param {string} data.createdAt - ISO date string
+   */
+  constructor ({ id = null, email = '', role = '', status = 'pending', createdAt = '' } = {}) {
+    this.#id = id
+    this.#email = email
+    this.#role = role
+    this.#status = status
+    this.#createdAt = createdAt
+  }
 
-    get id() {
-        return this.#id;
-    }
+  get id () { return this.#id }
+  get email () { return this.#email }
+  get role () { return this.#role }
+  get status () { return this.#status }
+  get createdAt () { return this.#createdAt }
 
-    get email() {
-        return this.#email;
-    }
+  /** @returns {boolean} Indica si la invitación está pendiente de uso. */
+  get isPending () { return this.#status === 'pending' }
 
-    get role() {
-        return this.#role;
+  /**
+   * Serializa la entidad a un objeto plano.
+   * @returns {Object}
+   */
+  toResource () {
+    return {
+      id: this.#id,
+      email: this.#email,
+      role: this.#role,
+      status: this.#status,
+      createdAt: this.#createdAt
     }
-
-    get status() {
-        return this.#status;
-    }
-
-    get createdAt() {
-        return this.#createdAt;
-    }
-
-    /**
-     * Converts the entity into a plain resource object.
-     *
-     * @returns {Object} Invitation resource.
-     */
-    toResource() {
-        return {
-            id: this.#id,
-            email: this.#email,
-            role: this.#role,
-            status: this.#status,
-            createdAt: this.#createdAt
-        };
-    }
+  }
 }

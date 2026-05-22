@@ -14,7 +14,7 @@
     {
       "id": "u-002",
       "firstName": "Claudia",
-      "lastName": "Supervisora",
+      "lastName": "Ríos",
       "email": "supervisor@cortisense.com",
       "password": "supervisor123",
       "role": "clinical_supervisor",
@@ -34,15 +34,15 @@
       "medicalStaffId": "ms-001"
     },
     {
-      "id": "u-1778842002015",
-      "email": "jyonel295@gmail.com",
-      "password": "waza12345",
-      "role": "clinical_supervisor",
-      "status": "active",
       "firstName": "Johan",
       "lastName": "Yonel",
-      "token": "mock-token-1778842002015",
-      "medicalStaffId": "ms-1778842002015"
+      "email": "jyonel295@gmail.com",
+      "password": "DomainDrivenDesing#123",
+      "role": "clinical_supervisor",
+      "status": "active",
+      "token": "mock-token-1778909659766",
+      "medicalStaffId": null,
+      "id": "fbsSZXr"
     }
   ],
   "invitations": [
@@ -62,25 +62,27 @@
     },
     {
       "id": "inv-003",
-      "email": "registrado@cortisense.com",
+      "email": "accepted@cortisense.com",
       "role": "medical_staff",
       "status": "accepted",
       "createdAt": "2026-05-14T09:00:00"
     },
     {
-      "id": "inv-1778841627604",
       "email": "jyonel295@gmail.com",
       "role": "clinical_supervisor",
       "status": "accepted",
-      "createdAt": "2026-05-15"
+      "createdAt": "2026-05-16T05:34:02.638Z",
+      "id": "RbEOg8h"
     }
   ],
   "medical_staff": [
     {
       "id": "ms-001",
+      "userId": "u-003",
       "firstName": "Carlos",
       "lastName": "Mendoza",
       "documentNumber": "74859612",
+      "phone": "987654321",
       "email": "doctor.carlos@cortisense.com",
       "workArea": "Emergencia",
       "area": "Emergencia",
@@ -89,139 +91,181 @@
       "staffRole": "medical_staff",
       "status": "active",
       "riskLevel": "high",
-      "fatigueLevel": 78,
+      "fatigueLevel": 79,
       "assignedDeviceId": "dev-001"
     },
     {
       "id": "ms-002",
-      "firstName": "Valeria",
-      "lastName": "Rojas",
-      "documentNumber": "71234589",
-      "email": "doctor.valeria@cortisense.com",
+      "userId": "u-002",
+      "firstName": "Claudia",
+      "lastName": "Ríos",
+      "documentNumber": "45623187",
+      "phone": "951234567",
+      "email": "supervisor.claudia@cortisense.com",
       "workArea": "UCI",
       "area": "UCI",
-      "specialty": "Cuidados Intensivos",
+      "specialty": "Medicina Interna",
       "role": "clinical_supervisor",
       "staffRole": "clinical_supervisor",
       "status": "active",
       "riskLevel": "moderate",
-      "fatigueLevel": 55,
+      "fatigueLevel": 45,
       "assignedDeviceId": "dev-002"
     },
     {
       "id": "ms-003",
+      "userId": null,
       "firstName": "Ana",
-      "lastName": "Torres",
-      "documentNumber": "70321456",
-      "email": "doctor.ana@cortisense.com",
+      "lastName": "Rodríguez",
+      "documentNumber": "65241378",
+      "phone": "963258741",
+      "email": "ana.rodriguez@cortisense.com",
       "workArea": "Pediatría",
       "area": "Pediatría",
       "specialty": "Pediatría",
       "role": "medical_staff",
       "staffRole": "medical_staff",
-      "status": "inactive",
+      "status": "active",
       "riskLevel": "low",
-      "fatigueLevel": 28,
+      "fatigueLevel": 22,
       "assignedDeviceId": "dev-003"
     },
     {
       "id": "ms-004",
-      "firstName": "Javier",
-      "lastName": "Salazar",
-      "documentNumber": "71987654",
-      "email": "doctor.javier@cortisense.com",
-      "workArea": "Emergencia",
-      "area": "Emergencia",
-      "specialty": "Medicina de Emergencias",
+      "userId": null,
+      "firstName": "Pedro",
+      "lastName": "Torres",
+      "documentNumber": "82145673",
+      "phone": "974125836",
+      "email": "pedro.torres@cortisense.com",
+      "workArea": "Cirugía",
+      "area": "Cirugía",
+      "specialty": "Cirugía General",
       "role": "medical_staff",
       "staffRole": "medical_staff",
       "status": "active",
       "riskLevel": "critical",
-      "fatigueLevel": 92,
-      "assignedDeviceId": null
-    },
-    {
-      "id": "ms-1778842002015",
-      "userId": "u-1778842002015",
-      "firstName": "Johan",
-      "lastName": "Yonel",
-      "email": "jyonel295@gmail.com",
-      "phone": "+51987977022",
-      "area": "Ginecología",
-      "specialty": "Neurocirujano",
-      "staffRole": "clinical_supervisor",
-      "status": "active",
-      "riskLevel": "low",
-      "fatigueLevel": 0,
+      "fatigueLevel": 95,
       "assignedDeviceId": null
     },
     {
       "id": "ms-005",
-      "firstName": "Rosa",
-      "lastName": "Vega",
-      "documentNumber": "70111223",
-      "email": "doctor.rosa@cortisense.com",
-      "workArea": "UCI",
-      "area": "UCI",
-      "specialty": "Medicina Intensiva",
+      "userId": null,
+      "firstName": "María",
+      "lastName": "López",
+      "documentNumber": "53897412",
+      "phone": "912345678",
+      "email": "maria.lopez@cortisense.com",
+      "workArea": "Obstetricia",
+      "area": "Obstetricia",
+      "specialty": "Ginecología",
       "role": "medical_staff",
       "staffRole": "medical_staff",
+      "status": "inactive",
+      "riskLevel": "moderate",
+      "fatigueLevel": 51,
+      "assignedDeviceId": null
+    },
+    {
+      "userId": "fbsSZXr",
+      "firstName": "Johan",
+      "lastName": "Yonel",
+      "email": "jyonel295@gmail.com",
+      "workArea": "Emergencia",
+      "area": "Emergencia",
+      "specialty": "Pediatría",
+      "role": "clinical_supervisor",
+      "staffRole": "clinical_supervisor",
       "status": "active",
-      "riskLevel": "critical",
-      "fatigueLevel": 88,
-      "assignedDeviceId": "dev-005"
+      "riskLevel": "moderate",
+      "fatigueLevel": 34,
+      "assignedDeviceId": null,
+      "id": "OtaaDbn"
+    }
+  ],
+  "plans": [
+    {
+      "id": "plan-starter",
+      "name": "Starter",
+      "price": 299,
+      "currency": "PEN",
+      "staffLimit": 10,
+      "features": [
+        "biometric_monitoring",
+        "basic_alerts",
+        "basic_reports"
+      ]
+    },
+    {
+      "id": "plan-clinical",
+      "name": "Clinical",
+      "price": 699,
+      "currency": "PEN",
+      "staffLimit": 50,
+      "features": [
+        "biometric_monitoring",
+        "advanced_alerts",
+        "advanced_reports",
+        "shift_management",
+        "recovery_plans"
+      ]
+    },
+    {
+      "id": "plan-enterprise",
+      "name": "Enterprise",
+      "price": 1499,
+      "currency": "PEN",
+      "staffLimit": 999,
+      "features": [
+        "biometric_monitoring",
+        "advanced_alerts",
+        "advanced_reports",
+        "shift_management",
+        "recovery_plans",
+        "audit_compliance",
+        "api_access"
+      ]
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub-001",
+      "hospitalName": "Hospital Central de Lima",
+      "planId": "plan-clinical",
+      "planName": "Clínico",
+      "status": "active",
+      "startedAt": "2026-01-01",
+      "renewalAt": "2026-06-01",
+      "billingMonthly": 699,
+      "currency": "PEN",
+      "staffUsed": 6,
+      "staffLimit": 50
     }
   ],
   "devices": [
     {
       "id": "dev-001",
-      "medicalStaffId": "ms-001",
-      "deviceName": "CortiBand Pro",
-      "deviceType": "Reloj inteligente",
-      "serialNumber": "CBP-2026-001",
-      "syncStatus": "sincronizado",
-      "batteryLevel": 84,
-      "lastSyncAt": "2026-05-15T08:30:00"
+      "serialNumber": "CS-WS-0001",
+      "model": "CortiWatch Pro",
+      "assignedTo": "ms-001",
+      "status": "active",
+      "batteryLevel": 82
     },
     {
       "id": "dev-002",
-      "medicalStaffId": "ms-002",
-      "deviceName": "CortiBand Pro",
-      "deviceType": "Reloj inteligente",
-      "serialNumber": "CBP-2026-002",
-      "syncStatus": "sincronizado",
-      "batteryLevel": 76,
-      "lastSyncAt": "2026-05-15T08:45:00"
+      "serialNumber": "CS-WS-0002",
+      "model": "CortiWatch Pro",
+      "assignedTo": "ms-002",
+      "status": "active",
+      "batteryLevel": 67
     },
     {
       "id": "dev-003",
-      "medicalStaffId": "ms-003",
-      "deviceName": "CortiBand Lite",
-      "deviceType": "Reloj inteligente",
-      "serialNumber": "CBL-2026-003",
-      "syncStatus": "sincronizado",
-      "batteryLevel": 91,
-      "lastSyncAt": "2026-05-15T09:00:00"
-    },
-    {
-      "id": "dev-004",
-      "medicalStaffId": "ms-004",
-      "deviceName": "CortiBand Pro",
-      "deviceType": "Reloj inteligente",
-      "serialNumber": "CBP-2026-004",
-      "syncStatus": "retrasado",
-      "batteryLevel": 22,
-      "lastSyncAt": "2026-05-15T06:20:00"
-    },
-    {
-      "id": "dev-005",
-      "medicalStaffId": "ms-005",
-      "deviceName": "CortiBand Pro",
-      "deviceType": "Reloj inteligente",
-      "serialNumber": "CBP-2026-005",
-      "syncStatus": "sincronizado",
-      "batteryLevel": 61,
-      "lastSyncAt": "2026-05-15T09:10:00"
+      "serialNumber": "CS-WS-0003",
+      "model": "CortiWatch Lite",
+      "assignedTo": "ms-003",
+      "status": "active",
+      "batteryLevel": 45
     }
   ],
   "biometric_records": [
@@ -230,115 +274,291 @@
       "medicalStaffId": "ms-001",
       "recordedAt": "2026-05-15T08:00:00",
       "sleepHours": 5.2,
-      "heartRate": 96,
+      "heartRate": 98,
+      "hrv": 21,
+      "cortisolLevel": 620,
       "steps": 4200,
-      "activityLevel": "moderado",
-      "cortisolLevel": 28.5,
+      "activityLevel": "moderate",
       "stressLevel": 82,
       "fatigueScore": 78,
       "riskLevel": "high"
     },
     {
       "id": "br-002",
-      "medicalStaffId": "ms-002",
-      "recordedAt": "2026-05-15T08:00:00",
-      "sleepHours": 6.1,
-      "heartRate": 84,
-      "steps": 3100,
-      "activityLevel": "moderado",
-      "cortisolLevel": 22.4,
-      "stressLevel": 58,
-      "fatigueScore": 54,
-      "riskLevel": "moderate"
+      "medicalStaffId": "ms-001",
+      "recordedAt": "2026-05-14T08:00:00",
+      "sleepHours": 4.8,
+      "heartRate": 102,
+      "hrv": 18,
+      "cortisolLevel": 680,
+      "steps": 3800,
+      "activityLevel": "low",
+      "stressLevel": 88,
+      "fatigueScore": 83,
+      "riskLevel": "high"
     },
     {
       "id": "br-003",
-      "medicalStaffId": "ms-003",
-      "recordedAt": "2026-05-15T08:00:00",
-      "sleepHours": 7.3,
-      "heartRate": 72,
-      "steps": 2500,
-      "activityLevel": "bajo",
-      "cortisolLevel": 14.2,
-      "stressLevel": 30,
-      "fatigueScore": 28,
-      "riskLevel": "low"
+      "medicalStaffId": "ms-001",
+      "recordedAt": "2026-05-13T08:00:00",
+      "sleepHours": 6.1,
+      "heartRate": 88,
+      "hrv": 28,
+      "cortisolLevel": 520,
+      "steps": 5200,
+      "activityLevel": "moderate",
+      "stressLevel": 70,
+      "fatigueScore": 65,
+      "riskLevel": "moderate"
     },
     {
       "id": "br-004",
+      "medicalStaffId": "ms-002",
+      "recordedAt": "2026-05-15T08:00:00",
+      "sleepHours": 6.8,
+      "heartRate": 75,
+      "hrv": 38,
+      "cortisolLevel": 420,
+      "steps": 6100,
+      "activityLevel": "high",
+      "stressLevel": 50,
+      "fatigueScore": 45,
+      "riskLevel": "moderate"
+    },
+    {
+      "id": "br-005",
+      "medicalStaffId": "ms-003",
+      "recordedAt": "2026-05-15T08:00:00",
+      "sleepHours": 7.5,
+      "heartRate": 68,
+      "hrv": 52,
+      "cortisolLevel": 310,
+      "steps": 7800,
+      "activityLevel": "high",
+      "stressLevel": 28,
+      "fatigueScore": 22,
+      "riskLevel": "low"
+    },
+    {
+      "id": "br-006",
       "medicalStaffId": "ms-004",
       "recordedAt": "2026-05-15T08:00:00",
-      "sleepHours": 3.8,
-      "heartRate": 108,
-      "steps": 6100,
-      "activityLevel": "alto",
-      "cortisolLevel": 35.7,
-      "stressLevel": 94,
-      "fatigueScore": 92,
+      "sleepHours": 3.5,
+      "heartRate": 112,
+      "hrv": 12,
+      "cortisolLevel": 780,
+      "steps": 2100,
+      "activityLevel": "low",
+      "stressLevel": 95,
+      "fatigueScore": 95,
       "riskLevel": "critical"
+    },
+    {
+      "id": "br-007",
+      "medicalStaffId": "ms-004",
+      "recordedAt": "2026-05-14T08:00:00",
+      "sleepHours": 4,
+      "heartRate": 108,
+      "hrv": 14,
+      "cortisolLevel": 750,
+      "steps": 1900,
+      "activityLevel": "low",
+      "stressLevel": 92,
+      "fatigueScore": 91,
+      "riskLevel": "critical"
+    },
+    {
+      "id": "br-008",
+      "medicalStaffId": "ms-005",
+      "recordedAt": "2026-05-15T08:00:00",
+      "sleepHours": 6.2,
+      "heartRate": 80,
+      "hrv": 33,
+      "cortisolLevel": 460,
+      "steps": 4900,
+      "activityLevel": "moderate",
+      "stressLevel": 55,
+      "fatigueScore": 51,
+      "riskLevel": "moderate"
+    },
+    {
+      "id": "br-009",
+      "medicalStaffId": "ms-001",
+      "recordedAt": "2026-05-12T08:00:00",
+      "sleepHours": 7,
+      "heartRate": 82,
+      "hrv": 35,
+      "cortisolLevel": 480,
+      "steps": 5500,
+      "activityLevel": "moderate",
+      "stressLevel": 60,
+      "fatigueScore": 58,
+      "riskLevel": "moderate"
+    },
+    {
+      "id": "br-010",
+      "medicalStaffId": "ms-002",
+      "recordedAt": "2026-05-14T08:00:00",
+      "sleepHours": 7.2,
+      "heartRate": 72,
+      "hrv": 42,
+      "cortisolLevel": 390,
+      "steps": 6500,
+      "activityLevel": "high",
+      "stressLevel": 44,
+      "fatigueScore": 40,
+      "riskLevel": "low"
+    }
+  ],
+  "risk_assessments": [
+    {
+      "id": "ra-001",
+      "medicalStaffId": "ms-001",
+      "assessedAt": "2026-05-15T09:00:00",
+      "riskLevel": "high",
+      "fatigueScore": 78,
+      "cortisolLevel": 620,
+      "hrv": 21,
+      "notes": "Requires supervisor attention."
+    },
+    {
+      "id": "ra-002",
+      "medicalStaffId": "ms-002",
+      "assessedAt": "2026-05-15T09:00:00",
+      "riskLevel": "moderate",
+      "fatigueScore": 45,
+      "cortisolLevel": 420,
+      "hrv": 38,
+      "notes": "Monitor closely."
+    },
+    {
+      "id": "ra-003",
+      "medicalStaffId": "ms-003",
+      "assessedAt": "2026-05-15T09:00:00",
+      "riskLevel": "low",
+      "fatigueScore": 22,
+      "cortisolLevel": 310,
+      "hrv": 52,
+      "notes": "Stable condition."
+    },
+    {
+      "id": "ra-004",
+      "medicalStaffId": "ms-004",
+      "assessedAt": "2026-05-15T09:00:00",
+      "riskLevel": "critical",
+      "fatigueScore": 95,
+      "cortisolLevel": 780,
+      "hrv": 12,
+      "notes": "Immediate intervention required."
+    },
+    {
+      "id": "ra-005",
+      "medicalStaffId": "ms-005",
+      "assessedAt": "2026-05-15T09:00:00",
+      "riskLevel": "moderate",
+      "fatigueScore": 51,
+      "cortisolLevel": 460,
+      "hrv": 33,
+      "notes": "Currently on leave."
     }
   ],
   "alerts": [
     {
       "id": "al-001",
       "medicalStaffId": "ms-001",
-      "type": "Fatiga alta",
-      "message": "Se detectó un nivel alto de fatiga tras horas reducidas de sueño.",
+      "staffName": "Carlos Mendoza",
+      "area": "Emergencia",
+      "type": "fatigue",
+      "message": "Fatiga crítica detectada — Carlos Mendoza (78%)",
       "severity": "high",
-      "status": "pending",
-      "isRead": false,
-      "createdAt": "2026-05-15T10:15:00"
+      "status": "acknowledged",
+      "createdAt": "2026-05-15T10:15:00.000Z"
     },
     {
       "id": "al-002",
       "medicalStaffId": "ms-004",
-      "type": "Fatiga crítica",
-      "message": "Se detectaron indicadores críticos de fatiga y estrés.",
+      "staffName": "Pedro Torres",
+      "area": "Cirugía",
+      "type": "risk",
+      "message": "Nivel de riesgo crítico detectado — Pedro Torres (95%)",
       "severity": "critical",
       "status": "pending",
-      "isRead": false,
-      "createdAt": "2026-05-15T09:20:00"
+      "createdAt": "2026-05-15T09:30:00.000Z"
     },
     {
       "id": "al-003",
-      "medicalStaffId": "ms-001",
-      "type": "Fatiga escalada",
-      "message": "Alerta ignorada por más de 10 minutos. Se notificó al supervisor.",
-      "severity": "high",
-      "status": "escalated",
-      "isRead": true,
-      "escalatedAt": "2026-05-15T10:25:00",
-      "createdAt": "2026-05-15T10:15:00"
+      "medicalStaffId": "ms-002",
+      "staffName": "Claudia Ríos",
+      "area": "UCI",
+      "type": "cortisol",
+      "message": "Niveles elevados de cortisol por 3 días consecutivos.",
+      "severity": "moderate",
+      "status": "acknowledged",
+      "createdAt": "2026-05-14T14:20:00.000Z"
     },
     {
       "id": "al-004",
-      "medicalStaffId": "ms-002",
-      "type": "Preventiva",
-      "message": "El cortisol muestra tendencia al alza antes del turno nocturno en UCI.",
+      "medicalStaffId": "ms-001",
+      "staffName": "Carlos Mendoza",
+      "area": "Emergencia",
+      "type": "hrv",
+      "message": "Variabilidad de frecuencia cardíaca por debajo del rango normal.",
       "severity": "moderate",
       "status": "pending",
-      "isRead": false,
-      "createdAt": "2026-05-15T11:00:00"
+      "createdAt": "2026-05-15T07:45:00.000Z"
     },
     {
       "id": "al-005",
-      "medicalStaffId": "ms-005",
-      "type": "Fatiga crítica",
-      "message": "El índice de resiliencia está por debajo del mínimo operativo en UCI.",
-      "severity": "critical",
+      "medicalStaffId": "ms-001",
+      "staffName": "Carlos Mendoza",
+      "area": "Emergencia",
+      "type": "hrv",
+      "message": "Frecuencia cardíaca elevada — 112 bpm sostenida por más de 2 horas.",
+      "severity": "high",
       "status": "pending",
-      "isRead": false,
-      "createdAt": "2026-05-15T11:30:00"
+      "createdAt": "2026-05-15T11:00:00.000Z"
+    }
+  ],
+  "preventive_actions": [
+    {
+      "id": "pa-001",
+      "staffId": "ms-001",
+      "alertId": "al-001",
+      "supervisorId": "u-002",
+      "type": "rest_recommendation",
+      "notes": "Se recomiendan 8 horas de descanso antes del siguiente turno.",
+      "status": "pending",
+      "createdAt": "2026-05-15T10:30:00.000Z"
     },
     {
-      "id": "al-006",
-      "medicalStaffId": "ms-004",
-      "type": "Turno bloqueado",
-      "message": "Turno nocturno bloqueado por nivel crítico de fatiga.",
-      "severity": "critical",
-      "status": "acknowledged",
-      "isRead": true,
-      "createdAt": "2026-05-15T08:45:00"
+      "id": "pa-002",
+      "staffId": "ms-004",
+      "alertId": "al-002",
+      "supervisorId": "u-002",
+      "type": "shift_reassignment",
+      "notes": "Turno reasignado para evitar sobrecarga.",
+      "status": "in_progress",
+      "createdAt": "2026-05-15T10:00:00.000Z"
+    },
+    {
+      "id": "pa-003",
+      "staffId": "ms-002",
+      "alertId": "al-003",
+      "supervisorId": "u-002",
+      "type": "medical_evaluation",
+      "notes": "Derivado a evaluación de estrés médico.",
+      "status": "completed",
+      "createdAt": "2026-05-14T15:00:00.000Z"
+    },
+    {
+      "id": "pa-004",
+      "staffId": "ms-001",
+      "alertId": "al-004",
+      "supervisorId": "u-002",
+      "type": "urgent_rest",
+      "notes": "Descanso urgente de 2 horas asignado por indicadores críticos.",
+      "status": "pending",
+      "createdAt": "2026-05-15T08:00:00.000Z"
     }
   ],
   "shifts": [
@@ -346,43 +566,206 @@
       "id": "sh-001",
       "medicalStaffId": "ms-001",
       "date": "2026-05-15",
-      "startTime": "08:00",
-      "endTime": "16:00",
+      "startTime": "07:00",
+      "endTime": "19:00",
+      "type": "morning",
       "area": "Emergencia",
       "status": "active",
-      "workloadLevel": "high",
-      "isBlocked": false
+      "hoursWorked": 12
     },
     {
       "id": "sh-002",
+      "medicalStaffId": "ms-001",
+      "date": "2026-05-16",
+      "startTime": "07:00",
+      "endTime": "19:00",
+      "type": "morning",
+      "area": "Emergencia",
+      "status": "scheduled",
+      "hoursWorked": 0
+    },
+    {
+      "id": "sh-003",
+      "medicalStaffId": "ms-003",
+      "date": "2026-05-15",
+      "startTime": "19:00",
+      "endTime": "07:00",
+      "type": "night",
+      "area": "Pediatría",
+      "status": "active",
+      "hoursWorked": 12
+    },
+    {
+      "id": "sh-004",
       "medicalStaffId": "ms-004",
       "date": "2026-05-15",
-      "startTime": "20:00",
-      "endTime": "04:00",
+      "startTime": "07:00",
+      "endTime": "19:00",
+      "type": "morning",
       "area": "Cirugía",
-      "status": "scheduled",
-      "workloadLevel": "critical",
-      "isBlocked": true,
-      "blockedReason": "Nivel crítico de fatiga detectado"
+      "status": "active",
+      "hoursWorked": 12
+    },
+    {
+      "id": "sh-005",
+      "medicalStaffId": "ms-001",
+      "date": "2026-05-14",
+      "startTime": "07:00",
+      "endTime": "19:00",
+      "type": "morning",
+      "area": "Emergencia",
+      "status": "completed",
+      "hoursWorked": 12
+    },
+    {
+      "id": "sh-006",
+      "medicalStaffId": "ms-002",
+      "date": "2026-05-15",
+      "startTime": "08:00",
+      "endTime": "16:00",
+      "type": "morning",
+      "area": "UCI",
+      "status": "active",
+      "hoursWorked": 8
     }
   ],
   "recovery_plans": [
     {
       "id": "rp-001",
       "medicalStaffId": "ms-001",
-      "reason": "Nivel alto de fatiga y horas de sueño reducidas",
-      "recommendedRestMinutes": 30,
-      "status": "pending",
-      "createdAt": "2026-05-15T10:15:00"
+      "createdBy": "u-002",
+      "triggeredBy": "supervisor",
+      "startDate": "2026-05-15T00:00:00.000Z",
+      "endDate": "2026-05-18T23:59:59.000Z",
+      "type": "rest",
+      "recommendations": [
+        "Descansar al menos 8 horas por noche.",
+        "No realizar guardias nocturnas en 3 días.",
+        "Solo actividad física ligera.",
+        "Hidratarse correctamente."
+      ],
+      "message": "Descanso urgente asignado. Tu supervisor ha asignado un descanso preventivo debido a indicadores críticos de fatiga.",
+      "status": "active"
     },
     {
       "id": "rp-002",
       "medicalStaffId": "ms-004",
-      "reason": "Nivel crítico de fatiga e indicador alto de cortisol",
-      "recommendedRestMinutes": 60,
-      "status": "issued",
-      "createdAt": "2026-05-15T09:20:00"
+      "createdBy": "u-002",
+      "triggeredBy": "system",
+      "startDate": "2026-05-15T00:00:00.000Z",
+      "endDate": "2026-05-22T23:59:59.000Z",
+      "type": "medical_leave",
+      "recommendations": [
+        "Descanso completo durante 7 días.",
+        "Evaluación médica el día 3.",
+        "Sin obligaciones clínicas."
+      ],
+      "message": "Licencia médica asignada por estado crítico.",
+      "status": "active"
     }
   ],
-  "audit_logs": []
+  "reports": [
+    {
+      "id": "rep-001",
+      "title": "Monthly Fatigue Summary - April 2026",
+      "type": "fatigue",
+      "generatedAt": "2026-05-01T09:00:00",
+      "generatedBy": "u-001",
+      "status": "completed",
+      "period": "2026-04"
+    },
+    {
+      "id": "rep-002",
+      "title": "Biometric Anomaly Report - Week 19",
+      "type": "anomaly",
+      "generatedAt": "2026-05-13T09:00:00.000Z",
+      "generatedBy": "admin@cortisense.com",
+      "startDate": "2026-05-10",
+      "endDate": "2026-05-13",
+      "area": "",
+      "status": "completed"
+    },
+    {
+      "id": "rep-003",
+      "title": "Reporte de Cumplimiento Institucional Q1 2026",
+      "type": "compliance",
+      "generatedAt": "2026-04-01T09:00:00.000Z",
+      "generatedBy": "admin@cortisense.com",
+      "startDate": "2026-01-01",
+      "endDate": "2026-03-31",
+      "area": "",
+      "status": "completed"
+    },
+    {
+      "type": "fatigue",
+      "startDate": "",
+      "endDate": "",
+      "area": "",
+      "generatedBy": "admin@cortisense.com",
+      "generatedAt": "2026-05-16T06:53:41.600Z",
+      "id": "4mkS5S3"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "aul-001",
+      "userId": "admin@cortisense.com",
+      "action": "invitation_created",
+      "module": "iam",
+      "details": "Invitación creada para nuevo.medico@cortisense.com",
+      "severity": "info",
+      "timestamp": "2026-05-15T10:00:00.000Z",
+      "ip": "192.168.1.1"
+    },
+    {
+      "id": "aul-002",
+      "userId": "admin@cortisense.com",
+      "action": "invitation_created",
+      "module": "iam",
+      "details": "Invitación creada para nuevo.supervisor@cortisense.com",
+      "severity": "info",
+      "timestamp": "2026-05-15T10:30:00.000Z",
+      "ip": "192.168.1.1"
+    },
+    {
+      "id": "aul-003",
+      "userId": "supervisor@cortisense.com",
+      "action": "alert_acknowledged",
+      "module": "incident-alert-management",
+      "details": "Alerta al-003 confirmada por supervisor",
+      "severity": "info",
+      "timestamp": "2026-05-14T14:25:00.000Z",
+      "ip": "192.168.1.2"
+    },
+    {
+      "id": "aul-004",
+      "userId": "supervisor@cortisense.com",
+      "action": "preventive_action_registered",
+      "module": "incident-alert-management",
+      "details": "Acción preventiva registrada para ms-001. Tipo: recomendación de descanso.",
+      "severity": "info",
+      "timestamp": "2026-05-15T10:30:00.000Z",
+      "ip": "192.168.1.2"
+    },
+    {
+      "id": "aul-005",
+      "userId": "admin@cortisense.com",
+      "action": "report_generated",
+      "module": "audit-compliance",
+      "details": "Reporte generado: Anomalías biométricas - Semana 19",
+      "severity": "info",
+      "timestamp": "2026-05-13T09:05:00.000Z",
+      "ip": "192.168.1.1"
+    },
+    {
+      "id": "aul-006",
+      "userId": "doctor@cortisense.com",
+      "action": "recovery_plan_accepted",
+      "module": "staff-recovery",
+      "details": "Plan de descanso rp-001 aceptado por el médico Carlos Mendoza.",
+      "severity": "info",
+      "timestamp": "2026-05-15T12:00:00.000Z",
+      "ip": "192.168.1.3"
+    }
+  ]
 }

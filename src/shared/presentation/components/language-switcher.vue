@@ -1,61 +1,41 @@
-<script setup>
-import { useI18n } from "vue-i18n";
-
-const { locale, availableLocales } = useI18n();
-
-/**
- * Changes the active application locale.
- *
- * @param {string} selectedLocale - Selected locale code.
- * @returns {void}
- */
-function changeLanguage(selectedLocale) {
-  locale.value = selectedLocale;
-  localStorage.setItem("cortisense_locale", selectedLocale);
-}
-</script>
-
+<!--
+  @file language-switcher.vue
+  @description Componente para cambiar el idioma entre ES y EN.
+  Persiste la selección en localStorage bajo 'cortisense_locale'.
+-->
 <template>
-  <div class="language-switcher">
+  <div class="cs-lang-switcher">
     <button
-        v-for="availableLocale in availableLocales"
-        :key="availableLocale"
-        class="language-option"
-        :class="{ active: locale === availableLocale }"
-        type="button"
-        @click="changeLanguage(availableLocale)"
+      class="cs-lang-btn"
+      :class="{ active: locale === 'es' }"
+      @click="setLocale('es')"
+      aria-label="Español"
     >
-      {{ availableLocale.toUpperCase() }}
+      ES
+    </button>
+    <button
+      class="cs-lang-btn"
+      :class="{ active: locale === 'en' }"
+      @click="setLocale('en')"
+      aria-label="English"
+    >
+      EN
     </button>
   </div>
 </template>
 
-<style scoped>
-.language-switcher {
-  display: inline-flex;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #171923;
-  box-shadow: 0 14px 28px rgba(14, 36, 51, 0.16);
-}
+<script setup>
+import { useI18n } from 'vue-i18n'
 
-.language-option {
-  min-width: 56px;
-  border: none;
-  padding: 14px 16px;
-  background: #171923;
-  color: #ffffff;
-  font-weight: 800;
-  cursor: pointer;
-}
+const { locale } = useI18n({ useScope: 'global' })
 
-.language-option.active {
-  background: var(--cs-primary, #45dde5);
-  color: var(--cs-dark, #0e2433);
+/**
+ * Cambia el idioma activo y lo persiste en localStorage.
+ * @param {'es'|'en'} lang
+ */
+function setLocale (lang) {
+  locale.value = lang
+  localStorage.setItem('cortisense_locale', lang)
+  document.documentElement.setAttribute('lang', lang)
 }
-
-.language-option:hover {
-  background: var(--cs-primary-medium, #68eae8);
-  color: var(--cs-dark, #0e2433);
-}
-</style>
+</script>

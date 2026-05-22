@@ -1,49 +1,69 @@
-<script setup>
-import AppSidebar from "./app-sidebar.vue";
-import AppTopbar from "./app-topbar.vue";
-</script>
-
+<!--
+  @file app-layout.vue
+  @description Layout interno principal de CortiSense.
+  Compone el sidebar (según rol) + topbar + slot de contenido.
+  Se activa cuando meta.layout === 'app' en app.vue.
+-->
 <template>
   <div class="app-layout">
-    <app-sidebar />
+    <AppSidebar :menu-items="menuItems" />
 
-    <main class="app-main">
-      <app-topbar />
-
-      <section class="app-content">
-        <router-view :key="$route.fullPath" />
-      </section>
-    </main>
+    <div class="app-main">
+      <AppTopbar />
+      <main class="app-content">
+        <slot />
+      </main>
+    </div>
   </div>
 </template>
 
-<style scoped>
-.app-layout {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 304px 1fr;
-  background: #f7fbfc;
-}
+<script setup>
+import { computed } from 'vue'
+import { useAuthStore } from '../../../iam/application/auth.store.js'
+import AppSidebar from './app-sidebar.vue'
+import AppTopbar from './app-topbar.vue'
 
-.app-main {
-  min-width: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+const authStore = useAuthStore()
 
-.app-content {
-  flex: 1;
-  padding: 48px 56px;
-}
+/** Menú del Administrador */
+const adminMenu = [
+  { key: 'dashboard',    icon: 'pi pi-home',        labelKey: 'nav.dashboard',    to: '/admin/dashboard'    },
+  { key: 'staff',        icon: 'pi pi-users',        labelKey: 'nav.staff',        to: '/admin/staff/list'   },
+  { key: 'invitations',  icon: 'pi pi-envelope',     labelKey: 'nav.invitations',  to: '/admin/invitations'  },
+  { key: 'subscription', icon: 'pi pi-credit-card',  labelKey: 'nav.subscription', to: '/admin/subscription' },
+  { key: 'reports',      icon: 'pi pi-chart-bar',    labelKey: 'nav.reports',      to: '/admin/reports'      },
+  { key: 'audit',        icon: 'pi pi-history',      labelKey: 'nav.audit',        to: '/admin/audit'        },
+  { key: 'settings',     icon: 'pi pi-cog',          labelKey: 'nav.settings',     to: '/admin/settings'     }
+]
 
-@media (max-width: 900px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-  }
+/** Menú del Supervisor Clínico */
+const supervisorMenu = [
+  { key: 'dashboard',         icon: 'pi pi-th-large',      labelKey: 'nav.shiftSummary',      to: '/supervisor/dashboard'          },
+  { key: 'riskStaff',         icon: 'pi pi-exclamation-triangle', labelKey: 'nav.riskStaff',  to: '/supervisor/risk-staff'         },
+  { key: 'alerts',            icon: 'pi pi-bell',          labelKey: 'nav.alerts',            to: '/supervisor/alerts'             },
+  { key: 'anomalies',         icon: 'pi pi-chart-line',    labelKey: 'nav.anomalies',         to: '/supervisor/anomalies'          },
+  { key: 'preventiveActions', icon: 'pi pi-shield',        labelKey: 'nav.preventiveActions', to: '/supervisor/preventive-actions' },
+  { key: 'settings',          icon: 'pi pi-cog',           labelKey: 'nav.settings',          to: '/supervisor/settings'           }
+]
 
-  .app-content {
-    padding: 32px 24px;
-  }
-}
-</style>
+/** Menú del Personal Médico */
+const medicalStaffMenu = [
+  { key: 'status',    icon: 'pi pi-heart',       labelKey: 'nav.myStatus',   to: '/medical-staff/status'    },
+  { key: 'vitals',    icon: 'pi pi-chart-line',  labelKey: 'nav.myVitals',   to: '/medical-staff/vitals'    },
+  { key: 'shifts',    icon: 'pi pi-calendar',    labelKey: 'nav.myShifts',   to: '/medical-staff/shifts'    },
+  { key: 'recovery',  icon: 'pi pi-refresh',     labelKey: 'nav.myRecovery', to: '/medical-staff/recovery'  },
+  { key: 'settings',  icon: 'pi pi-cog',         labelKey: 'nav.settings',   to: '/medical-staff/settings'  }
+]
+
+/**
+ * Devuelve el menú correspondiente al rol del usuario autenticado.
+ * @type {import('vue').ComputedRef<Array>}
+ */
+const menuItems = computed(() => {
+  const role = authStore.user?.role
+  if (role === 'admin') return adminMenu
+  if (role === 'clinical_supervisor') return supervisorMenu
+  if (role === 'medical_staff') return medicalStaffMenu
+  return []
+})
+</script>

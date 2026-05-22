@@ -1,61 +1,27 @@
-<script setup>
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
-import LanguageSwitcher from "./language-switcher.vue";
-
-const { t } = useI18n();
-
-/**
- * Reads the authenticated user from localStorage.
- *
- * @returns {Object} Current user resource.
- */
-function getStoredUser() {
-  try {
-    return JSON.parse(localStorage.getItem("cortisense_user")) || {};
-  } catch {
-    return {};
-  }
-}
-
-const currentUser = computed(() => getStoredUser());
-
-const firstName = computed(() => currentUser.value?.firstName || "Usuario");
-</script>
-
+<!--
+  @file app-topbar.vue
+  @description Topbar alineado con la demo — saludo, subtítulo y lang switcher.
+-->
 <template>
-  <header class="app-topbar">
+  <header class="cs-topbar">
     <div>
-      <h2>{{ t("layout.welcome", { name: firstName }) }}</h2>
-      <p>{{ t("layout.subtitle") }}</p>
+      <div class="cs-topbar-greeting">{{ $t('common.greeting') }}, {{ authStore.user?.firstName }}</div>
+      <div class="cs-topbar-subtitle">{{ subtitle }}</div>
     </div>
-
-    <language-switcher />
+    <div class="cs-topbar-right">
+      <LanguageSwitcher />
+    </div>
   </header>
 </template>
 
-<style scoped>
-.app-topbar {
-  height: 96px;
-  padding: 0 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #ffffff;
-  border-bottom: 1px solid #e6eef2;
-}
+<script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useAuthStore } from '../../../iam/application/auth.store.js'
+import LanguageSwitcher from './language-switcher.vue'
 
-.app-topbar h2 {
-  margin: 0;
-  color: var(--cs-dark, #0e2433);
-  font-size: 24px;
-  font-weight: 800;
-}
+const authStore = useAuthStore()
+const { t } = useI18n({ useScope: 'global' })
 
-.app-topbar p {
-  margin: 6px 0 0;
-  color: var(--cs-gray-dark, #4f555a);
-  font-size: 15px;
-  font-weight: 600;
-}
-</style>
+const subtitle = computed(() => t('app.topbarSubtitle'))
+</script>

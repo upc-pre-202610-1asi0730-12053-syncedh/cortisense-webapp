@@ -1,5 +1,11 @@
-import { createPinia } from "pinia";
+/**
+ * @file pinia.js
+ * @description Instancia central de Pinia para CortiSense.
+ */
 
-const pinia = createPinia();
+import { createPinia } from 'pinia'
 
-export default pinia;
+/** @type {import('pinia').Pinia} */
+const pinia = createPinia()
+
+export default pinia

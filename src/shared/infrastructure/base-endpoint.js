@@ -1,82 +1,77 @@
 /**
- * Generic endpoint wrapper with common CRUD operations.
- *
+ * @file base-endpoint.js
+ * @description Clase base para todos los endpoints de la API de CortiSense.
+ * Provee operaciones CRUD reutilizables usando la instancia de Axios.
+ */
+
+import { http } from './http.js'
+
+/**
  * @class BaseEndpoint
+ * @description Provee métodos HTTP genéricos para interactuar con la API REST.
+ * Cada bounded context extiende esta clase para sus propios endpoints.
  */
 export class BaseEndpoint {
-    #http;
-    #endpointPath;
+  /**
+   * @param {string} resourcePath - Path del recurso, ej: '/users'
+   */
+  constructor (resourcePath) {
+    this.resourcePath = resourcePath
+  }
 
-    /**
-     * Creates a base endpoint.
-     *
-     * @param {import('./base-api.js').BaseApi} baseApi - API owner with configured HTTP client.
-     * @param {string} endpointPath - Relative endpoint path.
-     */
-    constructor(baseApi, endpointPath) {
-        this.#http = baseApi.http;
-        this.#endpointPath = endpointPath;
-    }
+  /**
+   * Obtiene todos los registros del recurso.
+   * @param {Object} [params] - Query params opcionales para filtrar.
+   * @returns {Promise<import('axios').AxiosResponse>}
+   */
+  getAll (params = {}) {
+    return http.get(this.resourcePath, { params })
+  }
 
-    /**
-     * Gets a resource collection.
-     *
-     * @param {Object} [params={}] - Query parameters.
-     * @returns {Promise<import('axios').AxiosResponse>} HTTP response.
-     */
-    getAll(params = {}) {
-        return this.#http.get(this.#endpointPath, { params });
-    }
+  /**
+   * Obtiene un registro por ID.
+   * @param {string|number} id
+   * @returns {Promise<import('axios').AxiosResponse>}
+   */
+  getById (id) {
+    return http.get(`${this.resourcePath}/${id}`)
+  }
 
-    /**
-     * Gets one resource by id.
-     *
-     * @param {string|number} id - Resource identifier.
-     * @returns {Promise<import('axios').AxiosResponse>} HTTP response.
-     */
-    getById(id) {
-        return this.#http.get(`${this.#endpointPath}/${id}`);
-    }
+  /**
+   * Crea un nuevo registro.
+   * @param {Object} payload
+   * @returns {Promise<import('axios').AxiosResponse>}
+   */
+  create (payload) {
+    return http.post(this.resourcePath, payload)
+  }
 
-    /**
-     * Creates a resource.
-     *
-     * @param {Object} resource - Resource payload.
-     * @returns {Promise<import('axios').AxiosResponse>} HTTP response.
-     */
-    create(resource) {
-        return this.#http.post(this.#endpointPath, resource);
-    }
+  /**
+   * Actualiza un registro existente (reemplazo completo).
+   * @param {string|number} id
+   * @param {Object} payload
+   * @returns {Promise<import('axios').AxiosResponse>}
+   */
+  update (id, payload) {
+    return http.put(`${this.resourcePath}/${id}`, payload)
+  }
 
-    /**
-     * Replaces a resource.
-     *
-     * @param {string|number} id - Resource identifier.
-     * @param {Object} resource - Resource payload.
-     * @returns {Promise<import('axios').AxiosResponse>} HTTP response.
-     */
-    update(id, resource) {
-        return this.#http.put(`${this.#endpointPath}/${id}`, resource);
-    }
+  /**
+   * Actualiza parcialmente un registro (PATCH).
+   * @param {string|number} id
+   * @param {Object} payload
+   * @returns {Promise<import('axios').AxiosResponse>}
+   */
+  patch (id, payload) {
+    return http.patch(`${this.resourcePath}/${id}`, payload)
+  }
 
-    /**
-     * Partially updates a resource.
-     *
-     * @param {string|number} id - Resource identifier.
-     * @param {Object} resource - Partial resource payload.
-     * @returns {Promise<import('axios').AxiosResponse>} HTTP response.
-     */
-    patch(id, resource) {
-        return this.#http.patch(`${this.#endpointPath}/${id}`, resource);
-    }
-
-    /**
-     * Deletes a resource.
-     *
-     * @param {string|number} id - Resource identifier.
-     * @returns {Promise<import('axios').AxiosResponse>} HTTP response.
-     */
-    delete(id) {
-        return this.#http.delete(`${this.#endpointPath}/${id}`);
-    }
+  /**
+   * Elimina un registro por ID.
+   * @param {string|number} id
+   * @returns {Promise<import('axios').AxiosResponse>}
+   */
+  delete (id) {
+    return http.delete(`${this.resourcePath}/${id}`)
+  }
 }

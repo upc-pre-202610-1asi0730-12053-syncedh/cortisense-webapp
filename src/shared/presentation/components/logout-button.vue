@@ -1,58 +1,51 @@
-<script setup>
-/**
- * Logout Button Component.
- *
- * Provides a reusable sign-out action for authenticated layouts.
- * It clears the current IAM session and redirects the user to sign-in.
- */
-
-import { useRouter } from "vue-router";
-import useIamStore from "../../../iam/application/iam.store.js";
-
-const router = useRouter();
-const iamStore = useIamStore();
-
-/**
- * Signs out the current user and redirects to sign-in.
- *
- * @returns {void}
- */
-function onLogout() {
-  iamStore.signOut();
-  router.push("/sign-in");
-}
-</script>
-
+<!--
+  @file logout-button.vue
+  @description Botón de cierre de sesión.
+  Llama a authStore.logout() y redirige a /auth/sign-in.
+-->
 <template>
-  <button class="logout-button" type="button" @click="onLogout">
-    <span class="logout-icon">⎋</span>
-    <span>Cerrar sesión</span>
+  <button class="cs-logout-btn" @click="handleLogout">
+    <i class="pi pi-sign-out"></i>
+    <span>{{ $t('common.logout') }}</span>
   </button>
 </template>
 
+<script setup>
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '../../../iam/application/auth.store.js'
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+/**
+ * Ejecuta el logout y redirige al sign-in.
+ */
+function handleLogout () {
+  authStore.logout()
+  router.push('/auth/sign-in')
+}
+</script>
+
 <style scoped>
-.logout-button {
-  width: 100%;
-  min-height: 48px;
-  border: none;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  font-weight: 800;
+.cs-logout-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 16px;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--cs-font-family);
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s;
 }
-
-.logout-button:hover {
-  background: rgba(69, 221, 229, 0.18);
-  color: var(--cs-primary);
+.cs-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
 }
-
-.logout-icon {
-  font-size: 18px;
-}
+.cs-logout-btn i { font-size: 1rem; }
 </style>

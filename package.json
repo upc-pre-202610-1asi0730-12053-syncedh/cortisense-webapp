@@ -1,11 +1,18 @@
 {
-  "name": "upc-pre-202610-1asi0730-12053-syncedhealth-webapp",
+  "name": "cortisense-webapp",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "mock": "json-server --watch mock/cortisense-db.json --routes mock/routes.json --port 3000"
+  },
   "dependencies": {
     "@primeuix/themes": "^2.0.3",
     "axios": "^1.16.1",
+    "chart.js": "^4.5.1",
     "pinia": "^3.0.4",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
@@ -18,14 +25,5 @@
     "@vitejs/plugin-vue": "^6.0.6",
     "json-server": "^0.17.4",
     "vite": "^8.0.12"
-  },
-  "description": "SyncedHealth CortiSense Application",
-  "author": "CortiSense Web Applications Developer Team",
-  "license": "MIT",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "mock": "json-server --watch mock/cortisense-db.json --routes mock/routes.json --port 3000"
   }
 }
