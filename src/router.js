@@ -1,310 +1,99 @@
-import { createRouter, createWebHistory } from "vue-router";
-
-import iamRoutes from "./iam/presentation/iam-routes.js";
-import medicalStaffRoutes from "./iam/presentation/medical-staff-routes.js";
-
-import { authenticationGuard } from "./iam/infrastructure/authentication.guard.js";
-
-const AppLayout = () =>
-    import("./shared/presentation/components/app-layout.vue");
-
-const AdminDashboard = () =>
-    import("./shared/presentation/views/admin-dashboard.vue");
-
-const SupervisorDashboard = () =>
-    import("./shared/presentation/views/supervisor-dashboard.vue");
-
-const MedicalStaffStatus = () =>
-    import("./shared/presentation/views/medical-staff-status.vue");
-
-const PlaceholderPage = () =>
-    import("./shared/presentation/views/placeholder-page.vue");
-
-const SupervisorRiskStaff = () =>
-    import("./shared/presentation/views/supervisor-risk-staff.vue");
-
-const SupervisorClinicalAlerts = () =>
-    import("./shared/presentation/views/supervisor-clinical-alerts.vue");
-
-const Unauthorized = () => import("./shared/presentation/views/unauthorized.vue");
-const PageNotFound = () => import("./shared/presentation/views/page-not-found.vue");
-// Layout
-
-import billingRoutes from "./subscription-and-plan-management/presentation/router/billing-routes.js";
-const InvitationManagement = () =>
-    import("./iam/presentation/views/invitation-management.vue");
-
 /**
- * CortiSense application routes.
+ * @file router.js
+ * @description Router central de CortiSense.
+ * Importa rutas de cada bounded context.
+ * Aplica guards de autenticación y autorización por rol.
  */
-const routes = [
-    // RUTAS PÚBLICAS
-    {
-        path: "/",
-        redirect: "/auth/sign-in"
-    },
-    {
-        path: "/sign-in",
-        redirect: "/auth/sign-in"
-    },
-    {
-        path: "/sign-up",
-        redirect: "/auth/sign-up"
-    },
 
-    ...iamRoutes,
+import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from './iam/application/auth.store.js'
 
-    {
-        path: "/admin",
-        component: AppLayout,
-        meta: {
-            requiresAuth: true,
-            roles: ["admin"]
-        },
-        children: [
-            {
-                path: "",
-                redirect: "/admin/dashboard"
-            },
-            {
-                path: "dashboard",
-                name: "admin-dashboard",
-                component: AdminDashboard,
-                meta: {
-                    title: "Admin Dashboard"
-                }
-            },
-            ...billingRoutes,
-            {
-                path: "staff",
-                redirect: "/admin/staff/list",
-                children: medicalStaffRoutes
-            },
-            {
-                path: "invitations",
-                name: "admin-invitations",
-                component: InvitationManagement,
-                meta: {
-                    title: "Invitations"
-                }
-            },
-            {
-                path: "subscription",
-                name: "admin-subscription",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Subscription",
-                    titleKey: "navigation.subscription",
-                    descriptionKey: "placeholder.subscription"
-                }
-            },
-            {
-                path: "reports",
-                name: "admin-reports",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Reports",
-                    titleKey: "navigation.reports",
-                    descriptionKey: "placeholder.reports"
-                }
-            },
-            {
-                path: "audit",
-                name: "admin-audit",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Audit",
-                    titleKey: "navigation.audit",
-                    descriptionKey: "placeholder.audit"
-                }
-            },
-            {
-                path: "settings",
-                name: "admin-settings",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Settings",
-                    titleKey: "navigation.settings",
-                    descriptionKey: "placeholder.settings"
-                }
-            }
-        ]
-    },
+// ── Rutas por bounded context ─────────────────────────────
+import iamRoutes from './iam/presentation/routes.js'
 
-    {
-        path: "/supervisor",
-        component: AppLayout,
-        meta: {
-            requiresAuth: true,
-            roles: ["clinical_supervisor"]
-        },
-        children: [
-            {
-                path: "",
-                redirect: "/supervisor/dashboard"
-            },
-            {
-                path: "dashboard",
-                name: "supervisor-dashboard",
-                component: SupervisorDashboard,
-                meta: {
-                    title: "Supervisor Dashboard"
-                }
-            },
-            {
-                path: "risk-staff",
-                name: "supervisor-risk-staff",
-                component: SupervisorRiskStaff,
-                meta: {
-                    title: "Staff at Risk",
-                    titleKey: "navigation.riskStaff"
-                }
-            },
-            {
-                path: "alerts",
-                name: "supervisor-alerts",
-                component: SupervisorClinicalAlerts,
-                meta: {
-                    title: "Clinical Alerts",
-                    titleKey: "navigation.clinicalAlerts"
-                }
-            },
-            {
-                path: "anomalies",
-                name: "supervisor-anomalies",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Anomalies",
-                    titleKey: "navigation.anomalies",
-                    descriptionKey: "placeholder.anomalies"
-                }
-            },
-            {
-                path: "preventive-actions",
-                name: "supervisor-preventive-actions",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Preventive Actions",
-                    titleKey: "navigation.preventiveActions",
-                    descriptionKey: "placeholder.preventiveActions"
-                }
-            },
-            {
-                path: "settings",
-                name: "supervisor-settings",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Settings",
-                    titleKey: "navigation.settings",
-                    descriptionKey: "placeholder.settings"
-                }
-            }
-        ]
-    },
+// Rutas placeholder — se reemplazarán en Fase 2 y 3
+const placeholderRoutes = [
+  // Admin
+  { path: '/admin/dashboard',    component: () => import('./audit-compliance/presentation/views/admin-dashboard.view.vue'),   meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/staff/list',   component: () => import('./iam/presentation/views/admin-staff-list.view.vue'),              meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/staff/new',    component: () => import('./iam/presentation/views/admin-staff-new.view.vue'),               meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/staff/:id',    component: () => import('./iam/presentation/views/admin-staff-detail.view.vue'),            meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/staff/:id/edit', component: () => import('./iam/presentation/views/admin-staff-edit.view.vue'),            meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/invitations',  component: () => import('./iam/presentation/views/admin-invitations.view.vue'),             meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/subscription', component: () => import('./subscriptions/presentation/views/admin-subscription.view.vue'),  meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/reports',      component: () => import('./audit-compliance/presentation/views/admin-reports.view.vue'),    meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/audit',        component: () => import('./audit-compliance/presentation/views/admin-audit.view.vue'),      meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
+  { path: '/admin/settings',     component: () => import('./iam/presentation/views/account-settings.view.vue'),              meta: { requiresAuth: true, roles: ['admin'],                layout: 'app' } },
 
-    {
-        path: "/medical-staff",
-        component: AppLayout,
-        meta: {
-            requiresAuth: true,
-            roles: ["medical_staff"]
-        },
-        children: [
-            {
-                path: "",
-                redirect: "/medical-staff/status"
-            },
-            {
-                path: "status",
-                name: "medical-staff-status",
-                component: MedicalStaffStatus,
-                meta: {
-                    title: "My Status"
-                }
-            },
-            {
-                path: "cortisol",
-                name: "medical-staff-cortisol",
-                component: PlaceholderPage,
-                meta: {
-                    title: "My Cortisol",
-                    titleKey: "navigation.myCortisol",
-                    descriptionKey: "placeholder.myCortisol"
-                }
-            },
-            {
-                path: "shifts",
-                name: "medical-staff-shifts",
-                component: PlaceholderPage,
-                meta: {
-                    title: "My Shifts",
-                    titleKey: "navigation.myShifts",
-                    descriptionKey: "placeholder.myShifts"
-                }
-            },
-            {
-                path: "recovery",
-                name: "medical-staff-recovery",
-                component: PlaceholderPage,
-                meta: {
-                    title: "My Recovery",
-                    titleKey: "navigation.myRecovery",
-                    descriptionKey: "placeholder.myRecovery"
-                }
-            },
-            {
-                path: "settings",
-                name: "medical-staff-settings",
-                component: PlaceholderPage,
-                meta: {
-                    title: "Settings",
-                    titleKey: "navigation.settings",
-                    descriptionKey: "placeholder.settings"
-                }
-            }
-        ]
-    },
+  // Supervisor
+  { path: '/supervisor/dashboard',         component: () => import('./incident-alert-management/presentation/views/supervisor-dashboard.view.vue'),         meta: { requiresAuth: true, roles: ['clinical_supervisor'], layout: 'app' } },
+  { path: '/supervisor/risk-staff',        component: () => import('./clinical-risk/presentation/views/supervisor-risk-staff.view.vue'),                    meta: { requiresAuth: true, roles: ['clinical_supervisor'], layout: 'app' } },
+  { path: '/supervisor/alerts',            component: () => import('./incident-alert-management/presentation/views/supervisor-alerts.view.vue'),             meta: { requiresAuth: true, roles: ['clinical_supervisor'], layout: 'app' } },
+  { path: '/supervisor/anomalies',         component: () => import('./clinical-risk/presentation/views/supervisor-anomalies.view.vue'),                     meta: { requiresAuth: true, roles: ['clinical_supervisor'], layout: 'app' } },
+  { path: '/supervisor/preventive-actions',component: () => import('./incident-alert-management/presentation/views/supervisor-preventive-actions.view.vue'),meta: { requiresAuth: true, roles: ['clinical_supervisor'], layout: 'app' } },
+  { path: '/supervisor/settings',          component: () => import('./iam/presentation/views/account-settings.view.vue'),                                    meta: { requiresAuth: true, roles: ['clinical_supervisor'], layout: 'app' } },
 
-    {
-        path: "/unauthorized",
-        name: "unauthorized",
-        component: Unauthorized,
-        meta: {
-            title: "Unauthorized"
-        }
-    },
+  // Medical Staff
+  { path: '/medical-staff/status',   component: () => import('./clinical-risk/presentation/views/medical-staff-status.view.vue'),   meta: { requiresAuth: true, roles: ['medical_staff'], layout: 'app' } },
+  { path: '/medical-staff/vitals',   component: () => import('./clinical-risk/presentation/views/medical-staff-vitals.view.vue'),   meta: { requiresAuth: true, roles: ['medical_staff'], layout: 'app' } },
+  { path: '/medical-staff/shifts',   component: () => import('./shift-coordination/presentation/views/medical-staff-shifts.view.vue'), meta: { requiresAuth: true, roles: ['medical_staff'], layout: 'app' } },
+  { path: '/medical-staff/recovery', component: () => import('./staff-recovery/presentation/views/medical-staff-recovery.view.vue'),  meta: { requiresAuth: true, roles: ['medical_staff'], layout: 'app' } },
+  { path: '/medical-staff/settings', component: () => import('./iam/presentation/views/account-settings.view.vue'),                   meta: { requiresAuth: true, roles: ['medical_staff'], layout: 'app' } }
+]
 
-    {
-        path: "/:pathMatch(.*)*",
-        name: "page-not-found",
-        component: PageNotFound,
-        meta: {
-            title: "Page Not Found"
-        }
-    }
-];
+/** Devuelve la ruta predeterminada según el rol del usuario. */
+function getDefaultRoute (role) {
+  const map = {
+    admin:               '/admin/dashboard',
+    clinical_supervisor: '/supervisor/dashboard',
+    medical_staff:       '/medical-staff/status'
+  }
+  return map[role] || '/auth/sign-in'
+}
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes,
-    scrollBehavior() {
-        return {
-            top: 0,
-            left: 0
-        };
-    }
-});
+  history: createWebHistory(),
+  routes: [
+    { path: '/', redirect: '/auth/sign-in' },
+    ...iamRoutes,
+    ...placeholderRoutes,
+    { path: '/:pathMatch(.*)*', redirect: '/auth/sign-in' }
+  ]
+})
 
+/**
+ * Guard global de navegación.
+ * Verifica autenticación y autorización por rol.
+ * Usa return value en lugar de next() para compatibilidad con Vue Router v4.
+ */
 router.beforeEach((to) => {
-    document.title = `CortiSense - ${to.meta.title || "Platform"}`;
+  const authStore = useAuthStore()
 
-    const redirectPath = authenticationGuard(to);
+  if (!authStore.isAuthenticated) {
+    authStore.restoreSession()
+  }
 
-    if (redirectPath) {
-        return redirectPath;
+  const isPublic = !to.meta.requiresAuth
+  const isAuthenticated = authStore.isAuthenticated
+  const userRole = authStore.userRole
+
+  if (isPublic) {
+    if (isAuthenticated && to.path.startsWith('/auth/')) {
+      return getDefaultRoute(userRole)
     }
+    return true
+  }
 
-    return true;
-});
+  if (!isAuthenticated) {
+    return '/auth/sign-in'
+  }
 
-export default router;
+  if (to.meta.roles && !to.meta.roles.includes(userRole)) {
+    return getDefaultRoute(userRole)
+  }
+
+  return true
+})
+
+export { getDefaultRoute }
+export default router

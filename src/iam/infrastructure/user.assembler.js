@@ -1,39 +1,39 @@
-import { User } from '../domain/model/user.entity.js';
+/**
+ * @file user.assembler.js
+ * @description Assembler que convierte respuestas de la API en entidades User.
+ */
+
+import { User } from '../domain/model/user.entity.js'
 
 /**
- * Assembler for converting user API resources into IAM domain entities.
- *
  * @class UserAssembler
+ * @description Transforma objetos de la API REST en instancias de la entidad User.
  */
 export class UserAssembler {
-    /**
-     * Converts an API resource into a User entity.
-     *
-     * @param {Object} resource - User resource returned by the API.
-     * @returns {User} User entity.
-     */
-    static toEntityFromResource(resource) {
-        return new User(resource);
-    }
+  /**
+   * Convierte un recurso de API en una entidad User.
+   * @param {Object} resource - Objeto plano de la respuesta de la API.
+   * @returns {User}
+   */
+  static toEntity (resource) {
+    return new User({
+      id:            resource.id            ?? null,
+      firstName:     resource.firstName     ?? '',
+      lastName:      resource.lastName      ?? '',
+      email:         resource.email         ?? '',
+      role:          resource.role          ?? '',
+      status:        resource.status        ?? '',
+      token:         resource.token         ?? '',
+      medicalStaffId: resource.medicalStaffId ?? null
+    })
+  }
 
-    /**
-     * Converts an API collection response into User entities.
-     *
-     * @param {import('axios').AxiosResponse<Array<Object>>} response - HTTP response.
-     * @returns {User[]} User entity collection.
-     */
-    static toEntitiesFromResponse(response) {
-        const resources = Array.isArray(response.data) ? response.data : [];
-        return resources.map(resource => this.toEntityFromResource(resource));
-    }
-
-    /**
-     * Converts a User entity into a plain API resource.
-     *
-     * @param {User} user - User entity.
-     * @returns {Object} User resource.
-     */
-    static toResourceFromEntity(user) {
-        return user.toResource();
-    }
+  /**
+   * Convierte una lista de recursos en entidades User.
+   * @param {Object[]} resources
+   * @returns {User[]}
+   */
+  static toEntityList (resources) {
+    return resources.map(UserAssembler.toEntity)
+  }
 }
