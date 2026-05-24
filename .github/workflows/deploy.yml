@@ -27,10 +27,12 @@ jobs:
         env:
           VITE_CORTISENSE_API_URL: ${{ secrets.VITE_CORTISENSE_API_URL }}
 
-      # Subimos la carpeta 'dist' (que contiene el HTML/JS compilado) a Azure
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'cortisense-mockapi' # <-- Pon aquí el nombre de tu recurso de Vue en Azure
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./dist # <-- Súper importante: solo subimos la carpeta compilada
+          # Cambiamos package: . por esto para incluir todo explícitamente
+          package: .
+          # Agregamos esta línea para asegurarnos que se mantenga el servidor
+          startup-command: 'npx json-server --watch mock/cortisense-db.json --routes mock/routes.json --port 8080 --host 0.0.0.0'
