@@ -150,6 +150,6 @@ app.use(jsonServer.rewriter(routes))
 app.use(router)
 
 app.listen(PORT, () => {
-  console.log(`CortiSense mock server running at http://127.0.0.1:${PORT}`)
+  console.log(`CortiSense mock server running at http://127.0.0.1:${PORT}/api/v1`)
   console.log(`Public app URL: ${APP_PUBLIC_URL}`)
 })

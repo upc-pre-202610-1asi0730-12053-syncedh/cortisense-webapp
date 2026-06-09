@@ -130,7 +130,7 @@
             <div class="member-list">
               <div v-for="member in membersForTeam(team.id)" :key="member.id" class="member-item">
                 <div class="member-main">
-                  <div class="avatar">{{ initials(userById(member.userId)) }}</div>
+                  <div class="team-member-avatar">{{ initials(userById(member.userId)) }}</div>
                   <div>
                     <strong>{{ fullName(userById(member.userId)) }}</strong>
                     <small>{{ userById(member.userId)?.email }}</small>
@@ -273,3 +273,28 @@ async function removeMember (member) {
   await loadData()
 }
 </script>
+<style scoped>
+.team-member-avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  background: #18bcc6;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  font-weight: 800;
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+
+.member-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+</style>
