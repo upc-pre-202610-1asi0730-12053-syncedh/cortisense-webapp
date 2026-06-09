@@ -1,14 +1,9 @@
-<!--
-  @file app-topbar.vue
-  @description Topbar alineado con la demo — saludo, subtítulo y lang switcher.
--->
 <template>
-  <header class="cs-topbar">
-    <div>
-      <div class="cs-topbar-greeting">{{ $t('common.greeting') }}, {{ authStore.user?.firstName }}</div>
-      <div class="cs-topbar-subtitle">{{ subtitle }}</div>
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>{{ greeting }}</h1>
     </div>
-    <div class="cs-topbar-right">
+    <div class="topbar-actions">
       <LanguageSwitcher />
     </div>
   </header>
@@ -22,6 +17,11 @@ import LanguageSwitcher from './language-switcher.vue'
 
 const authStore = useAuthStore()
 const { t } = useI18n({ useScope: 'global' })
-
-const subtitle = computed(() => t('app.topbarSubtitle'))
+const greeting = computed(() => {
+  const name = authStore.user?.firstName || authStore.user?.fullName || 'usuario'
+  if (authStore.userRole === 'admin') return t('layout.topbar.greetings.admin.review-operation', { name })
+  if (authStore.userRole === 'clinical_supervisor') return t('layout.topbar.greetings.supervisor.review-team', { name })
+  if (authStore.userRole === 'medical_staff') return t('layout.topbar.greetings.doctor.how-is-shift', { name })
+  return t('layout.topbar.greetings.default.hello', { name })
+})
 </script>

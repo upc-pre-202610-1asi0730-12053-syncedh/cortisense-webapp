@@ -1,34 +1,26 @@
-<!--
-  @file app.vue
-  @description Componente raíz de CortiSense.
-  Renderiza AppLayout con el layout interno cuando meta.layout === 'app'.
-  Las rutas públicas (/auth/*) se renderizan sin layout.
--->
 <template>
-  <template v-if="route.meta.layout === 'app'">
-    <AppLayout>
-      <RouterView v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" :key="route.path" />
-        </transition>
-      </RouterView>
-    </AppLayout>
-  </template>
-
-  <template v-else>
+  <AppLayout v-if="route.meta.layout === 'app'">
     <RouterView v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component" :key="route.path" />
+        <component :is="Component" :key="route.fullPath" />
       </transition>
     </RouterView>
-  </template>
+  </AppLayout>
+
+  <RouterView v-else v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" :key="route.fullPath" />
+    </transition>
+  </RouterView>
 
   <Toast position="top-right" />
+  <ConfirmDialog />
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
 import Toast from 'primevue/toast'
+import ConfirmDialog from 'primevue/confirmdialog'
 import AppLayout from './shared/presentation/components/app-layout.vue'
 
 const route = useRoute()

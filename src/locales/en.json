@@ -1,715 +1,1329 @@
 {
-  "brand": {
+  "app": {
     "name": "CortiSense",
-    "tagline": "Intelligent monitoring for safe well-being"
+    "sidebarTagline": "Clinical intelligence",
+    "topbarSubtitle": "Smart monitoring and shift management",
+    "adminMenu": "Administrative Menu",
+    "supervisorMenu": "Supervisor Menu",
+    "staffMenu": "Medical Menu"
   },
-  "nav": {
-    "dashboard": "Dashboard",
-    "staff": "Medical Staff",
+  "auth": {
+    "brand-title": "We care for those who care.",
+    "brand-description": "Smart biometric monitoring and shift management to prevent medical burnout.",
+    "demo-title": "Demo credentials",
+    "welcome": "Welcome back",
+    "subtitle": "Sign in to access the platform",
+    "email": "Email address",
+    "email-placeholder": "email{'@'}cortisense.com",
+    "password": "Password",
+    "password-placeholder": "Password",
+    "sign-in": "Sign in",
+    "register-question": "Don’t have an account?",
+    "register-link": "Register with an invitation",
+    "sign-in-tab": "Sign in",
+    "register-tab": "Register",
+    "error": {
+      "email-required": "Email address is required.",
+      "email-invalid": "Enter a valid email address.",
+      "password-required": "Password is required.",
+      "passwords-do-not-match": "Passwords do not match.",
+      "work-area-required": "Work area is required.",
+      "specialty-required": "Specialty is required.",
+      "invalid-credentials": "Invalid credentials or inactive account.",
+      "invitation-token-required": "A valid invitation is required to create an account.",
+      "invitation-not-found": "The invitation does not exist or the link is invalid.",
+      "invitation-not-available": "This invitation was already used or expired.",
+      "invitation-accept-failed": "The registration could not be completed. Please try again.",
+      "invitation-token-missing": "The invitation token is missing.",
+      "catalog-load-failed": "Registration catalogs could not be loaded.",
+      "first-name-required": "First name is required.",
+      "last-name-required": "Last name is required.",
+      "phone-required": "Phone is required.",
+      "confirm-password-required": "Confirm password is required.",
+      "password-minlength": "Password must have at least 6 characters.",
+      "admin-title": "Panel administrativo",
+      "supervisor-title": "Panel del supervisor",
+      "doctor-title": "Panel clínico",
+      "subtitle": "Monitoreo inteligente y gestión de turnos",
+      "content-pending": "Esta sección está en preparación."
+    },
+    "register-brand-title": "Join the intelligent healthcare platform.",
+    "register-brand-description": "Complete your registration to access biometric monitoring and shift management.",
+    "invited-emails-title": "Invited emails",
+    "register-title": "Create account",
+    "register-subtitle": "Complete your registration to access monitoring and shift management.",
+    "first-name": "First name",
+    "first-name-placeholder": "First name",
+    "last-name": "Last name",
+    "last-name-placeholder": "Last name",
+    "phone": "Phone",
+    "phone-placeholder": "Phone",
+    "work-area": "Work area",
+    "work-area-placeholder": "E.g. ICU, Emergency",
+    "specialty": "Specialty",
+    "specialty-placeholder": "E.g. Cardiology, Pediatrics",
+    "confirm-password": "Confirm password",
+    "confirm-password-placeholder": "Confirm password",
+    "register-submit": "Register",
+    "already-have-account": "Already have an account?",
+    "sign-in-link": "Sign in",
+    "signing-in": "Signing in...",
+    "creating-account": "Creating account...",
+    "invitation-help": "Did you receive an invitation? Open the link sent to your email to create your account.",
+    "loading-invitation-title": "Validating invitation",
+    "loading-invitation-message": "Please wait while we verify your invitation link.",
+    "invitation-required-title": "Invitation required",
+    "invitation-required-message": "To create an account, you need to open the invitation link sent by your medical center administrator.",
+    "back-to-sign-in": "Back to sign in",
+    "demoAdmin": "admin{'@'}cortisense.com / admin123",
+    "demoSupervisor": "supervisor{'@'}cortisense.com / supervisor123",
+    "demoDoctor": "doctor{'@'}cortisense.com / doctor123"
+  },
+  "layout": {
+    "admin-title": "Administration panel",
+    "supervisor-title": "Supervisor panel",
+    "doctor-title": "Clinical panel",
+    "subtitle": "Smart monitoring and shift management",
+    "content-pending": "This section is being prepared.",
+    "topbar": {
+      "greetings": {
+        "default": {
+          "hello": "Hi, {name}. What should we do today?",
+          "ready": "{name}, your workspace is ready.",
+          "continue": "Good day, {name}. Everything is ready to continue."
+        },
+        "admin": {
+          "manage-today": "Hi, {name}. What should we manage today?",
+          "review-operation": "{name}, let's see how operations are going.",
+          "panel-ready": "{name}, your admin panel is ready.",
+          "staff-and-reports": "Hi, {name}. Let's review staff, teams and reports.",
+          "center-status": "Good day, {name}. Let's review the medical center status."
+        },
+        "supervisor": {
+          "review-team": "Hi, {name}. Who should we review today?",
+          "alerts-and-risks": "{name}, let's review alerts and risks.",
+          "care-team": "Hi, {name}. Let's keep caring for your assigned staff.",
+          "quick-review": "{name}, your team needs a quick review.",
+          "preventive-work": "Good day, {name}. Let's continue preventive monitoring."
+        },
+        "doctor": {
+          "how-is-shift": "Hi, {name}. How is your shift going?",
+          "review-status": "{name}, let's review your status before continuing.",
+          "care-rhythm": "Good day, {name}. Let's take care of your work rhythm.",
+          "indicators-ready": "Hi, {name}. Your indicators are ready to review.",
+          "recovery-status": "{name}, let's check your recovery status."
+        }
+      }
+    }
+  },
+  "navigation": {
+    "admin-menu": "Administrative menu",
+    "supervisor-menu": "Supervisor menu",
+    "clinical-menu": "Clinical menu",
+    "general-summary": "General Summary",
+    "staff": "Staff",
+    "teams": "Teams",
     "invitations": "Invitations",
     "subscription": "Subscription",
     "reports": "Reports",
     "audit": "Audit",
     "settings": "Settings",
-    "shiftSummary": "Shift Summary",
-    "riskStaff": "At-Risk Staff",
-    "alerts": "Clinical Alerts",
+    "shift-summary": "Shift Summary",
+    "risk-staff": "Staff at Risk",
+    "clinical-alerts": "Clinical Alerts",
     "anomalies": "Anomalies",
-    "preventiveActions": "Preventive Actions",
-    "myStatus": "My Health Status",
-    "myVitals": "My Vital Signs",
-    "myShifts": "My Shifts",
-    "myRecovery": "My Recovery"
+    "preventive-actions": "Preventive Actions",
+    "my-health-status": "My Health Status",
+    "my-vital-signs": "My Vital Signs",
+    "my-shifts": "My Shifts",
+    "my-recovery": "My Recovery",
+    "team-shifts": "Team shifts",
+    "sign-out": "Sign out"
   },
-  "common": {
-    "loading": "Loading...",
-    "save": "Save",
-    "cancel": "Cancel",
-    "edit": "Edit",
-    "delete": "Delete",
-    "create": "Create",
-    "search": "Search",
-    "filter": "Filter",
-    "actions": "Actions",
-    "status": "Status",
-    "date": "Date",
-    "name": "Name",
-    "email": "Email",
-    "role": "Role",
-    "area": "Area",
-    "specialty": "Specialty",
-    "yes": "Yes",
-    "no": "No",
-    "active": "Active",
-    "inactive": "Inactive",
-    "pending": "Pending",
-    "accepted": "Accepted",
-    "resolved": "Resolved",
-    "acknowledged": "Acknowledged",
-    "viewDetails": "View details",
-    "noData": "No data available",
-    "error": "Error",
-    "success": "Success",
-    "confirm": "Confirm",
-    "close": "Close",
-    "logout": "Logout",
-    "greeting": "Welcome",
-    "greetingFull": "Welcome, {name}",
-    "today": "Today",
-    "severity": "Severity",
-    "type": "Type",
-    "message": "Message",
-    "phone": "Phone",
-    "documentNumber": "ID Number",
-    "riskLevel": "Risk Level",
-    "fatigueLevel": "Fatigue Level",
-    "required": "This field is required",
-    "invalidEmail": "Invalid email address",
-    "back": "Back",
-    "lastName": "Last name",
-    "searchByNameOrEmail": "Search by name or email...",
-    "searchByEmail": "Search by email...",
-    "allAreas": "All areas",
-    "allRisks": "All risk levels",
-    "allStatuses": "All statuses",
-    "allRoles": "All roles",
-    "noResults": "No results",
-    "notAvailable": "—",
-    "month": "month",
-    "current": "Current",
-    "confirmDelete": "Delete {name}?",
-    "confirmRevoke": "Revoke invitation for {email}?",
-    "validEmail": "Enter a valid email address.",
-    "none": "None",
-    "export": "Export",
-    "minutes": "minutes",
-    "start": "Start",
-    "complete": "Complete",
-    "register": "Register",
-    "viewAll": "View all",
-    "viewDetail": "View detail",
-    "dateStart": "Start date",
-    "dateEnd": "End date",
-    "areaOptional": "Area (optional)",
-    "allTypes": "All types",
-    "allSeverities": "All severities",
-    "allModules": "All modules",
-    "allParameters": "All parameters",
-    "staff": "Staff",
-    "parameter": "Parameter",
-    "value": "Value",
-    "alert": "Alert",
-    "registered": "Recorded",
-    "outOfRange": "Out of range",
-    "normalRange": "Normal range",
-    "unknown": "Unknown",
-    "noMatchingResults": "No matching results.",
-    "doctor": "doctor",
-    "doctors": "doctors",
-    "supervisor": "supervisor",
-    "supervisors": "supervisors",
-    "criticalLower": "critical",
-    "highLower": "high",
-    "minute": "minute",
-    "hour": "hour",
-    "hours": "hours",
-    "download": "Download",
-    "generated": "Generated",
-    "select": "Select",
-    "noHistory": "No history.",
-    "created": "Created"
-  },
-  "roles": {
-    "admin": "Administrator",
-    "clinical_supervisor": "Clinical Supervisor",
-    "medical_staff": "Medical Staff"
-  },
-  "risk": {
-    "low": "Low",
-    "moderate": "Moderate",
-    "high": "High",
-    "critical": "Critical"
-  },
-  "auth": {
-    "signIn": "Sign in",
-    "signUp": "Sign up",
-    "email": "Email",
-    "emailPlaceholder": "email address",
+  "onboarding": {
+    "title": "Activate CortiSense",
+    "subtitle": "Create the medical center, configure the administrator account and activate the selected plan.",
+    "selected-plan": "Selected plan",
+    "organization-section": "Medical center information",
+    "organization-name": "Medical center name",
+    "organization-name-placeholder": "E.g. San Gabriel Clinic",
+    "ruc": "Tax ID",
+    "ruc-placeholder": "E.g. 20600000000",
+    "phone": "Institutional phone",
+    "phone-placeholder": "E.g. +51 999 999 999",
+    "address": "Address",
+    "address-placeholder": "E.g. Health Ave. 123, Lima",
+    "admin-section": "Administrator account",
+    "admin-first-name": "First name",
+    "admin-first-name-placeholder": "First name",
+    "admin-last-name": "Last name",
+    "admin-last-name-placeholder": "Last name",
+    "admin-email": "Institutional email",
+    "admin-email-placeholder": "admin{'@'}cortisense.com",
     "password": "Password",
-    "passwordPlaceholder": "Your password",
-    "firstName": "First name",
-    "firstNamePlaceholder": "Your first name",
-    "lastName": "Last name",
-    "lastNamePlaceholder": "Your last name",
-    "workArea": "Work area",
-    "workAreaPlaceholder": "e.g. Emergency, ICU, Pediatrics",
-    "specialtyPlaceholder": "e.g. Cardiology, Pediatrics",
-    "noAccount": "Don't have an account?",
-    "haveAccount": "Already have an account?",
-    "registerLink": "Register with invitation",
-    "loginLink": "Sign in",
-    "loginError": "Invalid credentials. Please check your email and password.",
-    "registerError": "No pending invitation found for this email.",
-    "registerSuccess": "Registration successful. You can now sign in.",
-    "loginSubtitle": "Enter your credentials to access the platform.",
-    "registerSubtitle": "Complete your profile to activate your account.",
-    "heroTitle": "Biometric monitoring for medical staff well-being",
-    "heroDesc": "CortiSense analyzes cortisol, heart rate and fatigue to prevent medical burnout.",
-    "registerTitle": "Activate your account",
-    "emailInvited": "Invitation email",
-    "newPassword": "New password",
-    "confirmPassword": "Confirm password",
-    "passwordsNoMatch": "Passwords do not match",
-    "howItWorks": "How does it work?",
-    "inviteOnly": "You can only register after an administrator sends an invitation to your email.",
-    "secureBiometrics": "Your biometric data is protected under medical security standards.",
-    "goToLogin": "Sign in →"
+    "password-placeholder": "Password",
+    "confirm-password": "Confirm password",
+    "confirm-password-placeholder": "Confirm password",
+    "submit": "Continue to payment",
+    "loading": "Creating payment session...",
+    "already-have-account": "Already have an account?",
+    "sign-in": "Sign in",
+    "error": {
+      "passwords-do-not-match": "Passwords do not match."
+    }
   },
-  "dashboard": {
-    "admin": {
-      "title": "Admin Dashboard",
-      "subtitle": "Institutional summary for CortiSense",
-      "totalStaff": "Total staff",
-      "activeAlerts": "Active alerts",
-      "highRisk": "High risk",
-      "activeSubscription": "Active subscription",
-      "recentActivity": "Recent activity",
-      "staffDistribution": "Distribution by area",
-      "riskSummary": "Risk summary",
-      "highOrCritical": "High or critical level",
-      "criticalAlerts": "{count} critical",
-      "fatigueEvolution7d": "Fatigue Evolution — 7 days",
-      "activeStaffAverage": "Active staff average",
-      "currentStaffStatus": "Current staff status",
-      "topFatigue": "Top 5 — Highest fatigue level",
-      "viewAllStaff": "View all staff",
-      "chartAverageFatigue": "Average fatigue (%)",
-      "registeredStaff": "Of {count} registered"
+  "checkout": {
+    "title": "Plan payment",
+    "subtitle": "Payment simulation to activate CortiSense.",
+    "session": "Payment session",
+    "confirm-payment": "Confirm payment",
+    "processing": "Processing...",
+    "cancel": "Cancel",
+    "success-title": "Plan activated successfully",
+    "success-subtitle": "Your medical center and administrator account are now active.",
+    "go-dashboard": "Go to dashboard"
+  },
+  "iam": {
+    "roles": {
+      "admin": "Administrator",
+      "supervisor": "Clinical supervisor",
+      "doctor": "Medical staff"
+    },
+    "invitations": {
+      "title": "Invitation Management",
+      "subtitle-before": "Create and manage",
+      "subtitle-highlight": "invitations",
+      "subtitle-after": "for new CortiSense users.",
+      "new-title": "New invitation",
+      "new-subtitle": "The user will complete registration with the invited email.",
+      "email": "Email address",
+      "email-placeholder": "user{'@'}cortisense.com",
+      "role": "Role",
+      "send": "Send invitation",
+      "sending": "Sending...",
+      "link-copied": "Invitation link copied to clipboard.",
+      "search-placeholder": "Search by email or role...",
+      "copy-link": "Copy link",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "empty": "There are no invitations to display.",
+      "metrics": {
+        "total": "Total invitations",
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "cancelled": "Cancelled"
+      },
+      "filters": {
+        "all": "All",
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "cancelled": "Cancelled"
+      },
+      "status": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "cancelled": "Cancelled",
+        "expired": "Expired"
+      },
+      "table": {
+        "email": "Email",
+        "role": "Role",
+        "status": "Status",
+        "date": "Date",
+        "actions": "Actions",
+        "link": "Link"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Invitations could not be loaded.",
+        "create-failed": "Invitation could not be created.",
+        "email-required": "Email address is required.",
+        "email-invalid": "Enter a valid email address.",
+        "accepted-cannot-be-deleted": "Accepted invitations cannot be deleted.",
+        "delete-failed": "Invitation could not be deleted.",
+        "cancel-failed": "Invitation could not be cancelled."
+      }
+    },
+    "staff": {
+      "title": "Staff Management",
+      "subtitle-before": "Manage users,",
+      "subtitle-highlight": "roles",
+      "subtitle-after": "and medical staff statuses.",
+      "search-placeholder": "Search by name, email or role...",
+      "deactivate": "Deactivate",
+      "activate": "Activate",
+      "empty": "There is no staff to display.",
+      "metrics": {
+        "total": "Total users",
+        "active": "Active users",
+        "supervisors": "Supervisors",
+        "doctors": "Medical staff"
+      },
+      "filters": {
+        "all-roles": "All roles",
+        "all-statuses": "All statuses"
+      },
+      "status": {
+        "pending": "Pending",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "table": {
+        "staff": "Staff",
+        "role": "Role",
+        "work-area": "Area",
+        "specialty": "Specialty",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Staff could not be loaded.",
+        "update-role-failed": "Role could not be updated.",
+        "update-status-failed": "Status could not be updated.",
+        "cleanup-failed": "The user was updated, but team assignments could not be cleaned up."
+      }
+    }
+  },
+  "shift": {
+    "teams": {
+      "title": "Team Management",
+      "subtitle-before": "Organize staff into",
+      "subtitle-highlight": "clinical teams",
+      "subtitle-after": "with assigned supervisors.",
+      "new-title": "New team",
+      "new-subtitle": "Create a group and assign a clinical supervisor.",
+      "name": "Team name",
+      "name-placeholder": "E.g. Group A",
+      "work-area": "Work area",
+      "select-work-area": "Select an area",
+      "supervisor": "Clinical supervisor",
+      "no-supervisor": "No supervisor",
+      "create": "Create team",
+      "creating": "Creating...",
+      "assigned-supervisor": "Assigned supervisor",
+      "add-member": "Add medical staff",
+      "select-member": "Select a member",
+      "add": "Add",
+      "no-members": "This team does not have members yet.",
+      "empty-title": "No teams created",
+      "empty-subtitle": "Create the first team to organize medical staff.",
+      "metrics": {
+        "total": "Total teams",
+        "active": "Active teams",
+        "supervisors": "Active supervisors",
+        "members": "Assigned members"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Teams could not be loaded.",
+        "create-failed": "Team could not be created.",
+        "update-supervisor-failed": "Supervisor could not be updated.",
+        "add-member-failed": "Member could not be added.",
+        "remove-member-failed": "Member could not be removed.",
+        "member-already-assigned": "This member already belongs to another team.",
+        "supervisor-already-assigned": "This supervisor is already assigned to another active team.",
+        "update-status-failed": "Team status could not be updated.",
+        "inactive-team": "You cannot add members to an inactive team.",
+        "delete-failed": "Team could not be deleted.",
+        "cleanup-failed": "Team assignments could not be cleaned up."
+      },
+      "search-placeholder": "Search by name or area...",
+      "all-work-areas": "All areas",
+      "deactivate": "Deactivate",
+      "activate": "Activate",
+      "delete": "Delete"
     },
     "supervisor": {
-      "title": "Shift Summary",
-      "subtitle": "Current status of your assigned staff",
-      "totalMonitored": "Monitored staff",
-      "pendingAlerts": "Pending alerts",
-      "criticalCases": "Critical cases",
-      "actionsToday": "Actions today",
-      "atRiskNow": "At risk now",
-      "staffBreakdown": "{doctors} doctors · {supervisors} supervisors",
-      "criticalHighBreakdown": "{critical} critical · {high} high",
-      "unattended": "Unattended",
-      "restsAndReassignments": "Rests and coverage changes",
-      "teamFatigue24h": "Team fatigue — Last 24h",
-      "assignedDoctorsAverage": "Average of all assigned doctors",
-      "currentFatigueByDoctor": "Current fatigue by doctor",
-      "recentAlerts": "Recent alerts",
-      "noPendingAlerts": "No pending alerts.",
-      "attend": "Attend",
-      "ago": "ago",
-      "chartAverageFatigue": "Average fatigue (%)",
-      "criticalThreshold": "Critical threshold"
-    }
-  },
-  "staff": {
-    "title": "Medical Staff",
-    "subtitle": "Manage registered staff in CortiSense",
-    "new": "New staff",
-    "edit": "Edit profile",
-    "detail": "Profile detail",
-    "deleteConfirm": "Are you sure you want to delete this profile?",
-    "staffRole": "Staff type",
-    "assignedDevice": "Assigned device",
-    "noDevice": "No device",
-    "totalStaff": "Total staff",
-    "activeStaff": "Active staff",
-    "riskStaff": "At-risk staff",
-    "withoutDevice": "Without device",
-    "medicalStaff": "Medical staff",
-    "clinicalSupervisor": "Clinical supervisor",
-    "fatigue": "Fatigue",
-    "editDialog": "Edit — {name}",
-    "riskLevel": "Risk level",
-    "deleteCascadeNotice": "The invitation, user, device, metrics, shifts and related plans will also be removed.",
-    "deleteError": "The full profile could not be deleted. Check that the mock server is running."
-  },
-  "invitations": {
-    "title": "Invitations",
-    "subtitle": "Manage access invitations",
-    "new": "New invitation",
-    "send": "Send invitation",
-    "resend": "Resend",
-    "revoke": "Revoke",
-    "emailLabel": "Guest email",
-    "roleLabel": "Assigned role",
-    "createdAt": "Sent on",
-    "successMsg": "Invitation sent successfully.",
-    "errorMsg": "Error sending invitation.",
-    "statusPending": "Pending",
-    "statusAccepted": "Accepted",
-    "assignedRole": "Assigned role",
-    "guestEmail": "Guest email",
-    "assignRole": "Role to assign",
-    "noInvitations": "No invitations",
-    "sentAt": "Date"
-  },
-  "subscription": {
-    "title": "Subscription",
-    "subtitle": "Plan status and billing",
-    "currentPlan": "Current plan",
-    "hospitalName": "Institution",
-    "status": "Status",
-    "startedAt": "Started",
-    "renewalAt": "Next renewal",
-    "billing": "Billing",
-    "staffUsed": "Registered staff",
-    "staffLimit": "Staff limit",
-    "changePlan": "Change plan",
-    "features": {
-      "upTo10": "Up to 10 users",
-      "basicDashboard": "Basic dashboard",
-      "fatigueAlerts": "Fatigue alerts",
-      "invitationManagement": "Invitation management",
-      "advancedReports": "Advanced reports",
-      "fullAudit": "Full audit",
-      "prioritySupport": "Priority support",
-      "upTo50": "Up to 50 users",
-      "fullDashboard": "Full dashboard",
-      "realTimeAlerts": "Real-time alerts",
-      "operationalReports": "Operational reports",
-      "unlimitedUsers": "Unlimited users",
-      "advancedReportsPdf": "Advanced reports + PDF",
-      "dedicated247Support": "Dedicated 24/7 support"
+      "title": "Team Shifts",
+      "subtitle-before": "Assign and manage",
+      "subtitle-highlight": "clinical shifts",
+      "subtitle-after": "for medical staff under your supervision.",
+      "new-title": "New shift",
+      "new-subtitle": "Select an assigned doctor and schedule a new shift.",
+      "assigned-staff-title": "Assigned staff",
+      "assigned-staff-subtitle": "Doctors available in your active teams.",
+      "staff": "Medical staff",
+      "select-staff": "Select staff",
+      "shift-type": "Shift type",
+      "date": "Date",
+      "start-time": "Start time",
+      "end-time": "End time",
+      "create": "Create shift",
+      "creating": "Creating...",
+      "list-title": "Scheduled shifts",
+      "list-subtitle": "Shifts assigned to your supervised staff.",
+      "search-placeholder": "Search by staff, email, team or area...",
+      "cancel": "Cancel",
+      "closed": "Closed",
+      "no-assigned-staff": "You do not have assigned medical staff yet.",
+      "empty-title": "No shifts found",
+      "empty-subtitle": "Create a shift or adjust the filters to see results.",
+      "metrics": {
+        "scheduled": "Scheduled",
+        "in-progress": "In progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "filters": {
+        "all-statuses": "All statuses"
+      },
+      "type": {
+        "day": "Day shift",
+        "night": "Night shift"
+      },
+      "status": {
+        "scheduled": "Scheduled",
+        "in-progress": "In progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "table": {
+        "staff": "Staff",
+        "team": "Team",
+        "area": "Area",
+        "type": "Type",
+        "date": "Date",
+        "time": "Time",
+        "hours": "Hours",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Team shifts could not be loaded.",
+        "create-failed": "Shift could not be created.",
+        "cancel-failed": "Shift could not be cancelled.",
+        "doctor-without-area": "The selected doctor does not have a work area assigned."
+      }
     },
-    "plans": {
-      "starter": "Starter",
-      "clinical": "Clinical",
-      "enterprise": "Enterprise"
+    "doctor": {
+      "title": "My Shifts",
+      "subtitle-before": "Shift management assigned to",
+      "subtitle-after": "and attendance control.",
+      "yes": "Yes",
+      "no": "No",
+      "current-title": "Current shift",
+      "current-subtitle": "Control of the ongoing shift and checkout record.",
+      "next-title": "Next shift",
+      "next-subtitle": "Next scheduled shift.",
+      "upcoming-title": "Upcoming shifts",
+      "upcoming-subtitle": "Pending assigned shifts.",
+      "history-title": "Shift history",
+      "history-subtitle": "Recently completed shifts.",
+      "check-in": "Start shift",
+      "check-out": "End shift",
+      "check-in-at": "Check-in",
+      "duration": "Duration",
+      "no-current-title": "No shift in progress",
+      "no-current-subtitle": "When you start a shift, it will appear here.",
+      "no-next-shift": "You have no upcoming scheduled shifts.",
+      "no-upcoming": "You have no pending shifts.",
+      "no-history": "You do not have completed shifts yet.",
+      "metrics": {
+        "upcoming": "Upcoming shifts",
+        "completed": "Completed",
+        "hours": "Registered hours",
+        "current": "Active shift"
+      },
+      "type": {
+        "day": "Day shift",
+        "night": "Night shift"
+      },
+      "status": {
+        "scheduled": "Scheduled",
+        "in-progress": "In progress",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "table": {
+        "date": "Date",
+        "area": "Area",
+        "type": "Type",
+        "hours": "Hours",
+        "status": "Status"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Your shifts could not be loaded.",
+        "check-in-failed": "Shift could not be started.",
+        "check-out-failed": "Shift could not be ended.",
+        "update-status-failed": "Shift status could not be updated."
+      }
     },
-    "activeSince": "Active since",
-    "activePlan": "Active Plan",
-    "staff": "Staff",
-    "supervisors": "Supervisors",
-    "devices": "IoT Devices",
-    "comparePlans": "Compare Plans",
-    "comparePlansSubtitle": "Choose the plan that best fits your institution needs.",
-    "current": "Current Plan",
-    "noSubscription": "No subscription information was found.",
-    "changeConfirm": "Do you want to change your plan to \"{plan}\"? This will adjust your billing in the next cycle.",
-    "changeRequest": "✅ Change request to the {plan} Plan sent. Your support team will contact you soon.",
-    "perMonth": "/month",
-    "planDesc": {
-      "starter": "For small clinics starting biometric monitoring.",
-      "clinical": "For medium hospitals with active clinical teams.",
-      "enterprise": "For hospital networks with audit and dedicated 24/7 support."
-    },
-    "planButtons": {
-      "starter": "Switch to Starter",
-      "enterprise": "Upgrade to Enterprise"
-    }
-  },
-  "reports": {
-    "title": "Reports",
-    "subtitle": "Generated institutional reports",
-    "generate": "Generate report",
-    "period": "Period",
-    "generatedAt": "Generated on",
-    "generatedBy": "Generated by",
-    "type": "Type",
     "types": {
-      "fatigue": "Fatigue",
-      "anomaly": "Anomalies",
-      "compliance": "Compliance"
-    },
-    "area": "Area",
-    "startDate": "Start date",
-    "endDate": "End date",
-    "areaOptional": "Area (optional)",
-    "allAreas": "All areas",
-    "generating": "Generating...",
-    "fatigueIncidentsByArea": "Fatigue incidents by area",
-    "last30Days": "Last 30 days",
-    "recentReports": "Recent reports",
-    "noReports": "No reports generated.",
-    "actions": "Actions",
-    "downloadPdfMessage": "✅ Downloading PDF for the \"{type}\" report...",
-    "chartDataset": "Fatigue incidents",
-    "week": "Week"
-  },
-  "audit": {
-    "title": "Audit",
-    "subtitle": "Critical system action log",
-    "action": "Action",
-    "entity": "Entity",
-    "userId": "User",
-    "timestamp": "Date & Time",
-    "description": "Description",
-    "ip": "IP Address",
-    "exportLog": "Export log",
-    "enterpriseModule": "Enterprise Audit Module",
-    "enterpriseModuleDesc": "Records all critical system actions for complete institutional traceability.",
-    "eventsToday": "Events today",
-    "criticalEvents": "Critical events",
-    "executedActions": "Executed actions",
-    "involvedActors": "Involved actors",
-    "searchPlaceholder": "Search event, actor...",
-    "allSeverities": "All severities",
-    "allModules": "All modules",
-    "module": "Module",
-    "criticality": "Criticality",
-    "noLogs": "No records.",
-    "severity": {
-      "critical": "Critical",
-      "warning": "Warning",
-      "info": "Informational",
-      "error": "Error"
-    },
-    "modules": {
-      "iam": "IAM",
-      "incident-alert-management": "Alerts",
-      "clinical-risk": "Clinical Risk",
-      "staff-recovery": "Recovery",
-      "shift-coordination": "Shifts",
-      "audit-compliance": "Audit",
-      "subscriptions": "Subscription"
-    },
-    "actions": {
-      "invitation_created": "Invitation sent",
-      "invitation_accepted": "Invitation accepted",
-      "invitation_revoked": "Invitation revoked",
-      "user_registered_by_invitation": "Registration by invitation",
-      "user_created": "User created",
-      "user_updated": "Profile updated",
-      "user_deleted": "User deleted",
-      "medical_staff_deleted": "Medical staff deleted",
-      "alert_acknowledged": "Alert acknowledged",
-      "alert_resolved": "Alert resolved",
-      "alert_created": "Alert created",
-      "preventive_action_registered": "Preventive action registered",
-      "preventive_action_created": "Preventive action created",
-      "recovery_plan_accepted": "Rest plan accepted",
-      "recovery_plan_rejected": "Rest plan rejected",
-      "recovery_plan_created": "Rest plan created",
-      "login": "Sign-in",
-      "logout": "Sign-out",
-      "report_generated": "Report generated"
-    },
-    "export": "Export",
-    "details": {
-      "invitationCreated": "Invitation created for {email}",
-      "profileDeleted": "Profile deleted: {email}",
-      "registrationAccepted": "Registration accepted for {email} with role {role}",
-      "alertAcknowledged": "Alert {id} acknowledged by supervisor",
-      "preventiveActionRegistered": "Preventive action registered for {staff}. Type: {type}",
-      "reportGenerated": "Report generated: {title}",
-      "recoveryPlanAccepted": "Rest plan {id} accepted by doctor {name}.",
-      "restPlanAcceptedId": "Rest plan accepted. ID: {id}",
-      "restPlanRejectedId": "Rest plan rejected. ID: {id}",
-      "actionWithNotes": "Action: {type}. {notes}"
+      "day": "Day",
+      "night": "Night"
     }
   },
-  "alerts": {
-    "title": "Clinical Alerts",
-    "subtitle": "Biometric risk alerts for staff",
-    "acknowledge": "Acknowledge alert",
-    "resolve": "Resolve",
-    "noAlerts": "No active alerts",
-    "severity": {
+  "clinical": {
+    "common": {
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Clinical information could not be loaded."
+      }
+    },
+    "risk": {
       "low": "Low",
       "moderate": "Moderate",
       "high": "High",
       "critical": "Critical"
     },
-    "status": {
-      "pending": "Pending",
-      "acknowledged": "Acknowledged",
-      "resolved": "Resolved"
+    "supervisor": {
+      "title": "Shift Summary",
+      "subtitle-before": "General status of your assigned team:",
+      "subtitle-highlight": "alerts, fatigue",
+      "subtitle-after": "and real-time metrics.",
+      "team-fatigue-title": "Current team fatigue",
+      "team-fatigue-subtitle": "Medical staff assigned to your active teams.",
+      "alerts-title": "Active clinical alerts",
+      "alerts-subtitle": "Events requiring preventive follow-up.",
+      "average": "Average",
+      "no-risk-data": "No risk data.",
+      "no-assigned-staff": "You have no assigned medical staff.",
+      "no-active-alerts": "There are no active alerts for your team.",
+      "metrics": {
+        "assigned-staff": "Assigned staff",
+        "high-risk": "At risk now",
+        "active-alerts": "Active alerts",
+        "actions-today": "Actions taken today"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Supervisor dashboard could not be loaded."
+      }
     },
-    "criticalPlural": "Critical",
-    "highPlural": "High",
-    "resolvedToday": "Resolved today",
-    "searchPlaceholder": "Search alert...",
-    "allSeverities": "All severities",
-    "allStatuses": "All statuses",
-    "noMatchingAlerts": "No matching alerts.",
-    "acknowledgeShort": "Acknowledge",
-    "resolveShort": "Resolve"
-  },
-  "preventiveActions": {
-    "title": "Preventive Actions",
-    "subtitle": "Supervisor actions in response to clinical alerts",
-    "new": "New action",
-    "type": "Action type",
-    "types": {
-      "rest_recommendation": "Rest recommendation",
-      "shift_reassignment": "Shift reassignment",
-      "medical_evaluation": "Medical evaluation",
-      "activity_reduction": "Activity reduction",
-      "urgent_rest": "Urgent rest",
-      "urgent_rest_2h": "Urgent rest (2h)"
+    "doctor": {
+      "title": "My Health Status",
+      "subtitle-before": "Personalized preventive monitoring for",
+      "subtitle-after": "during the current shift.",
+      "current-status-title": "Current status",
+      "fatigue-level": "Fatigue level",
+      "recommendations-title": "Preventive recommendations",
+      "recommendations-subtitle": "Suggested actions based on your current condition.",
+      "alerts-title": "My active alerts",
+      "alerts-subtitle": "Clinical events associated with your monitoring.",
+      "no-active-alerts": "You have no active alerts.",
+      "no-risk-title": "No risk data",
+      "no-risk-subtitle": "There are no biometric records available for your user yet.",
+      "metrics": {
+        "fatigue": "Current fatigue",
+        "heart-rate": "Heart rate",
+        "hrv": "HRV",
+        "active-alerts": "Active alerts"
+      },
+      "vitals": {
+        "heart-rate": "Heart rate",
+        "hrv": "HRV variability",
+        "updated": "Last reading"
+      },
+      "message": {
+        "low": "Your indicators are within a stable range. Keep preventive monitoring active.",
+        "moderate": "Moderate fatigue has been detected. Consider a short break and preventive follow-up.",
+        "high": "Your fatigue level is high. Notify your supervisor and take a recovery break.",
+        "critical": "Your condition requires immediate attention. Stop critical activities and request supervisor support."
+      },
+      "recommendations": {
+        "keep-hydrated": "Keep constant hydration during the shift.",
+        "keep-monitoring": "Continue preventive biometric monitoring.",
+        "short-break": "Take a short recovery break.",
+        "breathing": "Apply controlled breathing for 3 to 5 minutes.",
+        "notify-supervisor": "Notify your clinical supervisor about your condition.",
+        "recovery-break": "Take a recovery break before continuing.",
+        "stop-activity": "Avoid continuing critical activities.",
+        "immediate-support": "Request immediate support from your supervisor or assigned team."
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Your health status could not be loaded."
+      }
     },
-    "status": {
-      "pending": "Pending",
-      "in_progress": "In progress",
-      "completed": "Completed"
+    "admin": {
+      "title": "General Summary",
+      "subtitle-before": "Global view of the",
+      "subtitle-highlight": "medical center",
+      "subtitle-after": "and its preventive operation.",
+      "average-fatigue-title": "Institutional average fatigue",
+      "average-fatigue-subtitle": "Average calculated from active medical staff assessments.",
+      "average": "Average",
+      "active-alerts": "Active clinical alerts",
+      "staff-at-risk-title": "Staff at risk",
+      "staff-at-risk-subtitle": "Users with high or critical fatigue.",
+      "teams-title": "Active teams",
+      "teams-subtitle": "Operational clinical groups and assigned supervisors.",
+      "supervisor": "Supervisor",
+      "members": "Members",
+      "no-staff-at-risk": "There is no staff at high or critical risk.",
+      "no-active-teams": "There are no active teams.",
+      "metrics": {
+        "active-staff": "Active staff",
+        "supervisors": "Active supervisors",
+        "active-teams": "Active teams",
+        "high-risk": "Staff at risk"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Administrator dashboard could not be loaded."
+      }
     },
-    "registerManual": "Register manual action",
-    "executedToday": "Executed today",
-    "pending": "Pending",
-    "assignedRests": "Assigned rests",
-    "rescheduledShifts": "Rescheduled shifts",
-    "actionsHistory": "Action history",
-    "searchPlaceholder": "Search...",
-    "allTypes": "All types",
-    "noActions": "No actions registered.",
-    "start": "Start",
-    "complete": "Complete",
-    "dialogTitle": "Register preventive action",
-    "affectedStaff": "Affected staff *",
-    "selectDoctor": "Select doctor...",
-    "relatedAlert": "Related alert (optional)",
-    "noRelatedAlert": "None",
-    "actionType": "Action type *",
-    "additionalNotes": "Additional notes",
-    "notesPlaceholder": "Describe the reason and context for the action...",
-    "actionHint": "This action will automatically create a rest plan visible to the doctor.",
-    "registerAction": "Register action"
-  },
-  "riskStaff": {
-    "title": "At-Risk Staff",
-    "subtitle": "Staff with elevated risk levels",
-    "fatigueScore": "Fatigue score",
-    "lastRecord": "Last record",
-    "moduleLabel": "CortiSense Module",
-    "immediateAttention": "{count} doctor requires immediate attention. | {count} doctors require immediate attention.",
-    "reviewBefore": "Review their status before the next 2 hours.",
-    "shiftHours": "Hours on duty",
-    "heartRateShort": "Heart rate",
-    "fatigue": "Fatigue",
-    "assignRest": "Assign rest",
-    "acceptableLevels": "Staff at acceptable levels",
-    "detail": "View detail",
-    "restDialogTitle": "Assign preventive rest",
-    "restDialogText": "Select the preventive rest duration for",
-    "min15": "15 minutes",
-    "min30": "30 minutes",
-    "hour1": "1 hour",
-    "hour2Urgent": "2 hours (Urgent)",
-    "contactMessage": "Contacting {name}...",
-    "restNotes": "{minutes}-minute rest assigned.",
-    "restAssignedMessage": "✅ {minutes}-minute rest assigned to {name}. The doctor was notified and the action was recorded.",
-    "immediateAttentionOne": "{count} doctor requires immediate attention.",
-    "immediateAttentionMany": "{count} doctors require immediate attention."
-  },
-  "anomalies": {
-    "title": "Biometric Anomalies",
-    "subtitle": "Out-of-range values detected",
-    "heartRate": "Heart rate",
-    "hrv": "Heart Rate Variability (HRV)",
-    "cortisol": "Cortisol",
-    "sleepHours": "Sleep hours",
-    "stressLevel": "Stress level",
-    "searchPlaceholder": "Search by staff...",
-    "allParameters": "All parameters",
-    "staff": "Staff",
-    "parameter": "Parameter",
-    "value": "Value",
-    "normalRange": "Normal range",
-    "alert": "Alert",
-    "registered": "Recorded",
-    "outOfRange": "Out of range",
-    "noAnomalies": "No anomalies detected.",
-    "unknown": "Unknown"
-  },
-  "vitals": {
-    "title": "My Vital Signs",
-    "subtitle": "History of your biometric data",
-    "heartRate": "Heart rate",
-    "hrv": "HRV",
-    "cortisol": "Cortisol",
-    "sleep": "Sleep",
-    "stress": "Stress",
-    "fatigue": "Fatigue",
-    "steps": "Steps",
-    "activity": "Activity",
-    "recordedAt": "Recorded on",
-    "normal": "Normal",
-    "hours": "hours",
-    "recordsHistory": "Record history",
-    "noRecordsHint": "No records. Open My Health Status and click Sync/Link device."
-  },
-  "status": {
-    "title": "My Health Status",
-    "subtitle": "Summary of your current well-being",
-    "currentRisk": "Current risk",
-    "lastUpdate": "Last updated",
-    "myDevice": "My device",
-    "battery": "Battery",
-    "noDevice": "No device assigned",
-    "loadingClinical": "Loading clinical data...",
-    "profileNotFound": "Medical profile not found",
-    "profileMissing": "Your user exists, but it does not have an associated clinical profile yet.",
-    "highFatigue": "Fatigue level {level} ({percent}%).",
-    "supervisorNotified": "Your supervisor has been notified. Consider requesting preventive rest.",
-    "viewRecommendations": "View recommendations →",
-    "normalHeartRate": "Normal: 60–100 bpm",
-    "normalCortisol": "Normal: 100–600 nmol/L",
-    "belowThreshold": "🔴 Below threshold",
-    "normalRange": "✅ Within normal range",
-    "metricsLast8h": "My metrics — Last 8 hours",
-    "noBiometricRecords": "No biometric records. Sync your device to generate metrics.",
-    "deviceStatus": "IoT device status",
-    "deviceId": "ID",
-    "connected": "Connected",
-    "linkDevice": "Link device",
-    "sync": "Sync",
-    "syncing": "Syncing...",
-    "noDeviceHint": "Use “Link device” to simulate a CortiWatch and load initial metrics.",
-    "lastSync": "Last sync",
-    "firmware": "Firmware",
-    "minutesAgo": "{minutes} min ago",
-    "never": "Never"
-  },
-  "shifts": {
-    "title": "My Shifts",
-    "subtitle": "Shift calendar and guard log",
-    "date": "Date",
-    "startTime": "Start",
-    "endTime": "End",
-    "type": "Type",
-    "area": "Area",
-    "hoursWorked": "Hours worked",
-    "types": {
-      "morning": "Morning",
-      "night": "Night",
-      "afternoon": "Afternoon"
+    "alerts": {
+      "title": "Clinical Alerts",
+      "subtitle-before": "Manage active alerts from the",
+      "subtitle-highlight": "staff under your supervision",
+      "subtitle-after": "and record preventive actions.",
+      "search-placeholder": "Search by staff, email or message...",
+      "created-at": "Created",
+      "resolved-at": "Resolved",
+      "fatigue": "Fatigue",
+      "resolve": "Mark as resolved",
+      "already-resolved": "Alert resolved",
+      "empty": "There are no alerts to display.",
+      "metrics": {
+        "active": "Active alerts",
+        "high-priority": "High priority",
+        "resolved": "Resolved",
+        "total": "Total assigned"
+      },
+      "filters": {
+        "all-statuses": "All statuses",
+        "all-severities": "All severities"
+      },
+      "status": {
+        "active": "Active",
+        "resolved": "Resolved"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Clinical alerts could not be loaded.",
+        "resolve-failed": "Alert could not be resolved."
+      }
     },
-    "status": {
-      "active": "Ongoing",
-      "scheduled": "Scheduled",
-      "completed": "Completed"
+    "riskStaff": {
+      "title": "At-Risk Staff",
+      "subtitle-before": "Monitor staff with",
+      "subtitle-highlight": "moderate, high or critical fatigue",
+      "subtitle-after": "within your assigned teams.",
+      "search-placeholder": "Search by name, email or team...",
+      "team": "Team",
+      "fatigue": "Fatigue",
+      "heart-rate": "Heart rate",
+      "hrv": "HRV",
+      "active-alerts": "Active alerts",
+      "last-reading": "Last reading",
+      "empty": "There is no at-risk staff within your assigned teams.",
+      "metrics": {
+        "total": "At-risk staff",
+        "moderate": "Moderate risk",
+        "high": "High risk",
+        "critical": "Critical risk"
+      },
+      "filters": {
+        "all": "All risks"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "At-risk staff could not be loaded."
+      }
     },
-    "thisMonth": "Shifts this month",
-    "workedHours": "Hours worked",
-    "nightShifts": "Night shifts",
-    "allShifts": "All shifts",
-    "allStatuses": "All statuses",
-    "noShifts": "No shifts registered."
-  },
-  "recovery": {
-    "title": "My Recovery",
-    "subtitle": "Recovery plan and recommendations",
-    "startDate": "Start",
-    "endDate": "End",
-    "type": "Type",
-    "recommendations": "Recommendations",
-    "noActivePlan": "You have no active recovery plan",
-    "types": {
-      "rest": "Preventive rest",
-      "medical_leave": "Medical leave",
-      "medical_leave_short": "Medical leave"
+    "anomalies": {
+      "title": "Anomalies",
+      "subtitle-before": "Review abnormal events detected in",
+      "subtitle-highlight": "vital signs and fatigue",
+      "subtitle-after": "from staff under your supervision.",
+      "search-placeholder": "Search by staff, email, type or message...",
+      "value": "Value",
+      "threshold": "Threshold",
+      "detected-at": "Time",
+      "detected-date": "Detected",
+      "reviewed-at": "Reviewed",
+      "mark-reviewed": "Mark reviewed",
+      "dismiss": "Dismiss",
+      "closed": "Anomaly closed",
+      "empty-title": "No anomalies",
+      "empty-subtitle": "No anomalies were found for the selected filters.",
+      "metrics": {
+        "open": "Open",
+        "critical": "Critical",
+        "reviewed": "Reviewed",
+        "total": "Total assigned"
+      },
+      "filters": {
+        "all-statuses": "All statuses",
+        "all-severities": "All severities"
+      },
+      "status": {
+        "open": "Open",
+        "reviewed": "Reviewed",
+        "dismissed": "Dismissed"
+      },
+      "types": {
+        "heart-rate-spike": "Heart rate spike",
+        "low-hrv": "Low HRV",
+        "fatigue-spike": "Fatigue spike",
+        "sensor-signal-loss": "Sensor signal loss"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Anomalies could not be loaded.",
+        "update-failed": "Anomaly could not be updated."
+      }
     },
-    "wellnessOptimal": "Your well-being level is optimal. Keep it up!",
-    "activePlan": "Active plan",
-    "progress": "Recovery progress",
-    "plansHistory": "Plan history",
-    "noHistory": "No history.",
-    "urgentRestFallback": "Urgent rest assigned. Your supervisor assigned preventive rest due to critical fatigue indicators.",
-    "estimatedEnd": "Estimated end",
-    "accept": "Accept",
-    "reject": "Reject",
-    "rejectConfirm": "Are you sure you want to reject the assigned rest plan?",
-    "status": {
+    "vitalSigns": {
+      "title": "My Vital Signs",
+      "subtitle-before": "History of",
+      "subtitle-highlight": "cortisol",
+      "subtitle-after": ", HRV and heart rate from the last 7 days.",
+      "cortisol-chart-title": "Cortisol — 7 days",
+      "cortisol-unit": "nmol/L · Threshold: 550 nmol/L",
+      "hrv-chart-title": "HRV — 7 days",
+      "hrv-unit": "ms · Minimum threshold: 25 ms",
+      "heart-rate-chart-title": "Average Heart Rate — 7 days",
+      "heart-rate-unit": "bpm per shift",
+      "records-title": "Historical records",
+      "records-subtitle": "Biometric readings recorded during recent shifts.",
+      "last-seven-days": "Last 7 days",
+      "table": {
+        "date": "Date",
+        "shift": "Shift",
+        "cortisol": "Cortisol",
+        "hrv": "HRV",
+        "heart-rate": "Avg. HR",
+        "fatigue": "Fatigue",
+        "status": "Status"
+      },
+      "shift": {
+        "morning": "Morning",
+        "afternoon": "Afternoon",
+        "night": "Night"
+      },
+      "no-readings": "There are no biometric readings available yet.",
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Your vital signs could not be loaded."
+      }
+    },
+    "labels": {
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High",
+      "critical": "Critical",
       "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending",
       "accepted": "Accepted",
-      "rejected": "Rejected",
-      "completed": "Completed"
+      "cancelled": "Cancelled",
+      "completed": "Completed",
+      "scheduled": "Scheduled",
+      "in_progress": "In progress",
+      "resolved": "Resolved",
+      "open": "Open",
+      "reviewed": "Reviewed",
+      "dismissed": "Dismissed"
+    }
+  },
+  "staffRecovery": {
+    "actions": {
+      "title": "Preventive Actions",
+      "subtitle-before": "Register and manage",
+      "subtitle-highlight": "recovery actions",
+      "subtitle-after": "for staff under your supervision.",
+      "new-title": "New preventive action",
+      "new-subtitle": "Select a team member and register a suggested action.",
+      "staff": "Medical staff",
+      "select-staff": "Select staff",
+      "type": "Action type",
+      "notes": "Notes",
+      "notes-placeholder": "Describe the preventive action or follow-up performed...",
+      "create": "Create action",
+      "creating": "Creating...",
+      "search-placeholder": "Search by staff, email, type or note...",
+      "created-at": "Created",
+      "completed-at": "Completed",
+      "complete": "Complete",
+      "cancel": "Cancel",
+      "closed": "Action closed",
+      "empty-title": "No preventive actions",
+      "empty-subtitle": "Create an action to follow up on at-risk staff.",
+      "metrics": {
+        "total": "Total actions",
+        "pending": "Pending",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "filters": {
+        "all": "All statuses"
+      },
+      "types": {
+        "recovery-break": "Recovery break",
+        "shift-adjustment": "Activity adjustment",
+        "supervisor-check-in": "Supervisor check-in",
+        "medical-evaluation": "Medical evaluation"
+      },
+      "status": {
+        "pending": "Pending",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Preventive actions could not be loaded.",
+        "create-failed": "Preventive action could not be created.",
+        "update-failed": "Preventive action could not be updated.",
+        "notes-required": "Notes are required."
+      }
     },
-    "defaultRecs": [
-      "Rest at least 8 hours per night.",
-      "Maintain a balanced diet.",
-      "Do light physical activity.",
-      "Practice relaxation techniques.",
-      "Stay properly hydrated.",
-      "Reduce screen use before sleeping."
-    ]
+    "doctor": {
+      "title": "My Recovery",
+      "subtitle-before": "Preventive recovery tracking for",
+      "subtitle-after": "based on your current status.",
+      "current-status-title": "Recovery status",
+      "recovery-score": "Recovery",
+      "fatigue-level": "Current fatigue",
+      "heart-rate": "Heart rate",
+      "hrv": "HRV",
+      "recommendations-title": "Recommendations",
+      "recommendations-subtitle": "Suggested actions based on your current indicators.",
+      "pending-title": "Pending actions",
+      "pending-subtitle": "Actions assigned by your clinical supervisor.",
+      "history-title": "Recovery history",
+      "history-subtitle": "Recently registered preventive actions.",
+      "created-at": "Created",
+      "mark-completed": "Mark completed",
+      "no-pending-actions": "You have no pending preventive actions.",
+      "no-history": "You have no preventive action history.",
+      "metrics": {
+        "recovery-score": "Recovery score",
+        "pending-actions": "Pending actions",
+        "active-alerts": "Active alerts",
+        "completed-actions": "Completed actions"
+      },
+      "status": {
+        "low": "Stable",
+        "moderate": "Needs break",
+        "high": "Needs recovery",
+        "critical": "Immediate attention"
+      },
+      "message": {
+        "low": "Your status remains stable. Continue preventive monitoring.",
+        "moderate": "A short break and vital signs follow-up are recommended.",
+        "high": "Your fatigue is high. Prioritize recovery before continuing demanding activities.",
+        "critical": "Your status requires immediate support. Avoid critical activities and contact your supervisor."
+      },
+      "recommendations": {
+        "hydration": "Keep constant hydration during the shift.",
+        "monitoring": "Continue checking your biometric indicators.",
+        "short-break": "Take a short 10 to 15 minute break.",
+        "breathing": "Practice controlled breathing for 3 to 5 minutes.",
+        "recovery-break": "Take a recovery break before continuing.",
+        "notify-supervisor": "Notify your clinical supervisor about your condition.",
+        "stop-critical-work": "Avoid continuing critical activities.",
+        "request-support": "Request immediate support from your supervisor or assigned team."
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Your recovery information could not be loaded.",
+        "update-failed": "Preventive action could not be updated."
+      }
+    }
+  },
+  "audit": {
+    "reports": {
+      "title": "Reports",
+      "subtitle-before": "Global indicators for the",
+      "subtitle-highlight": "medical center",
+      "subtitle-after": "for operational and preventive tracking.",
+      "average-fatigue-title": "Institutional average fatigue",
+      "average-fatigue-subtitle": "Average calculated from active medical staff.",
+      "average": "Average",
+      "resolved-alerts": "Resolved alerts",
+      "open-anomalies": "Open anomalies",
+      "completed-actions": "Completed actions",
+      "staff-summary-title": "Medical staff summary",
+      "staff-summary-subtitle": "Risk, alerts, anomalies, actions and shifts overview.",
+      "teams-summary-title": "Team summary",
+      "teams-summary-subtitle": "Active teams with assigned supervisor and members.",
+      "operations-title": "Clinical operation",
+      "operations-subtitle": "General shift and preventive action indicators.",
+      "compliance-title": "Preventive tracking",
+      "compliance-subtitle": "Basic control status for clinical monitoring.",
+      "supervisor": "Supervisor",
+      "members": "Members",
+      "empty-staff": "There is no medical staff to display.",
+      "empty-teams": "There are no active teams to display.",
+      "metrics": {
+        "active-staff": "Active medical staff",
+        "active-teams": "Active teams",
+        "high-risk": "High/critical risk",
+        "active-alerts": "Active alerts"
+      },
+      "table": {
+        "staff": "Staff",
+        "team": "Team",
+        "risk": "Risk",
+        "alerts": "Alerts",
+        "anomalies": "Anomalies",
+        "actions": "Actions",
+        "shifts": "Shifts"
+      },
+      "operations": {
+        "completed-shifts": "Completed shifts",
+        "completed-hours": "Registered hours",
+        "supervisors": "Active supervisors",
+        "preventive-actions": "Preventive actions"
+      },
+      "compliance": {
+        "staff-monitoring-title": "Staff monitoring",
+        "staff-monitoring-description": "Active staff has biometric monitoring and risk assessment.",
+        "alert-followup-title": "Alert follow-up",
+        "alert-followup-description": "Active clinical alerts require supervisor review.",
+        "recovery-title": "Preventive recovery",
+        "recovery-description": "Preventive actions make it possible to record breaks, follow-ups and evaluations."
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Reports could not be loaded."
+      }
+    },
+    "logs": {
+      "title": "Audit",
+      "subtitle-before": "Record of critical and operational events from the",
+      "subtitle-highlight": "hospital system",
+      "subtitle-after": "for traceability and compliance.",
+      "search-placeholder": "Search by description, actor, resource or type...",
+      "actor": "Actor",
+      "resource": "Resource",
+      "date": "Date",
+      "empty-title": "No audit events",
+      "empty-subtitle": "No records were found for the selected filters.",
+      "metrics": {
+        "total": "Registered events",
+        "warning": "Warnings",
+        "critical": "Critical",
+        "user-management": "User management"
+      },
+      "filters": {
+        "all-types": "All types",
+        "all-severities": "All severities"
+      },
+      "severity": {
+        "info": "Info",
+        "warning": "Warning",
+        "critical": "Critical"
+      },
+      "types": {
+        "user-invited": "User invited",
+        "user-registered": "User registered",
+        "user-role-changed": "Role changed",
+        "user-status-changed": "Status changed",
+        "team-created": "Team created",
+        "team-updated": "Team updated",
+        "team-status-changed": "Team status changed",
+        "alert-resolved": "Alert resolved",
+        "anomaly-reviewed": "Anomaly reviewed",
+        "anomaly-dismissed": "Anomaly dismissed",
+        "preventive-action-created": "Preventive action created",
+        "preventive-action-completed": "Preventive action completed",
+        "shift-check-in": "Shift check-in",
+        "shift-check-out": "Shift check-out"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Audit events could not be loaded."
+      }
+    }
+  },
+  "subscription": {
+    "plans": {
+      "basic": {
+        "description": "Essential plan for small clinics that need monitoring, staff management and basic risk control."
+      },
+      "professional": {
+        "description": "Recommended plan for medium-sized clinics that need full operation, clinical prevention, audit and administrative reports."
+      },
+      "enterprise": {
+        "description": "Advanced plan for large hospitals, clinical networks and organizations with multiple sites, integrations and large-scale operations."
+      },
+      "features": {
+        "common": {
+          "admin-dashboard": "Administrative dashboard",
+          "staff-management": "Medical staff management",
+          "team-management": "Clinical team management",
+          "supervisor-assignment": "Supervisor assignment",
+          "vital-signs": "Vital signs monitoring",
+          "doctor-health": "Doctor health status view",
+          "shift-management": "Shift management",
+          "email-invitations": "Email invitations"
+        },
+        "basic": {
+          "doctors": "Up to 30 active doctors",
+          "supervisors": "Up to 6 clinical supervisors",
+          "teams": "Up to 6 active clinical teams",
+          "work-areas": "Up to 6 work areas",
+          "invitations": "Up to 80 monthly invitations",
+          "risk-assessment": "Basic risk assessment",
+          "clinical-alerts": "Essential clinical alerts",
+          "reports": "Basic reports",
+          "history": "45-day data history",
+          "support": "Standard support"
+        },
+        "professional": {
+          "doctors": "Up to 120 active doctors",
+          "supervisors": "Up to 25 clinical supervisors",
+          "teams": "Up to 25 active clinical teams",
+          "work-areas": "Up to 15 work areas",
+          "invitations": "Up to 350 monthly invitations",
+          "admin-dashboard": "Complete administrative dashboard",
+          "staff-management": "Complete staff management",
+          "team-management": "Complete team management",
+          "risk-assessment": "Advanced risk assessment",
+          "clinical-alerts": "Complete clinical alerts",
+          "anomalies": "Biometric anomaly detection",
+          "preventive-actions": "Preventive actions",
+          "doctor-recovery": "Doctor recovery tracking",
+          "reports": "Complete administrative reports",
+          "audit": "System audit",
+          "history": "180-day data history",
+          "support": "Priority support"
+        },
+        "enterprise": {
+          "doctors": "Unlimited doctors",
+          "supervisors": "Unlimited supervisors",
+          "teams": "Unlimited clinical teams",
+          "work-areas": "Unlimited work areas",
+          "invitations": "Unlimited invitations",
+          "multi-site": "Multi-site",
+          "admin-dashboard": "Advanced administrative dashboard",
+          "staff-management": "Complete staff management",
+          "team-management": "Advanced team management",
+          "vital-signs": "Complete vital signs monitoring",
+          "risk-assessment": "Advanced risk assessment",
+          "clinical-alerts": "Complete clinical alerts",
+          "anomalies": "Biometric anomaly detection",
+          "preventive-actions": "Preventive actions",
+          "doctor-recovery": "Doctor recovery tracking",
+          "shift-management": "Complete shift management",
+          "reports": "Advanced reports",
+          "audit": "Complete audit",
+          "history": "2-year extended history",
+          "integrations": "External integrations",
+          "api": "Enterprise API",
+          "hospital-systems": "Hospital system integration",
+          "payment-gateways": "Payment gateway integration",
+          "data-export": "Advanced data export",
+          "custom-setup": "Custom setup",
+          "support": "Dedicated support",
+          "implementation": "Implementation assistance"
+        }
+      }
+    },
+    "admin": {
+      "title": "Subscription",
+      "subtitle-before": "Manage the",
+      "subtitle-highlight": "active plan",
+      "subtitle-after": "of the medical center.",
+      "current-title": "Current plan",
+      "current-subtitle": "Information about the medical center active subscription.",
+      "available-title": "Available plans",
+      "available-subtitle": "You can simulate a plan change for the demo.",
+      "history-title": "Payment history",
+      "history-subtitle": "Checkout sessions registered for the organization.",
+      "active-plan": "Active plan",
+      "plan-code": "Plan code",
+      "started-at": "Start date",
+      "last-checkout": "Last payment",
+      "change-plan": "Change plan",
+      "no-subscription": "No active subscription was found.",
+      "no-available-plans": "There are no other plans available.",
+      "no-history": "No payment history has been registered.",
+      "metrics": {
+        "current-plan": "Current plan",
+        "status": "Status",
+        "monthly-cost": "Monthly cost",
+        "checkout-history": "Registered payments"
+      },
+      "billing": {
+        "monthly": "month",
+        "yearly": "year"
+      },
+      "status": {
+        "active": "Active",
+        "past-due": "Past due",
+        "cancelled": "Cancelled"
+      },
+      "checkout-status": {
+        "completed": "Completed",
+        "pending": "Pending",
+        "failed": "Failed"
+      },
+      "table": {
+        "date": "Date",
+        "plan": "Plan",
+        "status": "Status",
+        "session": "Session"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "load-failed": "Subscription could not be loaded.",
+        "change-plan-failed": "Plan could not be changed."
+      }
+    },
+    "registration": {
+      "badge": "Organization registration",
+      "title": "Create medical center",
+      "subtitle": "Complete the medical center and administrator account details to activate the selected plan.",
+      "selected-plan": "Selected plan",
+      "month": "month",
+      "organization-title": "Medical center details",
+      "organization-name": "Medical center name",
+      "organization-name-placeholder": "Example: San Gabriel Clinic",
+      "ruc": "Tax ID",
+      "ruc-placeholder": "20600000000",
+      "organization-phone": "Center phone",
+      "address": "Address",
+      "address-placeholder": "Health Ave. 123, Lima",
+      "admin-title": "Administrator account",
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email address",
+      "phone": "Phone",
+      "password": "Password",
+      "first-name-placeholder": "Example: Marcelo",
+      "last-name-placeholder": "Example: Administrator",
+      "email-placeholder": "admin{'@'}cortisense.com",
+      "phone-placeholder": "+51 999 999 999",
+      "password-placeholder": "At least 6 characters",
+      "back-login": "Back to sign in",
+      "pay-and-create": "Pay and create account",
+      "processing": "Processing...",
+      "success": "Medical center and administrator account were created successfully. Redirecting to sign in...",
+      "error": {
+        "plan-not-found": "Selected plan was not found.",
+        "load-plans-failed": "Plans could not be loaded.",
+        "create-failed": "Organization registration could not be completed."
+      }
+    },
+    "checkoutSuccess": {
+      "title": "Payment completed",
+      "subtitle": "The medical center and administrator account were created successfully. You can now sign in with the registered credentials.",
+      "go-login": "Go to sign in"
+    },
+    "checkoutCancelled": {
+      "title": "Payment cancelled",
+      "subtitle": "The payment process was cancelled or was not completed. You can try again whenever you want.",
+      "go-login": "Back to sign in",
+      "try-again": "Try again"
+    },
+    "limits": {
+      "doctors-exceeded": "You have reached the active doctors limit allowed by your plan.",
+      "supervisors-exceeded": "You have reached the clinical supervisors limit allowed by your plan.",
+      "teams-exceeded": "You have reached the active teams limit allowed by your plan.",
+      "work-areas-exceeded": "You have reached the work areas limit allowed by your plan.",
+      "invitations-exceeded": "You have reached the monthly invitations limit allowed by your plan.",
+      "module-not-available": "This module is not available in your current plan.",
+      "generic-exceeded": "You have reached the limit allowed by your plan."
+    }
   },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Manage your account",
-    "personalInfo": "Personal information",
-    "security": "Security",
-    "changePassword": "Change password",
-    "currentPassword": "Current password",
-    "newPassword": "New password",
-    "saveChanges": "Save changes",
-    "saved": "Changes saved successfully",
-    "lastName": "Last name",
-    "confirmNewPassword": "Confirm new password",
-    "passwordsNoMatch": "Passwords do not match.",
-    "updatePassword": "Update password",
-    "passwordUpdated": "Password updated successfully.",
-    "notifications": "Notifications",
+    "account": {
+      "title": "Settings",
+      "subtitle-before": "Manage account information for",
+      "subtitle-after": "and basic profile data.",
+      "form-title": "Account details",
+      "form-subtitle": "Update basic information visible inside the platform.",
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "Email address",
+      "first-name-placeholder": "Example: Marcelo",
+      "last-name-placeholder": "Example: Administrator",
+      "email-placeholder": "email{'@'}cortisense.com",
+      "role": "Role",
+      "status-label": "Status",
+      "organization": "Organization",
+      "reset": "Reset",
+      "save": "Save changes",
+      "saving": "Saving...",
+      "success": "Account information was updated successfully.",
+      "roles": {
+        "admin": "Hospital administrator",
+        "supervisor": "Clinical supervisor",
+        "doctor": "Medical staff"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "pending": "Pending"
+      },
+      "error": {
+        "no-session": "No active session was found.",
+        "update-failed": "Account could not be updated.",
+        "first-name-required": "First name is required.",
+        "last-name-required": "Last name is required.",
+        "email-required": "Email is required.",
+        "email-invalid": "Enter a valid email address."
+      }
+    }
+  },
+  "common": {
+    "greeting": "Hello",
+    "loading": "Loading",
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "update": "Update",
+    "search": "Search",
+    "status": "Status",
+    "actions": "Actions",
+    "email": "Email",
+    "role": "Role",
+    "name": "Name",
+    "area": "Area",
+    "specialty": "Specialty",
+    "severity": "Severity",
+    "date": "Date",
+    "type": "Type",
+    "details": "Details",
+    "noData": "No data to display",
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "completed": "Completed",
+    "pending": "Pending",
+    "open": "Open",
+    "resolved": "Resolved",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "critical": "Critical",
+    "welcome": "Welcome"
+  },
+  "nav": {
+    "dashboard": "General Summary",
+    "staff": "Staff",
+    "invitations": "Invitations",
+    "teams": "Teams",
+    "subscription": "Subscription",
+    "reports": "Reports",
+    "audit": "Audit",
+    "settings": "Settings",
+    "shiftSummary": "Clinical summary",
+    "riskStaff": "Risk staff",
     "clinicalAlerts": "Clinical alerts",
-    "clinicalAlertsDesc": "Receive biometric alert notifications.",
-    "shiftReminder": "Shift reminder",
-    "shiftReminderDesc": "Notify 30 minutes before the shift starts.",
-    "weeklyReports": "Weekly reports",
-    "weeklyReportsDesc": "Receive a weekly summary by email.",
-    "requiredName": "First name and last name are required.",
-    "profileError": "The profile could not be updated. Check that the mock server is running.",
-    "passwordError": "The password could not be updated."
+    "alerts": "Clinical alerts",
+    "anomalies": "Anomalies",
+    "preventiveActions": "Preventive actions",
+    "shifts": "Shifts",
+    "myStatus": "My health",
+    "myVitals": "My vital signs",
+    "myShifts": "My shifts",
+    "myRecovery": "My recovery",
+    "signOut": "Sign out"
   },
-  "app": {
-    "adminMenu": "Admin Menu",
-    "supervisorMenu": "Supervisor Menu",
-    "staffMenu": "Staff Menu",
-    "topbarSubtitle": "Preventive monitoring and operational management of medical staff.",
-    "sidebarTagline": "Health Monitoring"
+  "pages": {
+    "adminDashboard": {
+      "title": "General Summary",
+      "subtitle": "Overview of clinical operations, teams and staff risk."
+    },
+    "staff": {
+      "title": "Staff management",
+      "subtitle": "Manage doctors, supervisors, work areas and specialties."
+    },
+    "invitations": {
+      "title": "Invitation management",
+      "subtitle": "Send and monitor invitations for new users."
+    },
+    "teams": {
+      "title": "Team management",
+      "subtitle": "Organize clinical teams by area and supervisor."
+    },
+    "subscription": {
+      "title": "Subscription",
+      "subtitle": "Review the current plan, limits and checkout sessions."
+    },
+    "reports": {
+      "title": "Administrative reports",
+      "subtitle": "Risk, operation and platform usage indicators."
+    },
+    "audit": {
+      "title": "Audit and compliance",
+      "subtitle": "Traceability of relevant system actions."
+    },
+    "supervisorDashboard": {
+      "title": "Supervisor dashboard",
+      "subtitle": "Clinical risk, alerts and activity for your team."
+    },
+    "riskStaff": {
+      "title": "Staff at risk",
+      "subtitle": "Prioritize users with high fatigue or elevated risk."
+    },
+    "clinicalAlerts": {
+      "title": "Clinical alerts",
+      "subtitle": "Manage active and resolved clinical events."
+    },
+    "anomalies": {
+      "title": "Biometric anomalies",
+      "subtitle": "Review out-of-threshold readings and severity."
+    },
+    "preventiveActions": {
+      "title": "Preventive actions",
+      "subtitle": "Create and track recovery actions."
+    },
+    "supervisorShifts": {
+      "title": "Team shifts",
+      "subtitle": "Supervise scheduled, active and completed shifts."
+    },
+    "doctorHealth": {
+      "title": "My health status",
+      "subtitle": "Current wellness, fatigue and sensor overview."
+    },
+    "doctorVitals": {
+      "title": "My vital signs",
+      "subtitle": "Biometric history recorded during operations."
+    },
+    "doctorShifts": {
+      "title": "My shifts",
+      "subtitle": "Manage check-in and check-out for assigned shifts."
+    },
+    "doctorRecovery": {
+      "title": "My recovery",
+      "subtitle": "Assigned actions and recovery progress."
+    },
+    "settings": {
+      "title": "Account settings",
+      "subtitle": "Update your personal information and access."
+    },
+    "onboarding": {
+      "title": "Choose your CortiSense plan",
+      "subtitle": "Select a plan to start your organization setup."
+    },
+    "registerOrg": {
+      "title": "Register organization",
+      "subtitle": "Complete institution and administrator data."
+    },
+    "checkoutSuccess": {
+      "title": "Checkout completed",
+      "subtitle": "The subscription was activated successfully."
+    },
+    "checkoutCancelled": {
+      "title": "Checkout cancelled",
+      "subtitle": "The operation was cancelled. You can choose a plan again."
+    }
   },
-  "riskLabels": {
-    "criticalLevel": "🔴 Critical Level",
-    "highLevel": "🟠 High Level",
-    "moderateLevel": "🟡 Moderate Level",
-    "lowLevel": "🟢 Low Level"
-  },
-  "areas": {
-    "emergency": "Emergency",
-    "icu": "ICU",
-    "pediatrics": "Pediatrics",
-    "cardiology": "Cardiology",
-    "surgery": "Surgery",
-    "obstetrics": "Obstetrics",
-    "general": "General"
-  },
-  "alertsText": {
-    "fatigueCritical": "Critical fatigue detected — {name} ({percent}%)",
-    "criticalRisk": "Critical risk level detected — {name} ({percent}%)",
-    "highCortisol": "Elevated cortisol levels for 3 consecutive days.",
-    "lowHrv": "Heart rate variability below the normal range.",
-    "highHeartRate": "Elevated heart rate — 112 bpm sustained for more than 2 hours."
-  },
-  "recommendationText": {
-    "rest8": "Rest at least 8 hours per night.",
-    "noNightShifts3": "Do not take night shifts for 3 days.",
-    "lightActivityOnly": "Only light physical activity.",
-    "hydrate": "Stay properly hydrated.",
-    "completeRest7": "Complete rest for 7 days.",
-    "medicalEvaluationDay3": "Medical evaluation on day 3.",
-    "noClinicalDuties": "No clinical duties.",
-    "hydrateEat": "Hydrate and eat properly.",
-    "avoidIntenseActivity": "Avoid intense physical activity.",
-    "noReturnWithoutEvaluation": "Do not return to duty without medical evaluation."
-  },
-  "specialties": {
-    "cardiology": "Cardiology",
-    "internalMedicine": "Internal Medicine",
-    "pediatrics": "Pediatrics",
-    "generalSurgery": "General Surgery",
-    "gynecology": "Gynecology"
-  },
-  "notes": {
-    "rest8BeforeNextShift": "8 hours of rest are recommended before the next shift.",
-    "shiftReassignedAvoidOverload": "Shift reassigned to avoid overload.",
-    "referredStressEvaluation": "Referred for medical stress evaluation.",
-    "urgentRest2hCritical": "Urgent 2-hour rest assigned due to critical indicators."
+  "metrics": {
+    "activeStaff": "Active staff",
+    "supervisors": "Supervisors",
+    "activeTeams": "Active teams",
+    "highRisk": "High risk",
+    "averageFatigue": "Average fatigue",
+    "activeAlerts": "Active alerts",
+    "pendingActions": "Pending actions",
+    "completedActions": "Completed actions",
+    "scheduledShifts": "Scheduled shifts",
+    "completedShifts": "Completed shifts"
   }
 }

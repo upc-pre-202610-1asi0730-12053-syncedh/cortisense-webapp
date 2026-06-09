@@ -1,194 +1,46 @@
-<!--
-  @file admin-reports.view.vue
-  @description Reportes institucionales — generación, gráfico y tabla de historial.
-  Usa audit.store.js
--->
 <template>
-  <div>
-    <div class="cs-page-header">
-      <h1 class="cs-page-title">{{ $t('reports.title') }}</h1>
-      <p class="cs-page-subtitle">{{ $t('reports.subtitle') }}</p>
-    </div>
+  <section>
+    <header class="page-header"><h1>Reportes</h1><p>Indicadores globales del <strong>centro médico</strong> para seguimiento operativo y preventivo.</p></header>
+    <section class="metrics-grid">
+      <article class="metric-card"><div class="metric-icon blue"><i class="pi pi-users"></i></div><p>Personal médico activo</p><h2>{{ activeDoctors.length }}</h2></article>
+      <article class="metric-card"><div class="metric-icon purple"><i class="pi pi-users"></i></div><p>Equipos activos</p><h2 class="purple-text">{{ activeTeams.length }}</h2></article>
+      <article class="metric-card"><div class="metric-icon danger"><i class="pi pi-exclamation-triangle"></i></div><p>Riesgo alto/crítico</p><h2 class="danger-text">{{ highRisk.length }}</h2></article>
+      <article class="metric-card"><div class="metric-icon warning"><i class="pi pi-bell"></i></div><p>Alertas activas</p><h2 class="warning-text">{{ activeAlerts.length }}</h2></article>
+    </section>
 
-    <div class="cs-grid-2" style="margin-bottom:24px;">
-      <!-- Generador de reporte -->
-      <div class="cs-card" style="margin-bottom:0;">
-        <div class="cs-card-header">
-          <div class="cs-card-title">{{ $t('reports.generate') }}</div>
-        </div>
+    <section class="summary-grid" style="grid-template-columns:minmax(0,1fr) repeat(3, 220px)">
+      <article class="summary-card fatigue-card"><div><h2>Fatiga promedio institucional</h2><p>Promedio calculado sobre el personal médico activo.</p></div><div class="fatigue-value"><strong>{{ averageFatigue }}%</strong><span>Promedio</span></div><div class="progress-track"><div class="progress-fill" :style="{width:`${averageFatigue}%`}"></div></div></article>
+      <article class="summary-card alert-card"><div class="metric-icon success"><i class="pi pi-check-circle"></i></div><h2 class="success-text">{{ resolvedAlerts.length }}</h2><p>Alertas resueltas</p></article>
+      <article class="summary-card alert-card"><div class="metric-icon danger"><i class="pi pi-bolt"></i></div><h2>{{ openAnomalies.length }}</h2><p>Anomalías abiertas</p></article>
+      <article class="summary-card alert-card"><div class="metric-icon blue"><i class="pi pi-clipboard"></i></div><h2 class="blue-text">{{ completedActions.length }}</h2><p>Acciones completadas</p></article>
+    </section>
 
-        <div class="cs-form-group">
-          <label class="cs-form-label">{{ $t('reports.type') }}</label>
-          <select class="filter-select" v-model="form.type" style="width:100%;color:var(--text-primary);">
-            <option value="fatigue">{{ $t('reports.types.fatigue') }}</option>
-            <option value="anomaly">{{ $t('reports.types.anomaly') }}</option>
-            <option value="compliance">{{ $t('reports.types.compliance') }}</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <div class="cs-form-group">
-            <label class="cs-form-label">{{ $t('reports.startDate') }}</label>
-            <input type="date" class="filter-input" v-model="form.startDate" />
-          </div>
-          <div class="cs-form-group">
-            <label class="cs-form-label">{{ $t('reports.endDate') }}</label>
-            <input type="date" class="filter-input" v-model="form.endDate" />
-          </div>
-        </div>
-        <div class="cs-form-group">
-          <label class="cs-form-label">{{ $t('reports.areaOptional') }}</label>
-          <select class="filter-select" v-model="form.area" style="width:100%;color:var(--text-primary);">
-            <option value="">{{ $t('reports.allAreas') }}</option>
-            <option value="Emergencia">{{ $t('areas.emergency') }}</option>
-            <option value="UCI">{{ $t('areas.icu') }}</option>
-            <option value="Pediatría">{{ $t('areas.pediatrics') }}</option>
-            <option value="Cardiología">{{ $t('areas.cardiology') }}</option>
-          </select>
-        </div>
-
-        <div style="display:flex;gap:10px;margin-top:8px;">
-          <button class="cs-btn cs-btn-primary" style="flex:1;" @click="generateReport" :disabled="generating">
-            <i class="pi pi-chart-bar"></i>
-            {{ generating ? $t('reports.generating') : $t('reports.generate') }}
-          </button>
-          <button class="cs-btn cs-btn-secondary" @click="downloadPDF" :disabled="!lastReport">
-            <i class="pi pi-file-pdf"></i> PDF
-          </button>
-        </div>
-
-        <div v-if="lastReport" class="report-generated-banner">
-          <i class="pi pi-check-circle"></i>
-          {{ $t('common.generated') }}: <strong>{{ reportTypeLabel(lastReport.type) }}</strong>
-          — {{ formatDate(lastReport.generatedAt) }}
-        </div>
-      </div>
-
-      <!-- Gráfico de incidentes -->
-      <div class="cs-card" style="margin-bottom:0;">
-        <div class="cs-card-header">
-          <div>
-            <div class="cs-card-title">{{ $t('reports.fatigueIncidentsByArea') }}</div>
-            <div class="cs-card-subtitle">{{ $t('reports.last30Days') }}</div>
-          </div>
-        </div>
-        <div style="height:220px;position:relative;">
-          <canvas id="reportsChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- Historial de reportes -->
-    <div class="cs-card" style="margin-bottom:0;">
-      <div class="cs-card-header">
-        <div class="cs-card-title">{{ $t('reports.recentReports') }}</div>
-      </div>
-      <div class="cs-table-wrapper">
-        <table>
-          <thead>
-            <tr><th>{{ $t('reports.type') }}</th><th>{{ $t('reports.period') }}</th><th>{{ $t('reports.area') }}</th><th>{{ $t('reports.generatedAt') }}</th><th>{{ $t('reports.generatedBy') }}</th><th>{{ $t('reports.actions') }}</th></tr>
-          </thead>
-          <tbody>
-            <tr v-if="store.loading"><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted);">{{ $t('common.loading') }}</td></tr>
-            <tr v-else-if="store.reports.length === 0"><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted);">{{ $t('reports.noReports') }}</td></tr>
-            <tr v-for="r in store.reports" :key="r.id">
-              <td><span class="cs-badge cs-badge-info">{{ reportTypeLabel(r.type) }}</span></td>
-              <td style="font-size:12px;">{{ r.startDate ? `${r.startDate} — ${r.endDate}` : '—' }}</td>
-              <td style="font-size:12px;">{{ r.area ? areaLabel(r.area) : $t('reports.allAreas') }}</td>
-              <td style="font-size:12px;white-space:nowrap;">{{ formatDate(r.generatedAt) }}</td>
-              <td style="font-size:12px;color:var(--text-muted);">{{ r.generatedBy || 'admin@cortisense.com' }}</td>
-              <td>
-                <button class="btn-link btn-link-view" @click="downloadPDF(r)">
-                  <i class="pi pi-download"></i> PDF
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+    <section class="report-grid">
+      <article class="content-card"><div class="section-header"><div><h2>Resumen por personal médico</h2><p>Consolidado de riesgo, alertas, anomalías, acciones y turnos.</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Personal</th><th>Equipo</th><th>Riesgo</th><th>Alertas</th><th>Anomalías</th><th>Acciones</th></tr></thead><tbody><tr v-for="item in staffSummary" :key="item.user.id"><td><div class="staff-profile"><div class="avatar">{{ initials(item.user) }}</div><div><strong>{{ fullName(item.user) }}</strong><span>{{ item.user.email }}</span></div></div></td><td>{{ item.team?.name || '—' }}</td><td><span class="risk-pill" :class="riskClass(item.risk?.riskLevel)">{{ riskLabel(item.risk?.riskLevel) }}</span><strong style="display:block;margin-top:6px">{{ item.risk?.fatigueLevel || 0 }}%</strong></td><td><span class="pill warning">{{ item.alerts }}</span></td><td><span class="pill danger">{{ item.anomalies }}</span></td><td><span class="pill info">{{ item.actions }}</span></td></tr></tbody></table></div></article>
+      <article class="content-card"><div class="section-header"><div><h2>Resumen por equipos</h2><p>Equipos activos con supervisor y miembros asignados.</p></div></div><div class="teams-list"><div v-for="team in activeTeams" :key="team.id" class="team-item"><div><strong>{{ team.name }}</strong><span>Supervisor: {{ fullName(userById(team.supervisorId)) }}</span></div><div class="team-count"><strong>{{ memberCount(team.id) }}</strong><span>Miembros</span></div></div></div></article>
+    </section>
+  </section>
 </template>
-
 <script setup>
-import { ref, reactive, onMounted, onBeforeUnmount, computed } from 'vue'
-import { Chart, registerables } from 'chart.js'
-import { useAuditStore } from '../../application/audit.store.js'
+import { computed, onMounted, ref } from 'vue'
 import { useAuthStore } from '../../../iam/application/auth.store.js'
-import { useI18n } from 'vue-i18n'
-
-Chart.register(...registerables)
-
-const store     = useAuditStore()
-const authStore = useAuthStore()
-const { t, locale } = useI18n({ useScope: 'global' })
-
-const generating = ref(false)
-const lastReport = ref(null)
-let reportsChart = null
-const form = reactive({ type: 'fatigue', startDate: '', endDate: '', area: '' })
-
-const reportTypeLabel = (key) => key ? t(`reports.types.${key}`) : '—'
-const areaKey = (area = '') => ({ 'Emergencia': 'emergency', 'UCI': 'icu', 'Pediatría': 'pediatrics', 'Cardiología': 'cardiology', 'General': 'general' }[area] || '')
-const areaLabel = (area) => areaKey(area) ? t(`areas.${areaKey(area)}`) : area
-
-function formatDate (iso) {
-  if (!iso) return '—'
-  return new Date(iso).toLocaleString(locale.value === 'es' ? 'es-PE' : 'en-US', { dateStyle: 'short', timeStyle: 'short' })
-}
-
-async function generateReport () {
-  generating.value = true
-  try {
-    const report = await store.generateReport({
-      ...form,
-      generatedBy: authStore._userResource?.email || 'admin@cortisense.com'
-    })
-    lastReport.value = report
-  } finally { generating.value = false }
-}
-
-function downloadPDF (report) {
-  alert(t('reports.downloadPdfMessage', { type: reportTypeLabel(report?.type || form.type) }))
-}
-
-onMounted(async () => {
-  await store.fetchReports()
-
-  const ctx = document.getElementById('reportsChart')?.getContext('2d')
-  if (ctx) {
-    reportsChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: [t('areas.emergency'), t('areas.icu'), t('areas.pediatrics'), t('areas.cardiology'), t('areas.general')],
-        datasets: [{
-          label: t('reports.chartDataset'),
-          data: [8, 5, 3, 6, 2],
-          backgroundColor: ['#EF4444','#F97316','#F59E0B','#45DDE5','#10B981'],
-          borderRadius: 6, borderWidth: 0
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true, grid: { color: '#F1F5F9' }, ticks: { font: { size: 11 }, color: '#94A3B8' } },
-          x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#94A3B8' } }
-        }
-      }
-    })
-  }
-})
-
-onBeforeUnmount(() => {
-  reportsChart?.destroy()
-})
+import { listResource, fullName, initials, riskClass } from '../../../shared/infrastructure/api.service.js'
+const authStore=useAuthStore()
+const users=ref([]), risks=ref([]), alerts=ref([]), shifts=ref([]), teams=ref([]), members=ref([]), anomalies=ref([]), actions=ref([])
+const orgId = computed(() => authStore.user?.organizationId || 1)
+onMounted(async()=>{[users.value,risks.value,alerts.value,shifts.value,teams.value,members.value,anomalies.value,actions.value]=await Promise.all([listResource('users'),listResource('riskAssessments'),listResource('clinicalAlerts'),listResource('shiftRecords'),listResource('careTeams'),listResource('teamMembers'),listResource('vitalSignAnomalies'),listResource('preventiveActions')])})
+const orgUsers=computed(()=>users.value.filter(u=>Number(u.organizationId)===Number(orgId.value)))
+const activeDoctors=computed(()=>orgUsers.value.filter(u=>u.role==='DOCTOR'&&u.status==='ACTIVE'))
+const activeTeams=computed(()=>teams.value.filter(t=>Number(t.organizationId)===Number(orgId.value)&&t.status==='ACTIVE'))
+const orgRisks=computed(()=>risks.value.filter(r=>Number(r.organizationId)===Number(orgId.value)))
+const highRisk=computed(()=>orgRisks.value.filter(r=>['HIGH','CRITICAL'].includes(r.riskLevel)))
+const activeAlerts=computed(()=>alerts.value.filter(a=>Number(a.organizationId)===Number(orgId.value)&&['ACTIVE','OPEN'].includes(a.status)))
+const resolvedAlerts=computed(()=>alerts.value.filter(a=>Number(a.organizationId)===Number(orgId.value)&&['RESOLVED','REVIEWED'].includes(a.status)))
+const openAnomalies=computed(()=>anomalies.value.filter(a=>Number(a.organizationId)===Number(orgId.value)&&['OPEN','ACTIVE'].includes(a.status)))
+const completedActions=computed(()=>actions.value.filter(a=>Number(a.organizationId)===Number(orgId.value)&&a.status==='COMPLETED'))
+const averageFatigue=computed(()=>orgRisks.value.length?Math.round(orgRisks.value.reduce((s,r)=>s+Number(r.fatigueLevel||0),0)/orgRisks.value.length):0)
+const staffSummary=computed(()=>activeDoctors.value.map(user=>{const member=members.value.find(m=>Number(m.userId)===Number(user.id)); return { user, team: teams.value.find(t=>Number(t.id)===Number(member?.teamId)), risk: risks.value.find(r=>Number(r.userId)===Number(user.id)), alerts: alerts.value.filter(a=>Number(a.userId)===Number(user.id)).length, anomalies: anomalies.value.filter(a=>Number(a.userId)===Number(user.id)).length, actions: actions.value.filter(a=>Number(a.assignedUserId||a.userId)===Number(user.id)).length }}).slice(0,8))
+function userById(id){return users.value.find(u=>Number(u.id)===Number(id))}
+function memberCount(id){return members.value.filter(m=>Number(m.teamId)===Number(id)).length}
+function riskLabel(value){ if(!value) return 'Bajo'; return String(value).toUpperCase()==='CRITICAL'?'Crítico':String(value).toUpperCase()==='HIGH'?'Alto':String(value).toUpperCase()==='MEDIUM'?'Medio':'Bajo'}
 </script>
-
-<style scoped>
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.report-generated-banner {
-  display: flex; align-items: center; gap: 8px;
-  background: #F0FDF4; color: #15803D; border: 1px solid #A7F3D0;
-  border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-top: 12px;
-}
-</style>

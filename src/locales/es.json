@@ -1,715 +1,1316 @@
 {
-  "brand": {
+  "app": {
     "name": "CortiSense",
-    "tagline": "Monitoreo inteligente para un bienestar seguro"
+    "sidebarTagline": "Clinical intelligence",
+    "topbarSubtitle": "Monitoreo inteligente y gestión de turnos",
+    "adminMenu": "Menú Administrativo",
+    "supervisorMenu": "Menú Supervisor",
+    "staffMenu": "Menú Médico"
   },
-  "nav": {
-    "dashboard": "Dashboard",
-    "staff": "Personal médico",
+  "auth": {
+    "brand-title": "Cuidamos a quienes cuidan.",
+    "brand-description": "Monitoreo biométrico inteligente y gestión de turnos para prevenir el agotamiento médico.",
+    "demo-title": "Credenciales demo",
+    "welcome": "Bienvenido de nuevo",
+    "subtitle": "Inicia sesión para acceder a la plataforma",
+    "email": "Correo electrónico",
+    "email-placeholder": "correo{'@'}cortisense.com",
+    "password": "Contraseña",
+    "password-placeholder": "Contraseña",
+    "sign-in": "Iniciar sesión",
+    "register-question": "¿No tienes una cuenta?",
+    "register-link": "Regístrate con una invitación",
+    "sign-in-tab": "Iniciar sesión",
+    "register-tab": "Registro",
+    "error": {
+      "email-required": "El correo electrónico es obligatorio.",
+      "email-invalid": "Ingresa un correo electrónico válido.",
+      "password-required": "La contraseña es obligatoria.",
+      "passwords-do-not-match": "Las contraseñas no coinciden.",
+      "work-area-required": "El área de trabajo es obligatoria.",
+      "specialty-required": "La especialidad es obligatoria.",
+      "invalid-credentials": "Credenciales inválidas o cuenta inactiva.",
+      "invitation-token-required": "Se requiere una invitación válida para crear una cuenta.",
+      "invitation-not-found": "La invitación no existe o el enlace es inválido.",
+      "invitation-not-available": "Esta invitación ya fue usada o expiró.",
+      "invitation-accept-failed": "No se pudo completar el registro. Inténtalo nuevamente."
+    },
+    "register-brand-title": "Únete a la plataforma de salud inteligente.",
+    "register-brand-description": "Completa tu registro para acceder al monitoreo biométrico y gestión de turnos.",
+    "invited-emails-title": "Correos invitados",
+    "register-title": "Crear cuenta",
+    "register-subtitle": "Completa tu registro para acceder al monitoreo y gestión de turnos.",
+    "first-name": "Nombre",
+    "first-name-placeholder": "Nombre",
+    "last-name": "Apellido",
+    "last-name-placeholder": "Apellido",
+    "phone": "Teléfono",
+    "phone-placeholder": "Teléfono",
+    "work-area": "Área de trabajo",
+    "work-area-placeholder": "Ej: UCI, Emergencias",
+    "specialty": "Especialidad",
+    "specialty-placeholder": "Ej: Cardiología, Pediatría",
+    "confirm-password": "Confirmar contraseña",
+    "confirm-password-placeholder": "Confirmar contraseña",
+    "register-submit": "Registrarse",
+    "already-have-account": "¿Ya tienes una cuenta?",
+    "sign-in-link": "Iniciar sesión",
+    "signing-in": "Ingresando...",
+    "creating-account": "Creando cuenta...",
+    "invitation-help": "¿Recibiste una invitación? Abre el enlace enviado a tu correo para crear tu cuenta.",
+    "loading-invitation-title": "Validando invitación",
+    "loading-invitation-message": "Espera un momento mientras verificamos tu enlace de invitación.",
+    "invitation-required-title": "Invitación requerida",
+    "invitation-required-message": "Para crear una cuenta necesitas abrir el enlace de invitación enviado por el administrador de tu centro médico.",
+    "back-to-sign-in": "Volver al inicio de sesión",
+    "demoAdmin": "admin{'@'}cortisense.com / admin123",
+    "demoSupervisor": "supervisor{'@'}cortisense.com / supervisor123",
+    "demoDoctor": "doctor{'@'}cortisense.com / doctor123"
+  },
+  "layout": {
+    "admin-title": "Panel administrativo",
+    "supervisor-title": "Panel del supervisor",
+    "doctor-title": "Panel clínico",
+    "subtitle": "Monitoreo inteligente y gestión de turnos",
+    "content-pending": "Esta sección está en preparación.",
+    "topbar": {
+      "greetings": {
+        "default": {
+          "hello": "Hola, {name}. ¿Qué hacemos hoy?",
+          "ready": "{name}, tu espacio de trabajo está listo.",
+          "continue": "Buen día, {name}. Todo listo para continuar."
+        },
+        "admin": {
+          "manage-today": "Hola, {name}. ¿Qué gestionamos hoy?",
+          "review-operation": "{name}, veamos cómo marcha la operación.",
+          "panel-ready": "{name}, tienes el panel administrativo listo.",
+          "staff-and-reports": "Hola, {name}. Revisemos personal, equipos y reportes.",
+          "center-status": "Buen día, {name}. Revisemos el estado del centro médico."
+        },
+        "supervisor": {
+          "review-team": "Hola, {name}. ¿A quién revisamos hoy?",
+          "alerts-and-risks": "{name}, revisemos alertas y riesgos.",
+          "care-team": "Hola, {name}. Sigamos cuidando al personal asignado.",
+          "quick-review": "{name}, tu equipo necesita una revisión rápida.",
+          "preventive-work": "Buen día, {name}. Avancemos con el monitoreo preventivo."
+        },
+        "doctor": {
+          "how-is-shift": "Hola, {name}. ¿Cómo va tu jornada?",
+          "review-status": "{name}, revisemos tu estado antes de continuar.",
+          "care-rhythm": "Buen día, {name}. Cuidemos tu ritmo de trabajo.",
+          "indicators-ready": "Hola, {name}. Tus indicadores están listos para revisar.",
+          "recovery-status": "{name}, veamos cómo se encuentra tu recuperación."
+        }
+      }
+    }
+  },
+  "navigation": {
+    "admin-menu": "Menú administrativo",
+    "supervisor-menu": "Menú supervisor",
+    "clinical-menu": "Menú clínico",
+    "general-summary": "Resumen General",
+    "staff": "Personal",
+    "teams": "Equipos",
     "invitations": "Invitaciones",
     "subscription": "Suscripción",
     "reports": "Reportes",
     "audit": "Auditoría",
     "settings": "Configuración",
-    "shiftSummary": "Resumen de turno",
+    "shift-summary": "Resumen de Turno",
+    "risk-staff": "Personal en Riesgo",
+    "clinical-alerts": "Alertas Clínicas",
+    "anomalies": "Anomalías",
+    "preventive-actions": "Acciones Preventivas",
+    "my-health-status": "Mi Estado de Salud",
+    "my-vital-signs": "Mis Signos Vitales",
+    "my-shifts": "Mis Turnos",
+    "my-recovery": "Mi Recuperación",
+    "team-shifts": "Turnos del equipo",
+    "sign-out": "Cerrar sesión"
+  },
+  "onboarding": {
+    "title": "Activa CortiSense",
+    "subtitle": "Crea el centro médico, configura la cuenta administradora y activa el plan seleccionado.",
+    "selected-plan": "Plan seleccionado",
+    "organization-section": "Datos del centro médico",
+    "organization-name": "Nombre del centro médico",
+    "organization-name-placeholder": "Ej: Clínica San Gabriel",
+    "ruc": "RUC",
+    "ruc-placeholder": "Ej: 20600000000",
+    "phone": "Teléfono institucional",
+    "phone-placeholder": "Ej: +51 999 999 999",
+    "address": "Dirección",
+    "address-placeholder": "Ej: Av. Salud 123, Lima",
+    "admin-section": "Cuenta administradora",
+    "admin-first-name": "Nombre",
+    "admin-first-name-placeholder": "Nombre",
+    "admin-last-name": "Apellido",
+    "admin-last-name-placeholder": "Apellido",
+    "admin-email": "Correo institucional",
+    "admin-email-placeholder": "admin{'@'}cortisense.com",
+    "password": "Contraseña",
+    "password-placeholder": "Contraseña",
+    "confirm-password": "Confirmar contraseña",
+    "confirm-password-placeholder": "Confirmar contraseña",
+    "submit": "Continuar al pago",
+    "loading": "Creando sesión de pago...",
+    "already-have-account": "¿Ya tienes una cuenta?",
+    "sign-in": "Iniciar sesión",
+    "error": {
+      "passwords-do-not-match": "Las contraseñas no coinciden."
+    }
+  },
+  "checkout": {
+    "title": "Pago del plan",
+    "subtitle": "Simulación de pago para activar CortiSense.",
+    "session": "Sesión de pago",
+    "confirm-payment": "Confirmar pago",
+    "processing": "Procesando...",
+    "cancel": "Cancelar",
+    "success-title": "Plan activado correctamente",
+    "success-subtitle": "Tu centro médico y cuenta administradora ya están activos.",
+    "go-dashboard": "Ir al dashboard"
+  },
+  "iam": {
+    "roles": {
+      "admin": "Administrador",
+      "supervisor": "Supervisor clínico",
+      "doctor": "Personal médico"
+    },
+    "invitations": {
+      "title": "Gestión de Invitaciones",
+      "subtitle-before": "Crea y administra",
+      "subtitle-highlight": "invitaciones",
+      "subtitle-after": "para nuevos usuarios de CortiSense.",
+      "new-title": "Nueva invitación",
+      "new-subtitle": "El usuario podrá completar su registro con el correo invitado.",
+      "email": "Correo electrónico",
+      "email-placeholder": "usuario{'@'}cortisense.com",
+      "role": "Rol",
+      "send": "Enviar invitación",
+      "sending": "Enviando...",
+      "link-copied": "Link de invitación copiado al portapapeles.",
+      "search-placeholder": "Buscar por correo o rol...",
+      "copy-link": "Copiar link",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "empty": "No hay invitaciones para mostrar.",
+      "metrics": {
+        "total": "Total de invitaciones",
+        "pending": "Pendientes",
+        "accepted": "Aceptadas",
+        "cancelled": "Canceladas"
+      },
+      "filters": {
+        "all": "Todas",
+        "pending": "Pendientes",
+        "accepted": "Aceptadas",
+        "cancelled": "Canceladas"
+      },
+      "status": {
+        "pending": "Pendiente",
+        "accepted": "Aceptada",
+        "cancelled": "Cancelada",
+        "expired": "Expirada"
+      },
+      "table": {
+        "email": "Correo",
+        "role": "Rol",
+        "status": "Estado",
+        "date": "Fecha",
+        "actions": "Acciones",
+        "link": "Link"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar las invitaciones.",
+        "create-failed": "No se pudo crear la invitación.",
+        "email-required": "El correo electrónico es obligatorio.",
+        "email-invalid": "Ingresa un correo electrónico válido.",
+        "accepted-cannot-be-deleted": "No se puede eliminar una invitación aceptada.",
+        "delete-failed": "No se pudo eliminar la invitación.",
+        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo."
+      }
+    },
+    "staff": {
+      "title": "Gestión de Personal",
+      "subtitle-before": "Administra usuarios,",
+      "subtitle-highlight": "roles",
+      "subtitle-after": "y estados del personal médico.",
+      "search-placeholder": "Buscar por nombre, correo o rol...",
+      "deactivate": "Desactivar",
+      "activate": "Activar",
+      "empty": "No hay personal para mostrar.",
+      "metrics": {
+        "total": "Total de usuarios",
+        "active": "Usuarios activos",
+        "supervisors": "Supervisores",
+        "doctors": "Personal médico"
+      },
+      "filters": {
+        "all-roles": "Todos los roles",
+        "all-statuses": "Todos los estados"
+      },
+      "status": {
+        "pending": "Pendiente",
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "table": {
+        "staff": "Personal",
+        "role": "Rol",
+        "work-area": "Área",
+        "specialty": "Especialidad",
+        "status": "Estado",
+        "actions": "Acciones"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar el personal.",
+        "update-role-failed": "No se pudo actualizar el rol.",
+        "update-status-failed": "No se pudo actualizar el estado.",
+        "cleanup-failed": "Se actualizó el usuario, pero no se pudieron limpiar sus asignaciones de equipo."
+      }
+    }
+  },
+  "shift": {
+    "teams": {
+      "title": "Gestión de Equipos",
+      "subtitle-before": "Organiza al personal en",
+      "subtitle-highlight": "grupos clínicos",
+      "subtitle-after": "con supervisores asignados.",
+      "new-title": "Nuevo equipo",
+      "new-subtitle": "Crea un grupo y asigna un supervisor clínico.",
+      "name": "Nombre del equipo",
+      "name-placeholder": "Ej: Grupo A",
+      "work-area": "Área de trabajo",
+      "select-work-area": "Selecciona un área",
+      "supervisor": "Supervisor clínico",
+      "no-supervisor": "Sin supervisor",
+      "create": "Crear equipo",
+      "creating": "Creando...",
+      "assigned-supervisor": "Supervisor asignado",
+      "add-member": "Agregar personal médico",
+      "select-member": "Selecciona un miembro",
+      "add": "Agregar",
+      "no-members": "Este equipo todavía no tiene miembros.",
+      "empty-title": "No hay equipos creados",
+      "empty-subtitle": "Crea el primer equipo para organizar al personal médico.",
+      "metrics": {
+        "total": "Total de equipos",
+        "active": "Equipos activos",
+        "supervisors": "Supervisores activos",
+        "members": "Miembros asignados"
+      },
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar los equipos.",
+        "create-failed": "No se pudo crear el equipo.",
+        "update-supervisor-failed": "No se pudo actualizar el supervisor.",
+        "add-member-failed": "No se pudo agregar el miembro.",
+        "remove-member-failed": "No se pudo quitar el miembro.",
+        "member-already-assigned": "Este miembro ya pertenece a otro equipo.",
+        "supervisor-already-assigned": "Este supervisor ya está asignado a otro equipo activo.",
+        "update-status-failed": "No se pudo actualizar el estado del equipo.",
+        "inactive-team": "No puedes agregar miembros a un equipo inactivo.",
+        "delete-failed": "No se pudo eliminar el equipo."
+      },
+      "search-placeholder": "Buscar por nombre o área...",
+      "all-work-areas": "Todas las áreas",
+      "deactivate": "Desactivar",
+      "activate": "Activar",
+      "delete": "Eliminar"
+    },
+    "supervisor": {
+      "title": "Turnos del equipo",
+      "subtitle-before": "Asigna y gestiona",
+      "subtitle-highlight": "turnos clínicos",
+      "subtitle-after": "para el personal médico bajo tu supervisión.",
+      "new-title": "Nuevo turno",
+      "new-subtitle": "Selecciona un médico asignado y programa un nuevo turno.",
+      "assigned-staff-title": "Personal asignado",
+      "assigned-staff-subtitle": "Médicos disponibles en tus equipos activos.",
+      "staff": "Personal médico",
+      "select-staff": "Selecciona personal",
+      "shift-type": "Tipo de turno",
+      "date": "Fecha",
+      "start-time": "Hora inicio",
+      "end-time": "Hora fin",
+      "create": "Crear turno",
+      "creating": "Creando...",
+      "list-title": "Turnos programados",
+      "list-subtitle": "Turnos asignados al personal bajo tu supervisión.",
+      "search-placeholder": "Buscar por personal, correo, equipo o área...",
+      "cancel": "Cancelar",
+      "closed": "Cerrado",
+      "no-assigned-staff": "Todavía no tienes personal médico asignado.",
+      "empty-title": "No se encontraron turnos",
+      "empty-subtitle": "Crea un turno o ajusta los filtros para ver resultados.",
+      "metrics": {
+        "scheduled": "Programados",
+        "in-progress": "En curso",
+        "completed": "Completados",
+        "cancelled": "Cancelados"
+      },
+      "filters": {
+        "all-statuses": "Todos los estados"
+      },
+      "type": {
+        "day": "Turno día",
+        "night": "Turno noche"
+      },
+      "status": {
+        "scheduled": "Programado",
+        "in-progress": "En curso",
+        "completed": "Completado",
+        "cancelled": "Cancelado"
+      },
+      "table": {
+        "staff": "Personal",
+        "team": "Equipo",
+        "area": "Área",
+        "type": "Tipo",
+        "date": "Fecha",
+        "time": "Horario",
+        "hours": "Horas",
+        "status": "Estado",
+        "actions": "Acciones"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar los turnos del equipo.",
+        "create-failed": "No se pudo crear el turno.",
+        "cancel-failed": "No se pudo cancelar el turno.",
+        "doctor-without-area": "El médico seleccionado no tiene un área de trabajo asignada."
+      }
+    },
+    "doctor": {
+      "title": "Mis Turnos",
+      "subtitle-before": "Gestión de turnos asignados para",
+      "subtitle-after": "y control de asistencia.",
+      "yes": "Sí",
+      "no": "No",
+      "current-title": "Turno actual",
+      "current-subtitle": "Control del turno en curso y registro de salida.",
+      "next-title": "Próximo turno",
+      "next-subtitle": "Siguiente turno programado.",
+      "upcoming-title": "Próximos turnos",
+      "upcoming-subtitle": "Turnos pendientes asignados.",
+      "history-title": "Historial de turnos",
+      "history-subtitle": "Turnos completados recientemente.",
+      "check-in": "Iniciar turno",
+      "check-out": "Finalizar turno",
+      "check-in-at": "Ingreso",
+      "duration": "Duración",
+      "no-current-title": "No hay turno en curso",
+      "no-current-subtitle": "Cuando inicies un turno, aparecerá aquí.",
+      "no-next-shift": "No tienes próximos turnos programados.",
+      "no-upcoming": "No tienes turnos pendientes.",
+      "no-history": "Aún no tienes turnos completados.",
+      "metrics": {
+        "upcoming": "Próximos turnos",
+        "completed": "Completados",
+        "hours": "Horas registradas",
+        "current": "Turno activo"
+      },
+      "type": {
+        "day": "Turno día",
+        "night": "Turno noche"
+      },
+      "status": {
+        "scheduled": "Programado",
+        "in-progress": "En curso",
+        "completed": "Completado",
+        "cancelled": "Cancelado"
+      },
+      "table": {
+        "date": "Fecha",
+        "area": "Área",
+        "type": "Tipo",
+        "hours": "Horas",
+        "status": "Estado"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar tus turnos.",
+        "check-in-failed": "No se pudo iniciar el turno.",
+        "check-out-failed": "No se pudo finalizar el turno.",
+        "update-status-failed": "No se pudo actualizar el estado del turno."
+      }
+    },
+    "types": {
+      "day": "Día",
+      "night": "Noche"
+    }
+  },
+  "clinical": {
+    "common": {
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar la información clínica."
+      }
+    },
+    "risk": {
+      "low": "Bajo",
+      "moderate": "Moderado",
+      "high": "Alto",
+      "critical": "Crítico"
+    },
+    "supervisor": {
+      "title": "Resumen de Turno",
+      "subtitle-before": "Estado general de tu equipo asignado:",
+      "subtitle-highlight": "alertas, fatiga",
+      "subtitle-after": "y métricas en tiempo real.",
+      "team-fatigue-title": "Fatiga actual del equipo",
+      "team-fatigue-subtitle": "Personal médico asignado a tus equipos activos.",
+      "alerts-title": "Alertas clínicas activas",
+      "alerts-subtitle": "Eventos que requieren seguimiento preventivo.",
+      "average": "Promedio",
+      "no-risk-data": "Sin datos de riesgo.",
+      "no-assigned-staff": "No tienes personal médico asignado.",
+      "no-active-alerts": "No hay alertas activas para tu equipo.",
+      "metrics": {
+        "assigned-staff": "Personal a cargo",
+        "high-risk": "En riesgo ahora",
+        "active-alerts": "Alertas activas",
+        "actions-today": "Acciones tomadas hoy"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar el dashboard del supervisor."
+      }
+    },
+    "doctor": {
+      "title": "Mi Estado de Salud",
+      "subtitle-before": "Monitoreo preventivo personalizado para",
+      "subtitle-after": "durante el turno actual.",
+      "current-status-title": "Estado actual",
+      "fatigue-level": "Nivel de fatiga",
+      "recommendations-title": "Recomendaciones preventivas",
+      "recommendations-subtitle": "Acciones sugeridas según tu estado actual.",
+      "alerts-title": "Mis alertas activas",
+      "alerts-subtitle": "Eventos clínicos asociados a tu monitoreo.",
+      "no-active-alerts": "No tienes alertas activas.",
+      "no-risk-title": "Sin datos de riesgo",
+      "no-risk-subtitle": "Aún no hay registros biométricos disponibles para tu usuario.",
+      "metrics": {
+        "fatigue": "Fatiga actual",
+        "heart-rate": "Frecuencia cardíaca",
+        "hrv": "HRV",
+        "active-alerts": "Alertas activas"
+      },
+      "vitals": {
+        "heart-rate": "Frecuencia cardíaca",
+        "hrv": "Variabilidad HRV",
+        "updated": "Última lectura"
+      },
+      "message": {
+        "low": "Tus indicadores se encuentran dentro de un rango estable. Mantén el monitoreo activo.",
+        "moderate": "Se detecta fatiga moderada. Considera una pausa breve y seguimiento preventivo.",
+        "high": "Tu nivel de fatiga es elevado. Se recomienda informar al supervisor y tomar una pausa de recuperación.",
+        "critical": "Tu estado requiere atención inmediata. Detén actividades críticas y solicita apoyo del supervisor."
+      },
+      "recommendations": {
+        "keep-hydrated": "Mantén hidratación constante durante el turno.",
+        "keep-monitoring": "Continúa con el monitoreo biométrico preventivo.",
+        "short-break": "Realiza una pausa breve de recuperación.",
+        "breathing": "Aplica respiración controlada durante 3 a 5 minutos.",
+        "notify-supervisor": "Informa tu estado al supervisor clínico.",
+        "recovery-break": "Toma una pausa de recuperación antes de continuar.",
+        "stop-activity": "Evita continuar con actividades críticas.",
+        "immediate-support": "Solicita apoyo inmediato del supervisor o equipo asignado."
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar tu estado de salud."
+      }
+    },
+    "admin": {
+      "title": "Resumen General",
+      "subtitle-before": "Vista global del",
+      "subtitle-highlight": "centro médico",
+      "subtitle-after": "y su operación preventiva.",
+      "average-fatigue-title": "Fatiga promedio institucional",
+      "average-fatigue-subtitle": "Promedio calculado con las evaluaciones activas del personal médico.",
+      "average": "Promedio",
+      "active-alerts": "Alertas clínicas activas",
+      "staff-at-risk-title": "Personal en riesgo",
+      "staff-at-risk-subtitle": "Usuarios con fatiga alta o crítica.",
+      "teams-title": "Equipos activos",
+      "teams-subtitle": "Grupos clínicos operativos y supervisores asignados.",
+      "supervisor": "Supervisor",
+      "members": "Miembros",
+      "no-staff-at-risk": "No hay personal en riesgo alto o crítico.",
+      "no-active-teams": "No hay equipos activos.",
+      "metrics": {
+        "active-staff": "Personal activo",
+        "supervisors": "Supervisores activos",
+        "active-teams": "Equipos activos",
+        "high-risk": "Personal en riesgo"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar el dashboard del administrador."
+      }
+    },
+    "alerts": {
+      "title": "Alertas Clínicas",
+      "subtitle-before": "Gestiona alertas activas del",
+      "subtitle-highlight": "personal bajo tu supervisión",
+      "subtitle-after": "y registra acciones preventivas.",
+      "search-placeholder": "Buscar por personal, correo o mensaje...",
+      "created-at": "Creada",
+      "resolved-at": "Resuelta",
+      "fatigue": "Fatiga",
+      "resolve": "Marcar como resuelta",
+      "already-resolved": "Alerta resuelta",
+      "empty": "No hay alertas para mostrar.",
+      "metrics": {
+        "active": "Alertas activas",
+        "high-priority": "Alta prioridad",
+        "resolved": "Resueltas",
+        "total": "Total asignadas"
+      },
+      "filters": {
+        "all-statuses": "Todos los estados",
+        "all-severities": "Todas las severidades"
+      },
+      "status": {
+        "active": "Activa",
+        "resolved": "Resuelta"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar las alertas clínicas.",
+        "resolve-failed": "No se pudo resolver la alerta."
+      }
+    },
+    "riskStaff": {
+      "title": "Personal en Riesgo",
+      "subtitle-before": "Monitorea al personal con",
+      "subtitle-highlight": "fatiga moderada, alta o crítica",
+      "subtitle-after": "dentro de tus equipos asignados.",
+      "search-placeholder": "Buscar por nombre, correo o equipo...",
+      "team": "Equipo",
+      "fatigue": "Fatiga",
+      "heart-rate": "Frecuencia cardíaca",
+      "hrv": "HRV",
+      "active-alerts": "Alertas activas",
+      "last-reading": "Última lectura",
+      "empty": "No hay personal en riesgo dentro de tus equipos asignados.",
+      "metrics": {
+        "total": "Personal en riesgo",
+        "moderate": "Riesgo moderado",
+        "high": "Riesgo alto",
+        "critical": "Riesgo crítico"
+      },
+      "filters": {
+        "all": "Todos los riesgos"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar el personal en riesgo."
+      }
+    },
+    "anomalies": {
+      "title": "Anomalías",
+      "subtitle-before": "Revisa eventos anómalos detectados en",
+      "subtitle-highlight": "signos vitales y fatiga",
+      "subtitle-after": "del personal bajo tu supervisión.",
+      "search-placeholder": "Buscar por personal, correo, tipo o mensaje...",
+      "value": "Valor",
+      "threshold": "Umbral",
+      "detected-at": "Hora",
+      "detected-date": "Detectada",
+      "reviewed-at": "Revisada",
+      "mark-reviewed": "Marcar revisada",
+      "dismiss": "Descartar",
+      "closed": "Anomalía cerrada",
+      "empty-title": "No hay anomalías",
+      "empty-subtitle": "No se encontraron anomalías para los filtros seleccionados.",
+      "metrics": {
+        "open": "Abiertas",
+        "critical": "Críticas",
+        "reviewed": "Revisadas",
+        "total": "Total asignadas"
+      },
+      "filters": {
+        "all-statuses": "Todos los estados",
+        "all-severities": "Todas las severidades"
+      },
+      "status": {
+        "open": "Abierta",
+        "reviewed": "Revisada",
+        "dismissed": "Descartada"
+      },
+      "types": {
+        "heart-rate-spike": "Pico de frecuencia cardíaca",
+        "low-hrv": "HRV bajo",
+        "fatigue-spike": "Incremento brusco de fatiga",
+        "sensor-signal-loss": "Pérdida de señal del sensor"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar las anomalías.",
+        "update-failed": "No se pudo actualizar la anomalía."
+      }
+    },
+    "vitalSigns": {
+      "title": "Mis Signos Vitales",
+      "subtitle-before": "Historial de",
+      "subtitle-highlight": "cortisol",
+      "subtitle-after": ", HRV y frecuencia cardíaca de los últimos 7 días.",
+      "cortisol-chart-title": "Cortisol — 7 días",
+      "cortisol-unit": "nmol/L · Umbral: 550 nmol/L",
+      "hrv-chart-title": "HRV — 7 días",
+      "hrv-unit": "ms · Umbral mínimo: 25 ms",
+      "heart-rate-chart-title": "Frecuencia Cardíaca promedio — 7 días",
+      "heart-rate-unit": "bpm por turno",
+      "records-title": "Registros históricos",
+      "records-subtitle": "Lecturas biométricas registradas durante los últimos turnos.",
+      "last-seven-days": "Últimos 7 días",
+      "table": {
+        "date": "Fecha",
+        "shift": "Turno",
+        "cortisol": "Cortisol",
+        "hrv": "HRV",
+        "heart-rate": "FC Prom.",
+        "fatigue": "Fatiga",
+        "status": "Estado"
+      },
+      "shift": {
+        "morning": "Mañana",
+        "afternoon": "Tarde",
+        "night": "Noche"
+      },
+      "no-readings": "Aún no hay lecturas biométricas disponibles.",
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar tus signos vitales."
+      }
+    },
+    "labels": {
+      "low": "Bajo",
+      "moderate": "Moderado",
+      "high": "Alto",
+      "critical": "Crítico",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "pending": "Pendiente",
+      "accepted": "Aceptada",
+      "cancelled": "Cancelada",
+      "completed": "Completado",
+      "scheduled": "Programado",
+      "in_progress": "En progreso",
+      "resolved": "Resuelta",
+      "open": "Abierta",
+      "reviewed": "Revisada",
+      "dismissed": "Descartada"
+    }
+  },
+  "staffRecovery": {
+    "actions": {
+      "title": "Acciones Preventivas",
+      "subtitle-before": "Registra y gestiona",
+      "subtitle-highlight": "acciones de recuperación",
+      "subtitle-after": "para el personal bajo tu supervisión.",
+      "new-title": "Nueva acción preventiva",
+      "new-subtitle": "Selecciona un miembro del equipo y registra una acción sugerida.",
+      "staff": "Personal médico",
+      "select-staff": "Selecciona personal",
+      "type": "Tipo de acción",
+      "notes": "Notas",
+      "notes-placeholder": "Describe la acción preventiva o seguimiento realizado...",
+      "create": "Crear acción",
+      "creating": "Creando...",
+      "search-placeholder": "Buscar por personal, correo, tipo o nota...",
+      "created-at": "Creada",
+      "completed-at": "Completada",
+      "complete": "Completar",
+      "cancel": "Cancelar",
+      "closed": "Acción cerrada",
+      "empty-title": "No hay acciones preventivas",
+      "empty-subtitle": "Crea una acción para dar seguimiento al personal en riesgo.",
+      "metrics": {
+        "total": "Total de acciones",
+        "pending": "Pendientes",
+        "completed": "Completadas",
+        "cancelled": "Canceladas"
+      },
+      "filters": {
+        "all": "Todos los estados"
+      },
+      "types": {
+        "recovery-break": "Pausa preventiva",
+        "shift-adjustment": "Ajuste de actividad",
+        "supervisor-check-in": "Seguimiento del supervisor",
+        "medical-evaluation": "Evaluación médica"
+      },
+      "status": {
+        "pending": "Pendiente",
+        "completed": "Completada",
+        "cancelled": "Cancelada"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar las acciones preventivas.",
+        "create-failed": "No se pudo crear la acción preventiva.",
+        "update-failed": "No se pudo actualizar la acción preventiva.",
+        "notes-required": "Las notas son obligatorias."
+      }
+    },
+    "doctor": {
+      "title": "Mi Recuperación",
+      "subtitle-before": "Seguimiento de recuperación preventiva para",
+      "subtitle-after": "según tu estado actual.",
+      "current-status-title": "Estado de recuperación",
+      "recovery-score": "Recuperación",
+      "fatigue-level": "Fatiga actual",
+      "heart-rate": "Frecuencia cardíaca",
+      "hrv": "HRV",
+      "recommendations-title": "Recomendaciones",
+      "recommendations-subtitle": "Acciones sugeridas según tus indicadores actuales.",
+      "pending-title": "Acciones pendientes",
+      "pending-subtitle": "Acciones asignadas por tu supervisor clínico.",
+      "history-title": "Historial de recuperación",
+      "history-subtitle": "Acciones preventivas registradas recientemente.",
+      "created-at": "Creada",
+      "mark-completed": "Marcar completada",
+      "no-pending-actions": "No tienes acciones preventivas pendientes.",
+      "no-history": "No tienes historial de acciones preventivas.",
+      "metrics": {
+        "recovery-score": "Puntaje de recuperación",
+        "pending-actions": "Acciones pendientes",
+        "active-alerts": "Alertas activas",
+        "completed-actions": "Acciones completadas"
+      },
+      "status": {
+        "low": "Estable",
+        "moderate": "Requiere pausa",
+        "high": "Requiere recuperación",
+        "critical": "Atención inmediata"
+      },
+      "message": {
+        "low": "Tu estado se mantiene estable. Continúa con el monitoreo preventivo.",
+        "moderate": "Se recomienda una pausa breve y seguimiento de tus signos vitales.",
+        "high": "Tu fatiga es elevada. Prioriza recuperación antes de continuar actividades exigentes.",
+        "critical": "Tu estado requiere apoyo inmediato. Evita actividades críticas y contacta a tu supervisor."
+      },
+      "recommendations": {
+        "hydration": "Mantén hidratación constante durante el turno.",
+        "monitoring": "Continúa revisando tus indicadores biométricos.",
+        "short-break": "Realiza una pausa breve de 10 a 15 minutos.",
+        "breathing": "Practica respiración controlada durante 3 a 5 minutos.",
+        "recovery-break": "Toma una pausa de recuperación antes de continuar.",
+        "notify-supervisor": "Informa tu estado al supervisor clínico.",
+        "stop-critical-work": "Evita continuar con actividades críticas.",
+        "request-support": "Solicita apoyo inmediato del supervisor o equipo asignado."
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar tu información de recuperación.",
+        "update-failed": "No se pudo actualizar la acción preventiva."
+      }
+    }
+  },
+  "audit": {
+    "reports": {
+      "title": "Reportes",
+      "subtitle-before": "Indicadores globales del",
+      "subtitle-highlight": "centro médico",
+      "subtitle-after": "para seguimiento operativo y preventivo.",
+      "average-fatigue-title": "Fatiga promedio institucional",
+      "average-fatigue-subtitle": "Promedio calculado sobre el personal médico activo.",
+      "average": "Promedio",
+      "resolved-alerts": "Alertas resueltas",
+      "open-anomalies": "Anomalías abiertas",
+      "completed-actions": "Acciones completadas",
+      "staff-summary-title": "Resumen por personal médico",
+      "staff-summary-subtitle": "Consolidado de riesgo, alertas, anomalías, acciones y turnos.",
+      "teams-summary-title": "Resumen por equipos",
+      "teams-summary-subtitle": "Equipos activos con supervisor y miembros asignados.",
+      "operations-title": "Operación clínica",
+      "operations-subtitle": "Indicadores generales de turnos y acciones preventivas.",
+      "compliance-title": "Seguimiento preventivo",
+      "compliance-subtitle": "Estado de controles básicos del monitoreo clínico.",
+      "supervisor": "Supervisor",
+      "members": "Miembros",
+      "empty-staff": "No hay personal médico para mostrar.",
+      "empty-teams": "No hay equipos activos para mostrar.",
+      "metrics": {
+        "active-staff": "Personal médico activo",
+        "active-teams": "Equipos activos",
+        "high-risk": "Riesgo alto/crítico",
+        "active-alerts": "Alertas activas"
+      },
+      "table": {
+        "staff": "Personal",
+        "team": "Equipo",
+        "risk": "Riesgo",
+        "alerts": "Alertas",
+        "anomalies": "Anomalías",
+        "actions": "Acciones",
+        "shifts": "Turnos"
+      },
+      "operations": {
+        "completed-shifts": "Turnos completados",
+        "completed-hours": "Horas registradas",
+        "supervisors": "Supervisores activos",
+        "preventive-actions": "Acciones preventivas"
+      },
+      "compliance": {
+        "staff-monitoring-title": "Monitoreo del personal",
+        "staff-monitoring-description": "El personal activo cuenta con seguimiento biométrico y evaluación de riesgo.",
+        "alert-followup-title": "Seguimiento de alertas",
+        "alert-followup-description": "Las alertas clínicas activas requieren revisión de los supervisores.",
+        "recovery-title": "Recuperación preventiva",
+        "recovery-description": "Las acciones preventivas permiten registrar pausas, seguimientos y evaluaciones."
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar los reportes."
+      }
+    },
+    "logs": {
+      "title": "Auditoría",
+      "subtitle-before": "Registro de eventos críticos y operativos del",
+      "subtitle-highlight": "sistema hospitalario",
+      "subtitle-after": "para trazabilidad y cumplimiento.",
+      "search-placeholder": "Buscar por descripción, actor, recurso o tipo...",
+      "actor": "Actor",
+      "resource": "Recurso",
+      "date": "Fecha",
+      "empty-title": "No hay eventos de auditoría",
+      "empty-subtitle": "No se encontraron registros para los filtros seleccionados.",
+      "metrics": {
+        "total": "Eventos registrados",
+        "warning": "Advertencias",
+        "critical": "Críticos",
+        "user-management": "Gestión de usuarios"
+      },
+      "filters": {
+        "all-types": "Todos los tipos",
+        "all-severities": "Todas las severidades"
+      },
+      "severity": {
+        "info": "Informativo",
+        "warning": "Advertencia",
+        "critical": "Crítico"
+      },
+      "types": {
+        "user-invited": "Usuario invitado",
+        "user-registered": "Usuario registrado",
+        "user-role-changed": "Cambio de rol",
+        "user-status-changed": "Cambio de estado",
+        "team-created": "Equipo creado",
+        "team-updated": "Equipo actualizado",
+        "team-status-changed": "Cambio de estado de equipo",
+        "alert-resolved": "Alerta resuelta",
+        "anomaly-reviewed": "Anomalía revisada",
+        "anomaly-dismissed": "Anomalía descartada",
+        "preventive-action-created": "Acción preventiva creada",
+        "preventive-action-completed": "Acción preventiva completada",
+        "shift-check-in": "Inicio de turno",
+        "shift-check-out": "Fin de turno"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudieron cargar los eventos de auditoría."
+      }
+    }
+  },
+  "subscription": {
+    "plans": {
+      "basic": {
+        "description": "Plan esencial para clínicas pequeñas que necesitan monitoreo, gestión de personal y control básico de riesgos."
+      },
+      "professional": {
+        "description": "Plan recomendado para clínicas medianas que necesitan operación completa, prevención clínica, auditoría y reportes administrativos."
+      },
+      "enterprise": {
+        "description": "Plan avanzado para hospitales grandes, redes clínicas y organizaciones con múltiples sedes, integraciones y operación a gran escala."
+      },
+      "features": {
+        "common": {
+          "admin-dashboard": "Dashboard administrativo",
+          "staff-management": "Gestión de personal médico",
+          "team-management": "Gestión de equipos clínicos",
+          "supervisor-assignment": "Asignación de supervisores",
+          "vital-signs": "Monitoreo de signos vitales",
+          "doctor-health": "Vista de salud del médico",
+          "shift-management": "Gestión de turnos",
+          "email-invitations": "Invitaciones por correo"
+        },
+        "basic": {
+          "doctors": "Hasta 30 médicos activos",
+          "supervisors": "Hasta 6 supervisores clínicos",
+          "teams": "Hasta 6 equipos clínicos activos",
+          "work-areas": "Hasta 6 áreas de trabajo",
+          "invitations": "Hasta 80 invitaciones mensuales",
+          "risk-assessment": "Evaluación básica de riesgo",
+          "clinical-alerts": "Alertas clínicas esenciales",
+          "reports": "Reportes básicos",
+          "history": "Historial de datos de 45 días",
+          "support": "Soporte estándar"
+        },
+        "professional": {
+          "doctors": "Hasta 120 médicos activos",
+          "supervisors": "Hasta 25 supervisores clínicos",
+          "teams": "Hasta 25 equipos clínicos activos",
+          "work-areas": "Hasta 15 áreas de trabajo",
+          "invitations": "Hasta 350 invitaciones mensuales",
+          "admin-dashboard": "Dashboard administrativo completo",
+          "staff-management": "Gestión completa de personal",
+          "team-management": "Gestión completa de equipos",
+          "risk-assessment": "Evaluación avanzada de riesgo",
+          "clinical-alerts": "Alertas clínicas completas",
+          "anomalies": "Detección de anomalías biométricas",
+          "preventive-actions": "Acciones preventivas",
+          "doctor-recovery": "Seguimiento de recuperación del médico",
+          "reports": "Reportes administrativos completos",
+          "audit": "Auditoría del sistema",
+          "history": "Historial de datos de 180 días",
+          "support": "Soporte prioritario"
+        },
+        "enterprise": {
+          "doctors": "Médicos ilimitados",
+          "supervisors": "Supervisores ilimitados",
+          "teams": "Equipos clínicos ilimitados",
+          "work-areas": "Áreas de trabajo ilimitadas",
+          "invitations": "Invitaciones ilimitadas",
+          "multi-site": "Multi-sede",
+          "admin-dashboard": "Dashboard administrativo avanzado",
+          "staff-management": "Gestión completa de personal",
+          "team-management": "Gestión avanzada de equipos",
+          "vital-signs": "Monitoreo completo de signos vitales",
+          "risk-assessment": "Evaluación avanzada de riesgo",
+          "clinical-alerts": "Alertas clínicas completas",
+          "anomalies": "Detección de anomalías biométricas",
+          "preventive-actions": "Acciones preventivas",
+          "doctor-recovery": "Seguimiento de recuperación del médico",
+          "shift-management": "Gestión completa de turnos",
+          "reports": "Reportes avanzados",
+          "audit": "Auditoría completa",
+          "history": "Historial extendido de 2 años",
+          "integrations": "Integraciones externas",
+          "api": "API empresarial",
+          "hospital-systems": "Integración con sistemas hospitalarios",
+          "payment-gateways": "Integración con pasarelas de pago",
+          "data-export": "Exportación avanzada de datos",
+          "custom-setup": "Configuración personalizada",
+          "support": "Soporte dedicado",
+          "implementation": "Asistencia de implementación"
+        }
+      }
+    },
+    "admin": {
+      "title": "Suscripción",
+      "subtitle-before": "Gestiona el",
+      "subtitle-highlight": "plan activo",
+      "subtitle-after": "del centro médico.",
+      "current-title": "Plan actual",
+      "current-subtitle": "Información de la suscripción activa del centro médico.",
+      "available-title": "Planes disponibles",
+      "available-subtitle": "Puedes simular un cambio de plan para la demo.",
+      "history-title": "Historial de pagos",
+      "history-subtitle": "Sesiones de checkout registradas para la organización.",
+      "active-plan": "Plan activo",
+      "plan-code": "Código del plan",
+      "started-at": "Inicio",
+      "last-checkout": "Último pago",
+      "change-plan": "Cambiar plan",
+      "no-subscription": "No se encontró una suscripción activa.",
+      "no-available-plans": "No hay otros planes disponibles.",
+      "no-history": "No hay historial de pagos registrado.",
+      "metrics": {
+        "current-plan": "Plan actual",
+        "status": "Estado",
+        "monthly-cost": "Costo mensual",
+        "checkout-history": "Pagos registrados"
+      },
+      "billing": {
+        "monthly": "mes",
+        "yearly": "año"
+      },
+      "status": {
+        "active": "Activo",
+        "past-due": "Pago pendiente",
+        "cancelled": "Cancelado"
+      },
+      "checkout-status": {
+        "completed": "Completado",
+        "pending": "Pendiente",
+        "failed": "Fallido"
+      },
+      "table": {
+        "date": "Fecha",
+        "plan": "Plan",
+        "status": "Estado",
+        "session": "Sesión"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "load-failed": "No se pudo cargar la suscripción.",
+        "change-plan-failed": "No se pudo cambiar el plan."
+      }
+    },
+    "registration": {
+      "badge": "Registro de organización",
+      "title": "Crear centro médico",
+      "subtitle": "Completa los datos del centro médico y de la cuenta administradora para activar el plan seleccionado.",
+      "selected-plan": "Plan seleccionado",
+      "month": "mes",
+      "organization-title": "Datos del centro médico",
+      "organization-name": "Nombre del centro médico",
+      "organization-name-placeholder": "Ej: Clínica San Gabriel",
+      "ruc": "RUC",
+      "ruc-placeholder": "20600000000",
+      "organization-phone": "Teléfono del centro",
+      "address": "Dirección",
+      "address-placeholder": "Av. Salud 123, Lima",
+      "admin-title": "Cuenta del administrador",
+      "first-name": "Nombre",
+      "last-name": "Apellido",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "password": "Contraseña",
+      "first-name-placeholder": "Ej: Marcelo",
+      "last-name-placeholder": "Ej: Administrador",
+      "email-placeholder": "admin{'@'}cortisense.com",
+      "phone-placeholder": "+51 999 999 999",
+      "password-placeholder": "Mínimo 6 caracteres",
+      "back-login": "Volver al inicio de sesión",
+      "pay-and-create": "Pagar y crear cuenta",
+      "processing": "Procesando...",
+      "success": "Centro médico y administrador creados correctamente. Redirigiendo al inicio de sesión...",
+      "error": {
+        "plan-not-found": "No se encontró el plan seleccionado.",
+        "load-plans-failed": "No se pudieron cargar los planes.",
+        "create-failed": "No se pudo completar el registro de la organización."
+      }
+    },
+    "checkoutSuccess": {
+      "title": "Pago completado",
+      "subtitle": "El centro médico y la cuenta administradora fueron creados correctamente. Ya puedes iniciar sesión con las credenciales registradas.",
+      "go-login": "Ir al inicio de sesión"
+    },
+    "checkoutCancelled": {
+      "title": "Pago cancelado",
+      "subtitle": "El proceso de pago fue cancelado o no se completó. Puedes volver a intentarlo cuando desees.",
+      "go-login": "Volver al inicio",
+      "try-again": "Intentar nuevamente"
+    },
+    "limits": {
+      "doctors-exceeded": "Has alcanzado el límite de médicos activos permitido por tu plan.",
+      "supervisors-exceeded": "Has alcanzado el límite de supervisores clínicos permitido por tu plan.",
+      "teams-exceeded": "Has alcanzado el límite de equipos activos permitido por tu plan.",
+      "work-areas-exceeded": "Has alcanzado el límite de áreas de trabajo permitido por tu plan.",
+      "invitations-exceeded": "Has alcanzado el límite de invitaciones mensuales permitido por tu plan.",
+      "module-not-available": "Este módulo no está disponible en tu plan actual.",
+      "generic-exceeded": "Has alcanzado el límite permitido por tu plan."
+    }
+  },
+  "settings": {
+    "account": {
+      "title": "Configuración",
+      "subtitle-before": "Gestiona la información de la cuenta de",
+      "subtitle-after": "y sus datos básicos.",
+      "form-title": "Datos de la cuenta",
+      "form-subtitle": "Actualiza la información básica visible dentro de la plataforma.",
+      "first-name": "Nombre",
+      "last-name": "Apellido",
+      "email": "Correo electrónico",
+      "first-name-placeholder": "Ej: Marcelo",
+      "last-name-placeholder": "Ej: Administrador",
+      "email-placeholder": "correo{'@'}cortisense.com",
+      "role": "Rol",
+      "status-label": "Estado",
+      "organization": "Organización",
+      "reset": "Restablecer",
+      "save": "Guardar cambios",
+      "saving": "Guardando...",
+      "success": "Los datos de la cuenta se actualizaron correctamente.",
+      "roles": {
+        "admin": "Administrador hospitalario",
+        "supervisor": "Supervisor clínico",
+        "doctor": "Personal médico"
+      },
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo",
+        "pending": "Pendiente"
+      },
+      "error": {
+        "no-session": "No se encontró una sesión activa.",
+        "update-failed": "No se pudo actualizar la cuenta.",
+        "first-name-required": "El nombre es obligatorio.",
+        "last-name-required": "El apellido es obligatorio.",
+        "email-required": "El correo es obligatorio.",
+        "email-invalid": "Ingresa un correo válido."
+      }
+    }
+  },
+  "common": {
+    "greeting": "Hola",
+    "loading": "Cargando",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "create": "Crear",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "update": "Actualizar",
+    "search": "Buscar",
+    "status": "Estado",
+    "actions": "Acciones",
+    "email": "Correo",
+    "role": "Rol",
+    "name": "Nombre",
+    "area": "Área",
+    "specialty": "Especialidad",
+    "severity": "Severidad",
+    "date": "Fecha",
+    "type": "Tipo",
+    "details": "Detalles",
+    "noData": "No hay datos para mostrar",
+    "all": "Todos",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "completed": "Completado",
+    "pending": "Pendiente",
+    "open": "Abierto",
+    "resolved": "Resuelto",
+    "high": "Alto",
+    "medium": "Medio",
+    "low": "Bajo",
+    "critical": "Crítico",
+    "welcome": "Bienvenido"
+  },
+  "nav": {
+    "dashboard": "Resumen General",
+    "staff": "Personal",
+    "invitations": "Invitaciones",
+    "teams": "Equipos",
+    "subscription": "Suscripción",
+    "reports": "Reportes",
+    "audit": "Auditoría",
+    "settings": "Configuración",
+    "shiftSummary": "Resumen clínico",
     "riskStaff": "Personal en riesgo",
+    "clinicalAlerts": "Alertas clínicas",
     "alerts": "Alertas clínicas",
     "anomalies": "Anomalías",
     "preventiveActions": "Acciones preventivas",
-    "myStatus": "Mi estado de salud",
+    "shifts": "Turnos",
+    "myStatus": "Mi salud",
     "myVitals": "Mis signos vitales",
     "myShifts": "Mis turnos",
-    "myRecovery": "Mi recuperación"
+    "myRecovery": "Mi recuperación",
+    "signOut": "Cerrar sesión"
   },
-  "common": {
-    "loading": "Cargando...",
-    "save": "Guardar",
-    "cancel": "Cancelar",
-    "edit": "Editar",
-    "delete": "Eliminar",
-    "create": "Crear",
-    "search": "Buscar",
-    "filter": "Filtrar",
-    "actions": "Acciones",
-    "status": "Estado",
-    "date": "Fecha",
-    "name": "Nombre",
-    "email": "Correo electrónico",
-    "role": "Rol",
-    "area": "Área",
-    "specialty": "Especialidad",
-    "yes": "Sí",
-    "no": "No",
-    "active": "Activo",
-    "inactive": "Inactivo",
-    "pending": "Pendiente",
-    "accepted": "Aceptado",
-    "resolved": "Resuelto",
-    "acknowledged": "Confirmado",
-    "viewDetails": "Ver detalles",
-    "noData": "No hay datos disponibles",
-    "error": "Error",
-    "success": "Éxito",
-    "confirm": "Confirmar",
-    "close": "Cerrar",
-    "logout": "Cerrar sesión",
-    "greeting": "Bienvenido",
-    "greetingFull": "Bienvenido, {name}",
-    "today": "Hoy",
-    "severity": "Severidad",
-    "type": "Tipo",
-    "message": "Mensaje",
-    "phone": "Teléfono",
-    "documentNumber": "N° Documento",
-    "riskLevel": "Nivel de riesgo",
-    "fatigueLevel": "Nivel de fatiga",
-    "required": "Este campo es requerido",
-    "invalidEmail": "Correo electrónico inválido",
-    "back": "Volver",
-    "lastName": "Apellido",
-    "searchByNameOrEmail": "Buscar por nombre o correo...",
-    "searchByEmail": "Buscar por correo...",
-    "allAreas": "Todas las áreas",
-    "allRisks": "Todos los riesgos",
-    "allStatuses": "Todos los estados",
-    "allRoles": "Todos los roles",
-    "noResults": "Sin resultados",
-    "notAvailable": "—",
-    "month": "mes",
-    "current": "Actual",
-    "confirmDelete": "¿Eliminar a {name}?",
-    "confirmRevoke": "¿Revocar invitación de {email}?",
-    "validEmail": "Ingresa un correo válido.",
-    "none": "Ninguno",
-    "export": "Exportar",
-    "minutes": "minutos",
-    "start": "Iniciar",
-    "complete": "Completar",
-    "register": "Registrar",
-    "viewAll": "Ver todas",
-    "viewDetail": "Ver detalle",
-    "dateStart": "Fecha inicio",
-    "dateEnd": "Fecha fin",
-    "areaOptional": "Área (opcional)",
-    "allTypes": "Todos los tipos",
-    "allSeverities": "Todas las severidades",
-    "allModules": "Todos los módulos",
-    "allParameters": "Todos los parámetros",
-    "staff": "Personal",
-    "parameter": "Parámetro",
-    "value": "Valor",
-    "alert": "Alerta",
-    "registered": "Registrado",
-    "outOfRange": "Fuera de rango",
-    "normalRange": "Rango normal",
-    "unknown": "Desconocido",
-    "noMatchingResults": "Sin resultados coincidentes.",
-    "doctor": "médico",
-    "doctors": "médicos",
-    "supervisor": "supervisor",
-    "supervisors": "supervisores",
-    "criticalLower": "crítico",
-    "highLower": "alto",
-    "minute": "minuto",
-    "hour": "hora",
-    "hours": "horas",
-    "download": "Descargar",
-    "generated": "Generado",
-    "select": "Seleccionar",
-    "noHistory": "Sin historial.",
-    "created": "Creado"
-  },
-  "roles": {
-    "admin": "Administrador",
-    "clinical_supervisor": "Supervisor Clínico",
-    "medical_staff": "Personal Médico"
-  },
-  "risk": {
-    "low": "Bajo",
-    "moderate": "Moderado",
-    "high": "Alto",
-    "critical": "Crítico"
-  },
-  "auth": {
-    "signIn": "Iniciar sesión",
-    "signUp": "Registrarse",
-    "email": "Correo electrónico",
-    "emailPlaceholder": "correo electronico",
-    "password": "Contraseña",
-    "passwordPlaceholder": "Tu contraseña",
-    "firstName": "Nombre",
-    "firstNamePlaceholder": "Tu nombre",
-    "lastName": "Apellido",
-    "lastNamePlaceholder": "Tu apellido",
-    "workArea": "Área de trabajo",
-    "workAreaPlaceholder": "Ej: Emergencia, UCI, Pediatría",
-    "specialtyPlaceholder": "Ej: Cardiología, Pediatría",
-    "noAccount": "¿No tienes cuenta?",
-    "haveAccount": "¿Ya tienes cuenta?",
-    "registerLink": "Regístrate con invitación",
-    "loginLink": "Inicia sesión",
-    "loginError": "Credenciales incorrectas. Verifica tu correo y contraseña.",
-    "registerError": "No se encontró una invitación pendiente para este correo.",
-    "registerSuccess": "Registro exitoso. Ahora puedes iniciar sesión.",
-    "loginSubtitle": "Ingresa tus credenciales para acceder a la plataforma.",
-    "registerSubtitle": "Completa tu perfil para activar tu cuenta.",
-    "heroTitle": "Monitoreo biométrico para el bienestar del personal médico",
-    "heroDesc": "CortiSense analiza cortisol, frecuencia cardíaca y fatiga para prevenir el burnout médico.",
-    "registerTitle": "Activa tu cuenta",
-    "emailInvited": "Correo de invitacion",
-    "newPassword": "Nueva contraseña",
-    "confirmPassword": "Confirmar contraseña",
-    "passwordsNoMatch": "Las contraseñas no coinciden",
-    "howItWorks": "¿Cómo funciona?",
-    "inviteOnly": "Solo puedes registrarte si un administrador te ha enviado una invitación a tu correo electrónico.",
-    "secureBiometrics": "Tus datos biométricos están protegidos bajo estándares de seguridad médica.",
-    "goToLogin": "Iniciar sesión →"
-  },
-  "dashboard": {
-    "admin": {
-      "title": "Dashboard Administrativo",
-      "subtitle": "Resumen institucional de CortiSense",
-      "totalStaff": "Total personal",
-      "activeAlerts": "Alertas activas",
-      "highRisk": "En riesgo alto",
-      "activeSubscription": "Suscripción activa",
-      "recentActivity": "Actividad reciente",
-      "staffDistribution": "Distribución por área",
-      "riskSummary": "Resumen de riesgo",
-      "highOrCritical": "Nivel alto o crítico",
-      "criticalAlerts": "{count} críticas",
-      "fatigueEvolution7d": "Evolución de Fatiga — 7 días",
-      "activeStaffAverage": "Promedio del personal activo",
-      "currentStaffStatus": "Estado actual del personal",
-      "topFatigue": "Top 5 — Mayor nivel de fatiga",
-      "viewAllStaff": "Ver todo el personal",
-      "chartAverageFatigue": "Fatiga promedio (%)",
-      "registeredStaff": "De {count} registrados"
+  "pages": {
+    "adminDashboard": {
+      "title": "Resumen General",
+      "subtitle": "Visión general de operación clínica, equipos y riesgo del personal."
     },
-    "supervisor": {
-      "title": "Resumen del turno",
-      "subtitle": "Estado actual del personal a tu cargo",
-      "totalMonitored": "Personal monitoreado",
-      "pendingAlerts": "Alertas pendientes",
-      "criticalCases": "Casos críticos",
-      "actionsToday": "Acciones hoy",
-      "atRiskNow": "En riesgo ahora",
-      "staffBreakdown": "{doctors} médicos · {supervisors} supervisores",
-      "criticalHighBreakdown": "{critical} crítico · {high} alto",
-      "unattended": "Sin atender",
-      "restsAndReassignments": "Descansos y relevos",
-      "teamFatigue24h": "Fatiga del equipo — Últimas 24h",
-      "assignedDoctorsAverage": "Promedio de todos los médicos asignados",
-      "currentFatigueByDoctor": "Fatiga actual por médico",
-      "recentAlerts": "Alertas recientes",
-      "noPendingAlerts": "No hay alertas pendientes.",
-      "attend": "Atender",
-      "ago": "hace",
-      "chartAverageFatigue": "Fatiga promedio (%)",
-      "criticalThreshold": "Umbral crítico"
+    "staff": {
+      "title": "Gestión de personal",
+      "subtitle": "Administra doctores, supervisores, áreas y especialidades."
+    },
+    "invitations": {
+      "title": "Gestión de invitaciones",
+      "subtitle": "Envía y controla invitaciones para nuevos usuarios."
+    },
+    "teams": {
+      "title": "Gestión de equipos",
+      "subtitle": "Organiza equipos clínicos por área y supervisor."
+    },
+    "subscription": {
+      "title": "Suscripción",
+      "subtitle": "Revisa plan actual, límites y sesiones de checkout."
+    },
+    "reports": {
+      "title": "Reportes administrativos",
+      "subtitle": "Indicadores de riesgo, operación y uso del sistema."
+    },
+    "audit": {
+      "title": "Auditoría y cumplimiento",
+      "subtitle": "Trazabilidad de acciones relevantes del sistema."
+    },
+    "supervisorDashboard": {
+      "title": "Dashboard del supervisor",
+      "subtitle": "Riesgo clínico, alertas y actividad de tu equipo."
+    },
+    "riskStaff": {
+      "title": "Personal en riesgo",
+      "subtitle": "Prioriza usuarios con fatiga o riesgo elevado."
+    },
+    "clinicalAlerts": {
+      "title": "Alertas clínicas",
+      "subtitle": "Gestiona eventos clínicos activos y resueltos."
+    },
+    "anomalies": {
+      "title": "Anomalías biométricas",
+      "subtitle": "Revisa lecturas fuera de umbral y su severidad."
+    },
+    "preventiveActions": {
+      "title": "Acciones preventivas",
+      "subtitle": "Crea y da seguimiento a acciones de recuperación."
+    },
+    "supervisorShifts": {
+      "title": "Turnos del equipo",
+      "subtitle": "Supervisa turnos programados, activos y completados."
+    },
+    "doctorHealth": {
+      "title": "Mi estado de salud",
+      "subtitle": "Resumen actual de bienestar, fatiga y sensores."
+    },
+    "doctorVitals": {
+      "title": "Mis signos vitales",
+      "subtitle": "Historial biométrico registrado durante la operación."
+    },
+    "doctorShifts": {
+      "title": "Mis turnos",
+      "subtitle": "Gestiona check-in y check-out de tus turnos asignados."
+    },
+    "doctorRecovery": {
+      "title": "Mi recuperación",
+      "subtitle": "Acciones asignadas y progreso de recuperación."
+    },
+    "settings": {
+      "title": "Configuración de cuenta",
+      "subtitle": "Actualiza tus datos personales y acceso."
+    },
+    "onboarding": {
+      "title": "Elige tu plan CortiSense",
+      "subtitle": "Selecciona el plan para iniciar la configuración de tu organización."
+    },
+    "registerOrg": {
+      "title": "Registrar organización",
+      "subtitle": "Completa los datos de la institución y del administrador."
+    },
+    "checkoutSuccess": {
+      "title": "Checkout completado",
+      "subtitle": "La suscripción fue activada correctamente."
+    },
+    "checkoutCancelled": {
+      "title": "Checkout cancelado",
+      "subtitle": "La operación fue cancelada. Puedes elegir un plan nuevamente."
     }
   },
-  "staff": {
-    "title": "Personal Médico",
-    "subtitle": "Gestión de personal registrado en CortiSense",
-    "new": "Nuevo personal",
-    "edit": "Editar perfil",
-    "detail": "Detalle del perfil",
-    "deleteConfirm": "¿Estás seguro de eliminar este perfil?",
-    "staffRole": "Tipo de personal",
-    "assignedDevice": "Dispositivo asignado",
-    "noDevice": "Sin dispositivo",
-    "totalStaff": "Total personal",
+  "metrics": {
     "activeStaff": "Personal activo",
-    "riskStaff": "Personal en riesgo",
-    "withoutDevice": "Sin dispositivo",
-    "medicalStaff": "Personal médico",
-    "clinicalSupervisor": "Supervisor clínico",
-    "fatigue": "Fatiga",
-    "editDialog": "Editar — {name}",
-    "riskLevel": "Nivel de riesgo",
-    "deleteCascadeNotice": "También se eliminarán la invitación, usuario, dispositivo, métricas, turnos y planes asociados.",
-    "deleteError": "No se pudo eliminar el perfil completo. Verifica que el mock server esté activo."
-  },
-  "invitations": {
-    "title": "Invitaciones",
-    "subtitle": "Gestión de accesos por invitación",
-    "new": "Nueva invitación",
-    "send": "Enviar invitación",
-    "resend": "Reenviar",
-    "revoke": "Revocar",
-    "emailLabel": "Correo del invitado",
-    "roleLabel": "Rol asignado",
-    "createdAt": "Fecha de envío",
-    "successMsg": "Invitación enviada correctamente.",
-    "errorMsg": "Error al enviar la invitación.",
-    "statusPending": "Pendiente",
-    "statusAccepted": "Aceptada",
-    "assignedRole": "Rol asignado",
-    "guestEmail": "Correo electrónico del invitado",
-    "assignRole": "Rol a asignar",
-    "noInvitations": "Sin invitaciones",
-    "sentAt": "Fecha"
-  },
-  "subscription": {
-    "title": "Suscripción",
-    "subtitle": "Plan actual y gestión de tu suscripción institucional",
-    "currentPlan": "Plan actual",
-    "renewalAt": "Próxima renovación",
-    "changePlan": "Cambiar plan",
-    "plans": {
-      "starter": "Starter",
-      "clinical": "Clínico",
-      "enterprise": "Empresarial"
-    },
-    "features": {
-      "upTo10": "Hasta 10 usuarios",
-      "basicDashboard": "Dashboard básico",
-      "fatigueAlerts": "Alertas de fatiga",
-      "invitationManagement": "Gestión de invitaciones",
-      "advancedReports": "Reportes avanzados",
-      "fullAudit": "Auditoría completa",
-      "prioritySupport": "Soporte prioritario",
-      "upTo50": "Hasta 50 usuarios",
-      "fullDashboard": "Dashboard completo",
-      "realTimeAlerts": "Alertas en tiempo real",
-      "operationalReports": "Reportes operativos",
-      "unlimitedUsers": "Usuarios ilimitados",
-      "advancedReportsPdf": "Reportes avanzados + PDF",
-      "dedicated247Support": "Soporte 24/7 dedicado"
-    },
-    "activeSince": "Activo desde el",
-    "activePlan": "Plan Activo",
-    "staff": "Personal",
     "supervisors": "Supervisores",
-    "devices": "Dispositivos IoT",
-    "billing": "Facturación",
-    "comparePlans": "Comparar Planes",
-    "comparePlansSubtitle": "Elige el plan que mejor se adapte a las necesidades de tu institución.",
-    "current": "Plan Actual",
-    "noSubscription": "No se encontró información de suscripción.",
-    "changeConfirm": "¿Deseas cambiar tu plan a \"{plan}\"? Esto ajustará tu facturación en el próximo ciclo.",
-    "changeRequest": "✅ Solicitud de cambio al Plan {plan} enviada. Tu equipo de soporte te contactará pronto.",
-    "perMonth": "/mes",
-    "planDesc": {
-      "starter": "Para clínicas pequeñas que inician con monitoreo biométrico.",
-      "clinical": "Para hospitales medianos con equipos clínicos activos.",
-      "enterprise": "Para redes hospitalarias con auditoría y soporte 24/7 dedicado."
-    },
-    "planButtons": {
-      "starter": "Cambiar a Starter",
-      "enterprise": "Actualizar a Empresarial"
-    },
-    "hospitalName": "Hospital",
-    "status": "Estado",
-    "startedAt": "Fecha de inicio",
-    "staffUsed": "Personal usado",
-    "staffLimit": "Límite de personal"
-  },
-  "reports": {
-    "title": "Reportes Institucionales",
-    "subtitle": "Genera y descarga reportes operativos y de cumplimiento",
-    "generate": "Generar reporte",
-    "type": "Tipo de reporte",
-    "period": "Período",
-    "area": "Área",
-    "generatedAt": "Generado el",
-    "generatedBy": "Generado por",
-    "types": {
-      "fatigue": "Fatiga y bienestar",
-      "anomaly": "Anomalías biométricas",
-      "compliance": "Cumplimiento institucional"
-    },
-    "startDate": "Fecha inicio",
-    "endDate": "Fecha fin",
-    "areaOptional": "Área (opcional)",
-    "allAreas": "Todas las áreas",
-    "generating": "Generando...",
-    "fatigueIncidentsByArea": "Incidentes de fatiga por área",
-    "last30Days": "Últimos 30 días",
-    "recentReports": "Reportes recientes",
-    "noReports": "Sin reportes generados.",
-    "actions": "Acciones",
-    "downloadPdfMessage": "✅ Descargando PDF del reporte \"{type}\"...",
-    "chartDataset": "Incidentes de fatiga",
-    "week": "Semana"
-  },
-  "audit": {
-    "title": "Auditoría del Sistema",
-    "subtitle": "Trazabilidad completa de todas las acciones del sistema",
-    "action": "Acción",
-    "module": "Módulo",
-    "userId": "Actor",
-    "timestamp": "Fecha y hora",
-    "description": "Descripción",
-    "severity": {
-      "critical": "Crítica",
-      "warning": "Advertencia",
-      "info": "Informativa",
-      "error": "Error"
-    },
-    "export": "Exportar log",
-    "exportLog": "Exportar log",
-    "enterpriseModule": "Módulo de Auditoría Empresarial",
-    "enterpriseModuleDesc": "Registra todas las acciones críticas del sistema para trazabilidad institucional completa.",
-    "eventsToday": "Eventos hoy",
-    "criticalEvents": "Eventos críticos",
-    "executedActions": "Acciones ejecutadas",
-    "involvedActors": "Actores involucrados",
-    "searchPlaceholder": "Buscar evento, actor...",
-    "allSeverities": "Todas las criticidades",
-    "allModules": "Todos los módulos",
-    "criticality": "Criticidad",
-    "noLogs": "Sin registros.",
-    "modules": {
-      "iam": "IAM",
-      "incident-alert-management": "Alertas",
-      "clinical-risk": "Riesgo Clínico",
-      "staff-recovery": "Recuperación",
-      "shift-coordination": "Turnos",
-      "audit-compliance": "Auditoría",
-      "subscriptions": "Suscripción"
-    },
-    "actions": {
-      "invitation_created": "Invitación enviada",
-      "invitation_accepted": "Invitación aceptada",
-      "invitation_revoked": "Invitación revocada",
-      "user_registered_by_invitation": "Registro por invitación",
-      "user_created": "Usuario creado",
-      "user_updated": "Perfil actualizado",
-      "user_deleted": "Usuario eliminado",
-      "medical_staff_deleted": "Personal médico eliminado",
-      "alert_acknowledged": "Alerta confirmada",
-      "alert_resolved": "Alerta resuelta",
-      "alert_created": "Alerta creada",
-      "preventive_action_registered": "Acción preventiva registrada",
-      "preventive_action_created": "Acción preventiva creada",
-      "recovery_plan_accepted": "Plan de descanso aceptado",
-      "recovery_plan_rejected": "Plan de descanso rechazado",
-      "recovery_plan_created": "Plan de descanso creado",
-      "login": "Inicio de sesión",
-      "logout": "Cierre de sesión",
-      "report_generated": "Reporte generado"
-    },
-    "entity": "Entidad",
-    "ip": "IP",
-    "details": {
-      "invitationCreated": "Invitación creada para {email}",
-      "profileDeleted": "Perfil eliminado: {email}",
-      "registrationAccepted": "Registro aceptado para {email} con rol {role}",
-      "alertAcknowledged": "Alerta {id} confirmada por supervisor",
-      "preventiveActionRegistered": "Acción preventiva registrada para {staff}. Tipo: {type}",
-      "reportGenerated": "Reporte generado: {title}",
-      "recoveryPlanAccepted": "Plan de descanso {id} aceptado por el médico {name}.",
-      "restPlanAcceptedId": "Plan de descanso aceptado. ID: {id}",
-      "restPlanRejectedId": "Plan de descanso rechazado. ID: {id}",
-      "actionWithNotes": "Acción: {type}. {notes}"
-    }
-  },
-  "alerts": {
-    "title": "Alertas Clínicas",
-    "subtitle": "Alertas de riesgo biométrico del personal",
-    "acknowledge": "Confirmar alerta",
-    "resolve": "Resolver",
-    "noAlerts": "No hay alertas activas",
-    "severity": {
-      "low": "Baja",
-      "moderate": "Moderada",
-      "high": "Alta",
-      "critical": "Crítica"
-    },
-    "status": {
-      "pending": "Pendiente",
-      "acknowledged": "Confirmada",
-      "resolved": "Resuelta"
-    },
-    "criticalPlural": "Críticas",
-    "highPlural": "Altas",
-    "resolvedToday": "Resueltas hoy",
-    "searchPlaceholder": "Buscar alerta...",
-    "allSeverities": "Todas las severidades",
-    "allStatuses": "Todos los estados",
-    "noMatchingAlerts": "No hay alertas que coincidan.",
-    "acknowledgeShort": "Confirmar",
-    "resolveShort": "Resolver"
-  },
-  "preventiveActions": {
-    "title": "Acciones Preventivas",
-    "subtitle": "Acciones del supervisor ante alertas clínicas",
-    "new": "Nueva acción",
-    "type": "Tipo de acción",
-    "types": {
-      "rest_recommendation": "Recomendación de descanso",
-      "shift_reassignment": "Reasignación de turno",
-      "medical_evaluation": "Evaluación médica",
-      "activity_reduction": "Reducción de actividad",
-      "urgent_rest": "Descanso urgente",
-      "urgent_rest_2h": "Descanso urgente (2h)"
-    },
-    "status": {
-      "pending": "Pendiente",
-      "in_progress": "En progreso",
-      "completed": "Completada"
-    },
-    "registerManual": "Registrar acción manual",
-    "executedToday": "Ejecutadas hoy",
-    "pending": "Pendientes",
-    "assignedRests": "Descansos asignados",
-    "rescheduledShifts": "Turnos reprogramados",
-    "actionsHistory": "Historial de acciones",
-    "searchPlaceholder": "Buscar...",
-    "allTypes": "Todos los tipos",
-    "noActions": "No hay acciones registradas.",
-    "start": "Iniciar",
-    "complete": "Completar",
-    "dialogTitle": "Registrar acción preventiva",
-    "affectedStaff": "Personal afectado *",
-    "selectDoctor": "Seleccionar médico...",
-    "relatedAlert": "Alerta relacionada (opcional)",
-    "noRelatedAlert": "Ninguna",
-    "actionType": "Tipo de acción *",
-    "additionalNotes": "Notas adicionales",
-    "notesPlaceholder": "Describe la razón y contexto de la acción...",
-    "actionHint": "Esta acción creará automáticamente un plan de descanso visible para el médico.",
-    "registerAction": "Registrar acción"
-  },
-  "riskStaff": {
-    "title": "Personal en Riesgo",
-    "subtitle": "Personal con niveles de riesgo elevados",
-    "fatigueScore": "Puntuación de fatiga",
-    "lastRecord": "Último registro",
-    "moduleLabel": "Módulo CortiSense",
-    "immediateAttention": "{count} médico requiere atención inmediata. | {count} médicos requieren atención inmediata.",
-    "reviewBefore": "Revisa el estado antes de las próximas 2 horas.",
-    "shiftHours": "Horas en guardia",
-    "heartRateShort": "Frec. Cardíaca",
-    "fatigue": "Fatiga",
-    "assignRest": "Asignar descanso",
-    "acceptableLevels": "Personal en niveles aceptables",
-    "detail": "Ver detalle",
-    "restDialogTitle": "Asignar descanso preventivo",
-    "restDialogText": "Selecciona la duración del descanso preventivo para",
-    "min15": "15 minutos",
-    "min30": "30 minutos",
-    "hour1": "1 hora",
-    "hour2Urgent": "2 horas (Urgente)",
-    "contactMessage": "Contactando a {name}...",
-    "restNotes": "Descanso de {minutes} minutos asignado.",
-    "restAssignedMessage": "✅ Descanso de {minutes} minutos asignado a {name}. Se ha notificado al médico y registrado la acción.",
-    "immediateAttentionOne": "{count} médico requiere atención inmediata.",
-    "immediateAttentionMany": "{count} médicos requieren atención inmediata."
-  },
-  "anomalies": {
-    "title": "Anomalías Biométricas",
-    "subtitle": "Valores fuera de rango detectados",
-    "heartRate": "Frecuencia cardíaca",
-    "hrv": "Variabilidad cardíaca (HRV)",
-    "cortisol": "Cortisol",
-    "sleepHours": "Horas de sueño",
-    "stressLevel": "Nivel de estrés",
-    "searchPlaceholder": "Buscar por personal...",
-    "allParameters": "Todos los parámetros",
-    "staff": "Personal",
-    "parameter": "Parámetro",
-    "value": "Valor",
-    "normalRange": "Rango normal",
-    "alert": "Alerta",
-    "registered": "Registrado",
-    "outOfRange": "Fuera de rango",
-    "noAnomalies": "Sin anomalías detectadas.",
-    "unknown": "Desconocido"
-  },
-  "vitals": {
-    "title": "Mis Signos Vitales",
-    "subtitle": "Historial de tus datos biométricos",
-    "heartRate": "Frecuencia cardíaca",
-    "hrv": "HRV",
-    "cortisol": "Cortisol",
-    "sleep": "Sueño",
-    "stress": "Estrés",
-    "fatigue": "Fatiga",
-    "steps": "Pasos",
-    "activity": "Actividad",
-    "recordedAt": "Registrado el",
-    "normal": "Normal",
-    "hours": "horas",
-    "recordsHistory": "Historial de registros",
-    "noRecordsHint": "Sin registros. Entra a Mi Estado de Salud y pulsa Sincronizar/Vincular dispositivo."
-  },
-  "status": {
-    "title": "Mi Estado de Salud",
-    "subtitle": "Resumen de tu bienestar actual",
-    "currentRisk": "Riesgo actual",
-    "lastUpdate": "Última actualización",
-    "myDevice": "Mi dispositivo",
-    "battery": "Batería",
-    "noDevice": "Sin dispositivo asignado",
-    "loadingClinical": "Cargando datos clínicos...",
-    "profileNotFound": "Perfil médico no encontrado",
-    "profileMissing": "Tu usuario existe, pero aún no tiene perfil clínico asociado.",
-    "highFatigue": "Nivel de fatiga {level} ({percent}%).",
-    "supervisorNotified": "Tu supervisor ha sido notificado. Considera solicitar un descanso preventivo.",
-    "viewRecommendations": "Ver recomendaciones →",
-    "normalHeartRate": "Normal: 60–100 bpm",
-    "normalCortisol": "Normal: 100–600 nmol/L",
-    "belowThreshold": "🔴 Por debajo del umbral",
-    "normalRange": "✅ En rango normal",
-    "metricsLast8h": "Mis métricas — Últimas 8 horas",
-    "noBiometricRecords": "Sin registros biométricos. Sincroniza tu dispositivo para generar métricas.",
-    "deviceStatus": "Estado del dispositivo IoT",
-    "deviceId": "ID",
-    "connected": "Conectado",
-    "linkDevice": "Vincular dispositivo",
-    "sync": "Sincronizar",
-    "syncing": "Sincronizando...",
-    "noDeviceHint": "Usa “Vincular dispositivo” para simular un CortiWatch y cargar métricas iniciales.",
-    "lastSync": "Última sincronización",
-    "firmware": "Firmware",
-    "minutesAgo": "hace {minutes} min",
-    "never": "Nunca"
-  },
-  "shifts": {
-    "title": "Mis Turnos",
-    "subtitle": "Calendario y registro de guardias",
-    "date": "Fecha",
-    "startTime": "Inicio",
-    "endTime": "Fin",
-    "type": "Tipo",
-    "area": "Área",
-    "hoursWorked": "Horas trabajadas",
-    "types": {
-      "morning": "Mañana",
-      "night": "Noche",
-      "afternoon": "Tarde"
-    },
-    "status": {
-      "active": "En curso",
-      "scheduled": "Programado",
-      "completed": "Completado"
-    },
-    "thisMonth": "Turnos este mes",
-    "workedHours": "Horas trabajadas",
-    "nightShifts": "Guardias nocturnas",
-    "allShifts": "Todos los turnos",
-    "allStatuses": "Todos los estados",
-    "noShifts": "Sin turnos registrados."
-  },
-  "recovery": {
-    "title": "Mi Recuperación",
-    "subtitle": "Plan de recuperación y recomendaciones",
-    "startDate": "Inicio",
-    "endDate": "Fin",
-    "type": "Tipo",
-    "recommendations": "Recomendaciones",
-    "noActivePlan": "No tienes un plan de recuperación activo",
-    "types": {
-      "rest": "Descanso preventivo",
-      "medical_leave": "Licencia médica",
-      "medical_leave_short": "Licencia"
-    },
-    "wellnessOptimal": "Tu nivel de bienestar es óptimo. ¡Sigue así!",
-    "activePlan": "Plan activo",
-    "progress": "Progreso de recuperación",
-    "plansHistory": "Historial de planes",
-    "noHistory": "Sin historial.",
-    "urgentRestFallback": "Descanso urgente asignado. Tu supervisor ha asignado un descanso preventivo debido a indicadores críticos de fatiga.",
-    "estimatedEnd": "Fin estimado",
-    "accept": "Aceptar",
-    "reject": "Rechazar",
-    "rejectConfirm": "¿Estás seguro de que deseas rechazar el plan de descanso asignado?",
-    "status": {
-      "active": "Activo",
-      "accepted": "Aceptado",
-      "rejected": "Rechazado",
-      "completed": "Completado"
-    },
-    "defaultRecs": [
-      "Descansar al menos 8 horas por noche.",
-      "Mantener una alimentación balanceada.",
-      "Realizar actividad física ligera.",
-      "Practicar técnicas de relajación.",
-      "Hidratarse adecuadamente.",
-      "Reducir el uso de pantallas antes de dormir."
-    ]
-  },
-  "settings": {
-    "title": "Configuración",
-    "subtitle": "Gestión de tu cuenta",
-    "personalInfo": "Información personal",
-    "security": "Seguridad",
-    "changePassword": "Cambiar contraseña",
-    "currentPassword": "Contraseña actual",
-    "newPassword": "Nueva contraseña",
-    "saveChanges": "Guardar cambios",
-    "saved": "Cambios guardados correctamente",
-    "lastName": "Apellido",
-    "confirmNewPassword": "Confirmar nueva contraseña",
-    "passwordsNoMatch": "Las contraseñas no coinciden.",
-    "updatePassword": "Actualizar contraseña",
-    "passwordUpdated": "Contraseña actualizada correctamente.",
-    "notifications": "Notificaciones",
-    "clinicalAlerts": "Alertas clínicas",
-    "clinicalAlertsDesc": "Recibir notificaciones de alertas biométricas.",
-    "shiftReminder": "Recordatorio de turnos",
-    "shiftReminderDesc": "Notificar 30 minutos antes del inicio del turno.",
-    "weeklyReports": "Reportes semanales",
-    "weeklyReportsDesc": "Recibir resumen semanal por correo.",
-    "requiredName": "Nombre y apellido son obligatorios.",
-    "profileError": "No se pudo actualizar el perfil. Verifica que el mock server esté activo.",
-    "passwordError": "No se pudo actualizar la contraseña."
-  },
-  "app": {
-    "adminMenu": "Menú Administrativo",
-    "supervisorMenu": "Menú Supervisor",
-    "staffMenu": "Menú Personal",
-    "topbarSubtitle": "Monitoreo preventivo y gestión operativa del personal médico.",
-    "sidebarTagline": "Health Monitoring"
-  },
-  "riskLabels": {
-    "criticalLevel": "🔴 Nivel Crítico",
-    "highLevel": "🟠 Nivel Alto",
-    "moderateLevel": "🟡 Nivel Moderado",
-    "lowLevel": "🟢 Nivel Bajo"
-  },
-  "areas": {
-    "emergency": "Emergencia",
-    "icu": "UCI",
-    "pediatrics": "Pediatría",
-    "cardiology": "Cardiología",
-    "surgery": "Cirugía",
-    "obstetrics": "Obstetricia",
-    "general": "General"
-  },
-  "alertsText": {
-    "fatigueCritical": "Fatiga crítica detectada — {name} ({percent}%)",
-    "criticalRisk": "Nivel de riesgo crítico detectado — {name} ({percent}%)",
-    "highCortisol": "Niveles elevados de cortisol por 3 días consecutivos.",
-    "lowHrv": "Variabilidad de frecuencia cardíaca por debajo del rango normal.",
-    "highHeartRate": "Frecuencia cardíaca elevada — 112 bpm sostenida por más de 2 horas."
-  },
-  "recommendationText": {
-    "rest8": "Descansar al menos 8 horas por noche.",
-    "noNightShifts3": "No realizar guardias nocturnas en 3 días.",
-    "lightActivityOnly": "Solo actividad física ligera.",
-    "hydrate": "Hidratarse correctamente.",
-    "completeRest7": "Descanso completo durante 7 días.",
-    "medicalEvaluationDay3": "Evaluación médica el día 3.",
-    "noClinicalDuties": "Sin obligaciones clínicas.",
-    "hydrateEat": "Hidratarse y alimentarse correctamente.",
-    "avoidIntenseActivity": "Evitar actividad física intensa.",
-    "noReturnWithoutEvaluation": "No reingresar al turno sin evaluación médica."
-  },
-  "specialties": {
-    "cardiology": "Cardiología",
-    "internalMedicine": "Medicina Interna",
-    "pediatrics": "Pediatría",
-    "generalSurgery": "Cirugía General",
-    "gynecology": "Ginecología"
-  },
-  "notes": {
-    "rest8BeforeNextShift": "Se recomiendan 8 horas de descanso antes del siguiente turno.",
-    "shiftReassignedAvoidOverload": "Turno reasignado para evitar sobrecarga.",
-    "referredStressEvaluation": "Derivado a evaluación de estrés médico.",
-    "urgentRest2hCritical": "Descanso urgente de 2 horas asignado por indicadores críticos."
+    "activeTeams": "Equipos activos",
+    "highRisk": "Alto riesgo",
+    "averageFatigue": "Fatiga promedio",
+    "activeAlerts": "Alertas activas",
+    "pendingActions": "Acciones pendientes",
+    "completedActions": "Acciones completadas",
+    "scheduledShifts": "Turnos programados",
+    "completedShifts": "Turnos completados"
   }
 }
