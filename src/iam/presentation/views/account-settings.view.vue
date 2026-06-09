@@ -25,7 +25,7 @@
             <div class="readonly-item"><span>Estado</span><strong>Activo</strong></div>
             <div class="readonly-item"><span>Organización</span><strong>#{{ authStore.user?.organizationId || '—' }}</strong></div>
           </div>
-          <div class="form-actions"><button type="button" class="btn ghost" @click="resetProfile"><i class="pi pi-refresh"></i>Restablecer</button><button class="btn primary" type="submit"><i class="pi pi-check-circle"></i>Guardar cambios</button></div>
+          <div class="form-actions"><button class="btn primary" type="submit"><i class="pi pi-check-circle"></i>Guardar cambios</button></div>
         </form>
       </article>
     </section>
