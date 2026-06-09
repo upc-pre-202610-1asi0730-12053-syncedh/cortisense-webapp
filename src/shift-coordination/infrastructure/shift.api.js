@@ -1,18 +1,10 @@
-/**
- * @file shift.api.js + shift.assembler.js + shift.store.js
- * @description Infraestructura y store para shift-coordination.
- */
-import { http } from '../../shared/infrastructure/http.js'
-import { Shift } from '../domain/model/shift.entity.js'
-
-const SHIFTS_PATH = import.meta.env.VITE_SHIFTS_ENDPOINT_PATH
-
+import { listResource, createResource, patchResource } from '../../shared/infrastructure/api.service.js'
 export const shiftApi = {
-  getByStaff: (staffId) =>
-    http.get(`${SHIFTS_PATH}?medicalStaffId=${staffId}`).then(r => r.data),
-  getAll: () => http.get(SHIFTS_PATH).then(r => r.data)
-}
-
-export const ShiftAssembler = {
-  toEntity: (r) => new Shift(r)
+  teams: () => listResource('careTeams'),
+  members: () => listResource('teamMembers'),
+  shifts: params => listResource('shiftRecords', params),
+  createTeam: payload => createResource('careTeams', payload),
+  createMember: payload => createResource('teamMembers', payload),
+  createShift: payload => createResource('shiftRecords', payload),
+  patchShift: (id, payload) => patchResource('shiftRecords', id, payload)
 }

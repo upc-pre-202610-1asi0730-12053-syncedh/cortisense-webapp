@@ -1,0 +1,2 @@
+<template><AuthLayout><main class="auth-card"><div class="card-header"><h2>{{ $t('pages.checkoutCancelled.title') }}</h2><p>{{ $t('pages.checkoutCancelled.subtitle') }}</p></div><RouterLink class="btn primary" to="/onboarding/basic">{{ $t('nav.subscription') }}</RouterLink></main></AuthLayout></template>
+<script setup>import AuthLayout from '../../../shared/presentation/components/auth-layout.vue'</script>
