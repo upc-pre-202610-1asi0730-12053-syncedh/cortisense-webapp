@@ -48,7 +48,27 @@ const lastSession = computed(() => orgSessions.value[0])
 const otherPlans = computed(() => plans.value.filter(plan => Number(plan.id) !== Number(currentPlan.value?.id)))
 onMounted(loadData)
 async function loadData () { [plans.value, subscriptions.value, sessions.value] = await Promise.all([listResource('plans'), listResource('subscriptions'), listResource('checkoutSessions')]) }
-async function changePlan (plan) { if (!currentSubscription.value) return; await patchResource('subscriptions', currentSubscription.value.id, { planId: plan.id }); await createResource('checkoutSessions', { organizationId: orgId.value, administratorId: authStore.user?.id || 1, subscriptionId: currentSubscription.value.id, planId: plan.id, planCode: plan.code, status: 'COMPLETED', createdAt: new Date().toISOString() }); await loadData() }
+async function changePlan (plan) {
+  if (!currentSubscription.value) return
+
+  await patchResource('subscriptions', currentSubscription.value.id, {
+    planId: plan.id
+  })
+
+  await createResource('checkoutSessions', {
+    organizationId: orgId.value,
+    administratorId: authStore.user?.id || 1,
+    subscriptionId: currentSubscription.value.id,
+    planId: plan.id,
+    planCode: plan.code,
+    status: 'COMPLETED',
+    createdAt: new Date().toISOString()
+  })
+
+  await loadData()
+
+  window.dispatchEvent(new CustomEvent('subscription-plan-updated'))
+}
 function statusLabel (value) { return String(value || '').toUpperCase() === 'ACTIVE' ? 'Activo' : value || '—' }
 function shortDate (value) { return value ? String(value).slice(0,10) : '—' }
 function compactDate (value) { if (!value) return '—'; return String(value).replace('T',' ').slice(0,16) }
