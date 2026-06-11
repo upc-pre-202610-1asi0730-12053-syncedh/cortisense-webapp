@@ -76,7 +76,9 @@
             <input v-model.trim="search" class="input" placeholder="Buscar por nombre o área...">
             <select v-model.number="areaFilter" class="select">
               <option :value="0">Todas las áreas</option>
-              <option v-for="area in workAreas" :key="area.id" :value="area.id">{{ area.name }}</option>
+              <option v-for="area in uniqueWorkAreas" :key="area.id" :value="area.id">
+                {{ area.name }}
+              </option>
             </select>
           </div>
         </article>

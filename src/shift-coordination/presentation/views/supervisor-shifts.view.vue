@@ -63,7 +63,9 @@
               <span>Área</span>
               <select v-model.number="form.workAreaId" class="select">
                 <option :value="0">Selecciona área</option>
-                <option v-for="area in workAreas" :key="area.id" :value="area.id">{{ area.name }}</option>
+                <option v-for="area in uniqueWorkAreas" :key="area.id" :value="area.id">
+                  {{ area.name }}
+                </option>
               </select>
             </label>
             <label>
@@ -181,6 +183,18 @@ import { createResource, listResource, patchResource, fullName, initials } from 
 
 const authStore = useAuthStore()
 const shifts = ref([]), users = ref([]), workAreas = ref([]), teams = ref([]), members = ref([])
+const uniqueWorkAreas = computed(() => {
+  const seen = new Set()
+
+  return workAreas.value.filter(area => {
+    const key = String(area.name || '').trim().toLowerCase()
+
+    if (!key || seen.has(key)) return false
+
+    seen.add(key)
+    return true
+  })
+})
 const search = ref(''), statusFilter = ref(''), errorMessage = ref('')
 const form = reactive({ organizationId: 1, userId: 0, workAreaId: 0, type: 'DAY', scheduledStart: '', scheduledEnd: '' })
 
