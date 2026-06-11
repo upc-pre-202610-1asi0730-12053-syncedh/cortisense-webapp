@@ -8,8 +8,8 @@
     <section class="metrics-grid">
       <article class="metric-card"><div class="metric-icon blue"><i class="pi pi-users"></i></div><p>Total de usuarios</p><h2>{{ orgUsers.length }}</h2></article>
       <article class="metric-card"><div class="metric-icon success"><i class="pi pi-check-circle"></i></div><p>Usuarios activos</p><h2 class="success-text">{{ activeUsers.length }}</h2></article>
-      <article class="metric-card"><div class="metric-icon purple"><i class="pi pi-shield"></i></div><p>Supervisores</p><h2 class="purple-text">{{ supervisors.length }}</h2></article>
-      <article class="metric-card"><div class="metric-icon cyan"><i class="pi pi-users"></i></div><p>Personal médico</p><h2 class="cyan-text">{{ doctors.length }}</h2></article>
+      <article class="metric-card"><div class="metric-icon purple"><i class="pi pi-shield"></i></div><p>Supervisores</p><h2 class="purple-text">{{ planUsageLabel(supervisors.length, currentPlan?.maxSupervisors) }}</h2></article>
+      <article class="metric-card"><div class="metric-icon cyan"><i class="pi pi-users"></i></div><p>Personal médico</p><h2 class="cyan-text">{{ planUsageLabel(doctors.length, currentPlan?.maxDoctors) }}</h2></article>
     </section>
 
     <article class="content-card full-width">
@@ -61,9 +61,21 @@ import { computed, onMounted, ref } from 'vue'
 import { useAuthStore } from '../../application/auth.store.js'
 import { listResource, patchResource, fullName, initials } from '../../../shared/infrastructure/api.service.js'
 const authStore = useAuthStore()
-const users = ref([]), workAreas = ref([]), specialties = ref([])
+const users = ref([]), workAreas = ref([]), specialties = ref([]), plans = ref([]), subscriptions = ref([])
 const search = ref(''), roleFilter = ref(''), statusFilter = ref('')
 const orgId = computed(() => authStore.user?.organizationId || 1)
+const currentSubscription = computed(() => {
+  return subscriptions.value.find(subscription =>
+      Number(subscription.organizationId) === Number(orgId.value) &&
+      String(subscription.status || '').toUpperCase() === 'ACTIVE'
+  )
+})
+
+const currentPlan = computed(() => {
+  return plans.value.find(plan =>
+      Number(plan.id) === Number(currentSubscription.value?.planId)
+  )
+})
 const orgUsers = computed(() => users.value.filter(user => Number(user.organizationId) === Number(orgId.value)))
 const activeUsers = computed(() => orgUsers.value.filter(user => user.status === 'ACTIVE'))
 const supervisors = computed(() => orgUsers.value.filter(user => user.role === 'SUPERVISOR' && user.status === 'ACTIVE'))
@@ -73,10 +85,23 @@ const filteredStaff = computed(() => orgUsers.value.filter(user => {
   return (!search.value || text.includes(search.value.toLowerCase())) && (!roleFilter.value || user.role === roleFilter.value) && (!statusFilter.value || user.status === statusFilter.value)
 }))
 onMounted(loadData)
-async function loadData () { [users.value, workAreas.value, specialties.value] = await Promise.all([listResource('users'), listResource('workAreas'), listResource('specialties')]) }
+async function loadData () {
+  ;[users.value, workAreas.value, specialties.value, plans.value, subscriptions.value] = await Promise.all([
+    listResource('users'),
+    listResource('workAreas'),
+    listResource('specialties'),
+    listResource('plans'),
+    listResource('subscriptions')
+  ])
+}
 async function updateRole (item, role) { await patchResource('users', item.id, { role }); await loadData() }
 async function toggleStatus (item) { await patchResource('users', item.id, { status: item.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE' }); await loadData() }
 function getWorkArea (id) { return workAreas.value.find(item => Number(item.id) === Number(id))?.name || '—' }
 function getSpecialty (id) { return specialties.value.find(item => Number(item.id) === Number(id))?.name || '—' }
 function roleLabel (role) { if (role === 'HOSPITAL_ADMIN') return 'Administrador'; if (role === 'SUPERVISOR') return 'Supervisor clínico'; return 'Personal médico' }
+function planUsageLabel (used, limit) {
+  return limit === null || limit === undefined
+      ? `${used} / ∞`
+      : `${used} / ${limit}`
+}
 </script>
