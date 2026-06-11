@@ -11,7 +11,7 @@
       <article class="metric-card">
         <div class="metric-icon blue"><i class="pi pi-users"></i></div>
         <p>Total de equipos</p>
-        <h2>{{ orgTeams.length }}</h2>
+        <h2>{{ planUsageLabel(orgTeams.length, currentPlan?.maxTeams) }}</h2>
       </article>
       <article class="metric-card">
         <div class="metric-icon success"><i class="pi pi-users"></i></div>
@@ -161,6 +161,8 @@ const teams = ref([])
 const users = ref([])
 const members = ref([])
 const workAreas = ref([])
+const plans = ref([])
+const subscriptions = ref([])
 const uniqueWorkAreas = computed(() => {
   const seen = new Set()
 
@@ -180,21 +182,49 @@ const selectedMemberByTeam = reactive({})
 const form = reactive({ name: '', organizationId: 1, workAreaId: 0, supervisorId: 0, status: 'ACTIVE' })
 
 const orgId = computed(() => Number(authStore.user?.organizationId || 1))
+const currentSubscription = computed(() => {
+  return subscriptions.value.find(subscription =>
+      Number(subscription.organizationId) === orgId.value &&
+      String(subscription.status || '').toUpperCase() === 'ACTIVE'
+  )
+})
 
+const currentPlan = computed(() => {
+  return plans.value.find(plan =>
+      Number(plan.id) === Number(currentSubscription.value?.planId)
+  )
+})
 onMounted(loadData)
 
 async function loadData () {
-  ;[teams.value, users.value, members.value, workAreas.value] = await Promise.all([
+  ;[
+    teams.value,
+    users.value,
+    members.value,
+    workAreas.value,
+    plans.value,
+    subscriptions.value
+  ] = await Promise.all([
     listResource('careTeams'),
     listResource('users'),
     listResource('teamMembers'),
-    listResource('workAreas')
+    listResource('workAreas'),
+    listResource('plans'),
+    listResource('subscriptions')
   ])
+
   form.organizationId = orgId.value
 }
 
 const orgTeams = computed(() => teams.value.filter(t => Number(t.organizationId) === orgId.value))
 const activeTeams = computed(() => orgTeams.value.filter(t => t.status === 'ACTIVE'))
+const hasReachedTeamLimit = computed(() => {
+  const limit = currentPlan.value?.maxTeams
+
+  if (limit === null || limit === undefined) return false
+
+  return orgTeams.value.length >= Number(limit)
+})
 const orgUsers = computed(() => users.value.filter(u => Number(u.organizationId) === orgId.value))
 const supervisors = computed(() => orgUsers.value.filter(u => u.role === 'SUPERVISOR' && u.status === 'ACTIVE'))
 const doctors = computed(() => orgUsers.value.filter(u => u.role === 'DOCTOR' && u.status === 'ACTIVE'))
@@ -231,11 +261,19 @@ function availableDoctorsForTeam () {
 
 async function saveTeam () {
   errorMessage.value = ''
+
+  if (hasReachedTeamLimit.value) {
+    errorMessage.value = `No se puede crear el equipo porque tu plan actual permite como máximo ${currentPlan.value?.maxTeams} equipos de trabajo.`
+    return
+  }
+
   if (!form.name.trim() || !form.workAreaId) return
+
   if (form.supervisorId && assignedSupervisorIds.value.has(Number(form.supervisorId))) {
     errorMessage.value = 'El supervisor seleccionado ya está asignado a otro equipo.'
     return
   }
+
   await createResource('careTeams', {
     name: form.name.trim(),
     organizationId: orgId.value,
@@ -243,10 +281,10 @@ async function saveTeam () {
     supervisorId: Number(form.supervisorId) || null,
     status: 'ACTIVE'
   })
+
   Object.assign(form, { name: '', organizationId: orgId.value, workAreaId: 0, supervisorId: 0, status: 'ACTIVE' })
   await loadData()
 }
-
 async function updateSupervisor (team, supervisorId) {
   errorMessage.value = ''
   const nextSupervisorId = Number(supervisorId) || null
@@ -286,6 +324,11 @@ async function addMember (team) {
 async function removeMember (member) {
   await deleteResource('teamMembers', member.id)
   await loadData()
+}
+function planUsageLabel (used, limit) {
+  return limit === null || limit === undefined
+      ? `${used} / ∞`
+      : `${used} / ${limit}`
 }
 </script>
 <style scoped>
