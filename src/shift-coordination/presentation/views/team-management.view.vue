@@ -45,7 +45,9 @@
             <label>Área de trabajo</label>
             <select v-model.number="form.workAreaId" class="select" required>
               <option :value="0">Selecciona un área</option>
-              <option v-for="area in workAreas" :key="area.id" :value="area.id">{{ area.name }}</option>
+              <option v-for="area in uniqueWorkAreas" :key="area.id" :value="area.id">
+                {{ area.name }}
+              </option>
             </select>
           </div>
 
@@ -157,6 +159,18 @@ const teams = ref([])
 const users = ref([])
 const members = ref([])
 const workAreas = ref([])
+const uniqueWorkAreas = computed(() => {
+  const seen = new Set()
+
+  return workAreas.value.filter(area => {
+    const key = String(area.name || '').trim().toLowerCase()
+
+    if (!key || seen.has(key)) return false
+
+    seen.add(key)
+    return true
+  })
+})
 const search = ref('')
 const areaFilter = ref(0)
 const errorMessage = ref('')
@@ -199,9 +213,8 @@ function userById (id) {
 }
 
 function areaName (id) {
-  return workAreas.value.find(a => Number(a.id) === Number(id))?.name || '—'
+  return uniqueWorkAreas.value.find(a => Number(a.id) === Number(id))?.name || '—'
 }
-
 function membersForTeam (id) {
   return members.value.filter(m => Number(m.teamId) === Number(id) && userById(m.userId)?.role === 'DOCTOR')
 }
