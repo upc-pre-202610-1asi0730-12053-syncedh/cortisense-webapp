@@ -15,7 +15,16 @@
         <p>El usuario podrá completar su registro con el correo invitado.</p>
         <form @submit.prevent="createInvitation">
           <div class="field"><label>Correo electrónico</label><input v-model.trim="form.email" class="input" type="email" placeholder="usuario@cortisense.com" required></div>
-          <div class="field"><label>Rol</label><select v-model="form.role" class="select"><option value="DOCTOR">Personal médico</option><option value="SUPERVISOR">Supervisor clínico</option></select></div>
+          <div class="field">
+            <label>Rol</label>
+            <select v-model="form.role" class="select" @change="invitationError = ''">
+              <option value="DOCTOR">Personal médico</option>
+              <option value="SUPERVISOR">Supervisor clínico</option>
+            </select>
+            <small class="helper-text">{{ remainingInvitationMessage }}</small>
+          </div>
+
+          <small v-if="invitationError" class="form-error">{{ invitationError }}</small>
           <button class="btn primary" type="submit" style="width:100%"><i class="pi pi-send"></i>Enviar invitación</button>
         </form>
       </article>
@@ -31,7 +40,19 @@
             <tbody>
               <tr v-for="item in filteredInvitations" :key="item.id">
                 <td><strong>{{ item.email }}</strong></td><td>{{ roleLabel(item.role) }}</td><td><span class="pill" :class="statusClass(item.status)">{{ statusLabel(item.status) }}</span></td><td>{{ formatDate(item.createdAt) }}</td>
-                <td><button v-if="item.status === 'PENDING'" class="btn ghost" @click="copyLink(item)"><i class="pi pi-copy"></i>Copiar link</button><span v-else>—</span></td>
+                <td>
+                  <button
+                      v-if="item.status === 'PENDING' && item.source === 'INVITATION'"
+                      class="btn ghost copy-link-button"
+                      type="button"
+                      @click="copyLink(item)"
+                  >
+                    <i class="pi pi-copy"></i>
+                    <span>Copiar link</span>
+                  </button>
+
+                  <span v-else>—</span>
+                </td>
                 <td style="display:flex;gap:8px;flex-wrap:wrap">
                   <button
                       v-if="item.status === 'PENDING' && item.source === 'INVITATION'"
@@ -72,9 +93,11 @@ const authStore = useAuthStore()
 
 const invitations = ref([])
 const users = ref([])
+const plans = ref([])
 const subscriptions = ref([])
 const search = ref('')
 const statusFilter = ref('')
+const invitationError = ref('')
 
 const form = reactive({
   email: '',
@@ -82,10 +105,17 @@ const form = reactive({
 })
 
 const orgId = computed(() => Number(authStore.user?.organizationId || 1))
+
 const currentSubscription = computed(() => {
   return subscriptions.value.find(subscription =>
       Number(subscription.organizationId) === orgId.value &&
       String(subscription.status || '').toUpperCase() === 'ACTIVE'
+  )
+})
+
+const currentPlan = computed(() => {
+  return plans.value.find(plan =>
+      Number(plan.id) === Number(currentSubscription.value?.planId)
   )
 })
 
@@ -101,6 +131,7 @@ const invitationsByEmail = computed(() => {
 
   return map
 })
+
 const registeredOperationalUsers = computed(() => {
   return users.value.filter(user => {
     const role = String(user.role || '').toUpperCase()
@@ -168,6 +199,66 @@ const invitationRows = computed(() => {
   ].sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
 })
 
+const activeDoctors = computed(() => {
+  return registeredOperationalUsers.value.filter(user =>
+      normalizeRole(user.role) === 'DOCTOR'
+  )
+})
+
+const activeSupervisors = computed(() => {
+  return registeredOperationalUsers.value.filter(user =>
+      normalizeRole(user.role) === 'SUPERVISOR'
+  )
+})
+
+const pendingDoctorInvitations = computed(() => {
+  return orgInvitations.value.filter(item =>
+      item.status === 'PENDING' &&
+      normalizeRole(item.role) === 'DOCTOR'
+  )
+})
+
+const pendingSupervisorInvitations = computed(() => {
+  return orgInvitations.value.filter(item =>
+      item.status === 'PENDING' &&
+      normalizeRole(item.role) === 'SUPERVISOR'
+  )
+})
+
+const selectedRoleLimit = computed(() => {
+  return form.role === 'SUPERVISOR'
+      ? currentPlan.value?.maxSupervisors
+      : currentPlan.value?.maxDoctors
+})
+
+const selectedRoleUsed = computed(() => {
+  return form.role === 'SUPERVISOR'
+      ? activeSupervisors.value.length + pendingSupervisorInvitations.value.length
+      : activeDoctors.value.length + pendingDoctorInvitations.value.length
+})
+
+const remainingInvitationsForSelectedRole = computed(() => {
+  const limit = selectedRoleLimit.value
+
+  if (limit === null || limit === undefined) return Infinity
+
+  return Math.max(0, Number(limit) - selectedRoleUsed.value)
+})
+
+const selectedRoleLabel = computed(() => {
+  return form.role === 'SUPERVISOR'
+      ? 'supervisor clínico'
+      : 'personal médico'
+})
+
+const remainingInvitationMessage = computed(() => {
+  const remaining = remainingInvitationsForSelectedRole.value
+
+  return remaining === Infinity
+      ? `Te quedan ∞ invitaciones disponibles para ${selectedRoleLabel.value}.`
+      : `Te quedan ${remaining} invitaciones disponibles para ${selectedRoleLabel.value}.`
+})
+
 const filteredInvitations = computed(() => {
   return invitationRows.value.filter(item => {
     const text = `${item.email} ${roleLabel(item.role)}`.toLowerCase()
@@ -182,14 +273,22 @@ const filteredInvitations = computed(() => {
 onMounted(loadData)
 
 async function loadData () {
-  ;[invitations.value, users.value, subscriptions.value] = await Promise.all([
+  ;[invitations.value, users.value, plans.value, subscriptions.value] = await Promise.all([
     listResource('invitations'),
     listResource('users'),
+    listResource('plans'),
     listResource('subscriptions')
   ])
 }
 
 async function createInvitation () {
+  invitationError.value = ''
+
+  if (remainingInvitationsForSelectedRole.value <= 0) {
+    invitationError.value = `No se puede enviar la invitación porque tu plan actual ya alcanzó el máximo permitido para ${selectedRoleLabel.value}.`
+    return
+  }
+
   await invitationApi.createInvitation({
     ...form,
     organizationId: orgId.value
