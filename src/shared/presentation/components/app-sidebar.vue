@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '../../../iam/application/auth.store.js'
@@ -106,7 +106,14 @@ const menuTitle = computed(() => {
   return t('app.staffMenu')
 })
 
-onMounted(loadSubscriptionContext)
+onMounted(() => {
+  loadSubscriptionContext()
+  window.addEventListener('subscription-plan-updated', loadSubscriptionContext)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('subscription-plan-updated', loadSubscriptionContext)
+})
 
 async function loadSubscriptionContext () {
   try {
