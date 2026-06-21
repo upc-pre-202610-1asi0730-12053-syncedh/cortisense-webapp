@@ -1,57 +1,53 @@
-/**
- * @file invitation.entity.js
- * @description Entidad de dominio Invitation para el contexto IAM de CortiSense.
- * Representa una invitación enviada por el administrador a un nuevo usuario.
- */
-
-/**
- * @class Invitation
- * @description Modela una invitación de acceso al sistema.
- * Usa atributos privados de JavaScript (#) para encapsulamiento estricto.
- */
 export class Invitation {
-  #id
-  #email
-  #role
-  #status
-  #createdAt
-
-  /**
-   * @param {Object} data
-   * @param {string|null} data.id
-   * @param {string} data.email
-   * @param {string} data.role - 'medical_staff' | 'clinical_supervisor'
-   * @param {string} data.status - 'pending' | 'accepted'
-   * @param {string} data.createdAt - ISO date string
-   */
-  constructor ({ id = null, email = '', role = '', status = 'pending', createdAt = '' } = {}) {
-    this.#id = id
-    this.#email = email
-    this.#role = role
-    this.#status = status
-    this.#createdAt = createdAt
+  constructor({
+    id = null,
+    organizationId = null,
+    email = '',
+    role = '',
+    status = 'PENDING',
+    token = '',
+    createdAt = '',
+    acceptedAt = null,
+    cancelledAt = null,
+    expiresAt = null,
+    emailStatus = '',
+    resendEmailId = null,
+    emailError = null
+  } = {}) {
+    this.id = id
+    this.organizationId = organizationId
+    this.email = email
+    this.role = role
+    this.status = status
+    this.token = token
+    this.createdAt = createdAt
+    this.acceptedAt = acceptedAt
+    this.cancelledAt = cancelledAt
+    this.expiresAt = expiresAt
+    this.emailStatus = emailStatus
+    this.resendEmailId = resendEmailId
+    this.emailError = emailError
   }
 
-  get id () { return this.#id }
-  get email () { return this.#email }
-  get role () { return this.#role }
-  get status () { return this.#status }
-  get createdAt () { return this.#createdAt }
+  get isPending() {
+    return String(this.status).toUpperCase() === 'PENDING'
+  }
 
-  /** @returns {boolean} Indica si la invitación está pendiente de uso. */
-  get isPending () { return this.#status === 'pending' }
-
-  /**
-   * Serializa la entidad a un objeto plano.
-   * @returns {Object}
-   */
-  toResource () {
+  toResource() {
     return {
-      id: this.#id,
-      email: this.#email,
-      role: this.#role,
-      status: this.#status,
-      createdAt: this.#createdAt
+      id: this.id,
+      organizationId: this.organizationId,
+      email: this.email,
+      role: this.role,
+      status: this.status,
+      token: this.token,
+      createdAt: this.createdAt,
+      acceptedAt: this.acceptedAt,
+      cancelledAt: this.cancelledAt,
+      expiresAt: this.expiresAt,
+      emailStatus: this.emailStatus,
+      resendEmailId: this.resendEmailId,
+      emailError: this.emailError
     }
   }
 }
