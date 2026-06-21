@@ -427,7 +427,7 @@ async function submit () {
   align-items: center;
   gap: 18px;
   border-radius: 20px;
-  background: linear-gradient(135deg, #2fd3dc, #4eeeeb, #3febe8);
+  background: linear-gradient(135deg, #31dcef, #78d6f3, #70e2e6);
   box-shadow: 0 18px 34px rgba(69, 221, 229, 0.22);
 }
 
