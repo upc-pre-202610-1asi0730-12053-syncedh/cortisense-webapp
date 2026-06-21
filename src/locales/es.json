@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "CortiSense",
-    "sidebarTagline": "Clinical intelligence",
+    "sidebarTagline": "Inteligencia clínica",
     "topbarSubtitle": "Monitoreo inteligente y gestión de turnos",
     "adminMenu": "Menú Administrativo",
     "supervisorMenu": "Menú Supervisor",
@@ -22,6 +22,12 @@
     "register-link": "Regístrate con una invitación",
     "sign-in-tab": "Iniciar sesión",
     "register-tab": "Registro",
+    "toggle-password": "Mostrar u ocultar contraseña",
+    "toggle-confirm-password": "Mostrar u ocultar confirmación de contraseña",
+    "other-option": "Otros",
+    "other-work-area-placeholder": "Escribe el área de trabajo",
+    "other-specialty-placeholder": "Escribe la especialidad",
+    "invitation-accepted-success": "Tu cuenta fue creada correctamente. Redirigiendo al inicio de sesión...",
     "error": {
       "email-required": "El correo electrónico es obligatorio.",
       "email-invalid": "Ingresa un correo electrónico válido.",
@@ -33,7 +39,16 @@
       "invitation-token-required": "Se requiere una invitación válida para crear una cuenta.",
       "invitation-not-found": "La invitación no existe o el enlace es inválido.",
       "invitation-not-available": "Esta invitación ya fue usada o expiró.",
-      "invitation-accept-failed": "No se pudo completar el registro. Inténtalo nuevamente."
+      "invitation-accept-failed": "No se pudo completar el registro. Inténtalo nuevamente.",
+      "invitation-token-missing": "El token de invitación no está presente.",
+      "other-work-area-required": "Ingresa el área de trabajo.",
+      "other-specialty-required": "Ingresa la especialidad.",
+      "password-minlength": "La contraseña debe tener al menos 6 caracteres.",
+      "confirm-password-required": "La confirmación de contraseña es obligatoria.",
+      "first-name-required": "El nombre es obligatorio.",
+      "last-name-required": "El apellido es obligatorio.",
+      "phone-required": "El teléfono es obligatorio.",
+      "catalog-load-failed": "No se pudieron cargar las áreas de trabajo o especialidades."
     },
     "register-brand-title": "Únete a la plataforma de salud inteligente.",
     "register-brand-description": "Completa tu registro para acceder al monitoreo biométrico y gestión de turnos.",
@@ -65,7 +80,9 @@
     "back-to-sign-in": "Volver al inicio de sesión",
     "demoAdmin": "admin{'@'}cortisense.com / admin123",
     "demoSupervisor": "supervisor{'@'}cortisense.com / supervisor123",
-    "demoDoctor": "doctor{'@'}cortisense.com / doctor123"
+    "demoDoctor": "doctor{'@'}cortisense.com / doctor123",
+    "logo-alt": "Logo de CortiSense",
+    "invitation-email-locked": "Este correo pertenece a la invitación y no puede modificarse."
   },
   "layout": {
     "admin-title": "Panel administrativo",
@@ -195,6 +212,14 @@
       "cancel": "Cancelar",
       "delete": "Eliminar",
       "empty": "No hay invitaciones para mostrar.",
+      "sent-success": "La invitación fue enviada correctamente.",
+      "accepted-cannot-be-deleted": "Invitación aceptada",
+      "email-status": {
+        "pending": "Pendiente",
+        "sent": "Enviado",
+        "failed": "Fallido",
+        "skipped": "Omitido"
+      },
       "metrics": {
         "total": "Total de invitaciones",
         "pending": "Pendientes",
@@ -219,7 +244,8 @@
         "status": "Estado",
         "date": "Fecha",
         "actions": "Acciones",
-        "link": "Link"
+        "link": "Link",
+        "email-status": "Correo"
       },
       "error": {
         "no-session": "No se encontró una sesión activa.",
@@ -229,7 +255,8 @@
         "email-invalid": "Ingresa un correo electrónico válido.",
         "accepted-cannot-be-deleted": "No se puede eliminar una invitación aceptada.",
         "delete-failed": "No se pudo eliminar la invitación.",
-        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo."
+        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo.",
+        "cancel-failed": "No se pudo cancelar la invitación."
       }
     },
     "staff": {
@@ -317,7 +344,8 @@
         "supervisor-already-assigned": "Este supervisor ya está asignado a otro equipo activo.",
         "update-status-failed": "No se pudo actualizar el estado del equipo.",
         "inactive-team": "No puedes agregar miembros a un equipo inactivo.",
-        "delete-failed": "No se pudo eliminar el equipo."
+        "delete-failed": "No se pudo eliminar el equipo.",
+        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo."
       },
       "search-placeholder": "Buscar por nombre o área...",
       "all-work-areas": "Todas las áreas",
