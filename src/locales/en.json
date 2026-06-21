@@ -1120,6 +1120,8 @@
       "back-landing": "Back to landing",
       "toggle-password": "Show or hide password",
       "toggle-confirm-password": "Show or hide password confirmation",
+      "organization-email": "Institutional email",
+      "organization-email-placeholder": "contact{'@'}clinic.com",
       "error": {
         "plan-not-found": "Selected plan was not found.",
         "load-plans-failed": "Plans could not be loaded.",
@@ -1140,7 +1142,13 @@
         "password-required": "Password is required.",
         "password-minlength": "Password must have at least 6 characters.",
         "confirm-password-required": "Password confirmation is required.",
-        "passwords-mismatch": "Passwords do not match."
+        "passwords-mismatch": "Passwords do not match.",
+        "organization-email-required": "Institutional email is required.",
+        "organization-email-invalid": "Enter a valid institutional email.",
+        "organization-email-already-exists": "An organization with that institutional email already exists.",
+        "ruc-already-exists": "An organization with that Tax ID already exists.",
+        "admin-email-already-exists": "An administrator user with that email already exists.",
+        "stripe-not-configured": "Stripe is not configured correctly in the backend."
       }
     },
     "checkoutSuccess": {

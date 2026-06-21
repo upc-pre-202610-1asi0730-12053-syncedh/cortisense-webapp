@@ -1,10 +1,6 @@
 <template>
   <section class="registration-page">
-    <a
-      class="landing-back-button"
-      :href="landingUrl"
-      :aria-label="$t('subscription.registration.back-landing')"
-    >
+    <a class="landing-back-button" :href="landingUrl" :aria-label="$t('subscription.registration.back-landing')">
       <i class="pi pi-arrow-left"></i>
     </a>
 
@@ -46,52 +42,38 @@
 
           <div class="field">
             <label>{{ $t('subscription.registration.organization-name') }}</label>
-            <input
-              v-model.trim="form.organizationName"
-              class="registration-input"
-              type="text"
-              :placeholder="$t('subscription.registration.organization-name-placeholder')"
-            >
+            <input v-model.trim="form.organizationName" class="registration-input" type="text"
+              :placeholder="$t('subscription.registration.organization-name-placeholder')">
+          </div>
+          
+          <div class="field">
+            <label>{{ $t('subscription.registration.organization-email') }}</label>
+            <input v-model.trim="form.organizationEmail" class="registration-input" type="email"
+              :placeholder="$t('subscription.registration.organization-email-placeholder')">
           </div>
 
           <div class="form-row">
             <div class="field">
               <label>{{ $t('subscription.registration.ruc') }}</label>
-              <input
-                v-model.trim="form.ruc"
-                class="registration-input"
-                type="text"
-                inputmode="numeric"
-                maxlength="11"
-                :placeholder="$t('subscription.registration.ruc-placeholder')"
-                @input="normalizeRucInput"
-              >
+              <input v-model.trim="form.ruc" class="registration-input" type="text" inputmode="numeric" maxlength="11"
+                :placeholder="$t('subscription.registration.ruc-placeholder')" @input="normalizeRucInput">
             </div>
 
             <div class="field">
               <label>{{ $t('subscription.registration.organization-phone') }}</label>
               <div class="phone-control">
                 <span class="phone-prefix">+51</span>
-                <input
-                  v-model.trim="form.organizationPhone"
-                  type="text"
-                  inputmode="numeric"
-                  maxlength="9"
+                <input v-model.trim="form.organizationPhone" type="text" inputmode="numeric" maxlength="9"
                   :placeholder="$t('subscription.registration.phone-placeholder')"
-                  @input="normalizePhoneInput('organizationPhone')"
-                >
+                  @input="normalizePhoneInput('organizationPhone')">
               </div>
             </div>
           </div>
 
           <div class="field">
             <label>{{ $t('subscription.registration.address') }}</label>
-            <input
-              v-model.trim="form.address"
-              class="registration-input"
-              type="text"
-              :placeholder="$t('subscription.registration.address-placeholder')"
-            >
+            <input v-model.trim="form.address" class="registration-input" type="text"
+              :placeholder="$t('subscription.registration.address-placeholder')">
           </div>
         </section>
 
@@ -101,48 +83,31 @@
           <div class="form-row">
             <div class="field">
               <label>{{ $t('subscription.registration.first-name') }}</label>
-              <input
-                v-model.trim="form.firstName"
-                class="registration-input"
-                type="text"
-                :placeholder="$t('subscription.registration.first-name-placeholder')"
-              >
+              <input v-model.trim="form.firstName" class="registration-input" type="text"
+                :placeholder="$t('subscription.registration.first-name-placeholder')">
             </div>
 
             <div class="field">
               <label>{{ $t('subscription.registration.last-name') }}</label>
-              <input
-                v-model.trim="form.lastName"
-                class="registration-input"
-                type="text"
-                :placeholder="$t('subscription.registration.last-name-placeholder')"
-              >
+              <input v-model.trim="form.lastName" class="registration-input" type="text"
+                :placeholder="$t('subscription.registration.last-name-placeholder')">
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
               <label>{{ $t('subscription.registration.email') }}</label>
-              <input
-                v-model.trim="form.email"
-                class="registration-input"
-                type="email"
-                :placeholder="$t('subscription.registration.email-placeholder')"
-              >
+              <input v-model.trim="form.email" class="registration-input" type="email"
+                :placeholder="$t('subscription.registration.email-placeholder')">
             </div>
 
             <div class="field">
               <label>{{ $t('subscription.registration.phone') }}</label>
               <div class="phone-control">
                 <span class="phone-prefix">+51</span>
-                <input
-                  v-model.trim="form.phone"
-                  type="text"
-                  inputmode="numeric"
-                  maxlength="9"
+                <input v-model.trim="form.phone" type="text" inputmode="numeric" maxlength="9"
                   :placeholder="$t('subscription.registration.phone-placeholder')"
-                  @input="normalizePhoneInput('phone')"
-                >
+                  @input="normalizePhoneInput('phone')">
               </div>
             </div>
           </div>
@@ -151,16 +116,10 @@
             <div class="field">
               <label>{{ $t('subscription.registration.password') }}</label>
               <div class="password-control">
-                <input
-                  v-model="form.password"
-                  :type="showPassword ? 'text' : 'password'"
-                  :placeholder="$t('subscription.registration.password-placeholder')"
-                >
-                <button
-                  type="button"
-                  :aria-label="$t('subscription.registration.toggle-password')"
-                  @click="showPassword = !showPassword"
-                >
+                <input v-model="form.password" :type="showPassword ? 'text' : 'password'"
+                  :placeholder="$t('subscription.registration.password-placeholder')">
+                <button type="button" :aria-label="$t('subscription.registration.toggle-password')"
+                  @click="showPassword = !showPassword">
                   <i :class="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
                 </button>
               </div>
@@ -169,16 +128,10 @@
             <div class="field">
               <label>{{ $t('subscription.registration.confirm-password') }}</label>
               <div class="password-control">
-                <input
-                  v-model="form.confirmPassword"
-                  :type="showConfirmPassword ? 'text' : 'password'"
-                  :placeholder="$t('subscription.registration.confirm-password-placeholder')"
-                >
-                <button
-                  type="button"
-                  :aria-label="$t('subscription.registration.toggle-confirm-password')"
-                  @click="showConfirmPassword = !showConfirmPassword"
-                >
+                <input v-model="form.confirmPassword" :type="showConfirmPassword ? 'text' : 'password'"
+                  :placeholder="$t('subscription.registration.confirm-password-placeholder')">
+                <button type="button" :aria-label="$t('subscription.registration.toggle-confirm-password')"
+                  @click="showConfirmPassword = !showConfirmPassword">
                   <i :class="showConfirmPassword ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
                 </button>
               </div>
@@ -224,6 +177,7 @@ const landingUrl = import.meta.env.VITE_CORTISENSE_LANDING_URL || '/onboarding/b
 
 const form = reactive({
   organizationName: '',
+  organizationEmail: '',
   ruc: '',
   organizationPhone: '',
   address: '',
@@ -264,21 +218,23 @@ onMounted(async () => {
   }
 })
 
-function normalizeRucInput () {
+function normalizeRucInput() {
   form.ruc = form.ruc.replace(/\D/g, '').slice(0, 11)
 }
 
-function normalizePhoneInput (field) {
+function normalizePhoneInput(field) {
   form[field] = form[field].replace(/\D/g, '').slice(0, 9)
 }
 
-function isValidEmail (email) {
+function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
-function validateForm () {
+function validateForm() {
   if (!selectedPlan.value) return 'subscription.registration.error.plan-not-found'
   if (!form.organizationName) return 'subscription.registration.error.organization-name-required'
+  if (!form.organizationEmail) return 'subscription.registration.error.organization-email-required'
+  if (!isValidEmail(form.organizationEmail)) return 'subscription.registration.error.organization-email-invalid'
   if (!form.ruc) return 'subscription.registration.error.ruc-required'
   if (!form.organizationPhone) return 'subscription.registration.error.organization-phone-required'
   if (!form.address) return 'subscription.registration.error.address-required'
@@ -295,7 +251,7 @@ function validateForm () {
   return null
 }
 
-async function submit () {
+async function submit() {
   submitError.value = null
 
   const validationError = validateForm()
@@ -313,6 +269,7 @@ async function submit () {
       organization: {
         name: form.organizationName,
         ruc: form.ruc,
+        email: form.organizationEmail,
         phone: `+51 ${form.organizationPhone}`,
         address: form.address
       },
