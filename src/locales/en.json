@@ -22,6 +22,14 @@
     "register-link": "Register with an invitation",
     "sign-in-tab": "Sign in",
     "register-tab": "Register",
+    "toggle-password": "Show or hide password",
+    "toggle-confirm-password": "Show or hide password confirmation",
+    "other-option": "Other",
+    "other-work-area-placeholder": "Enter the work area",
+    "other-specialty-placeholder": "Enter the specialty",
+    "invitation-accepted-success": "Your account was created successfully. Redirecting to sign in...",
+    "invitation-email-locked": "This email belongs to the invitation and cannot be changed.",
+    "logo-alt": "CortiSense logo",
     "error": {
       "email-required": "Email address is required.",
       "email-invalid": "Enter a valid email address.",
@@ -33,19 +41,16 @@
       "invitation-token-required": "A valid invitation is required to create an account.",
       "invitation-not-found": "The invitation does not exist or the link is invalid.",
       "invitation-not-available": "This invitation was already used or expired.",
-      "invitation-accept-failed": "The registration could not be completed. Please try again.",
-      "invitation-token-missing": "The invitation token is missing.",
-      "catalog-load-failed": "Registration catalogs could not be loaded.",
+      "invitation-accept-failed": "Registration could not be completed. Please try again.",
+      "invitation-token-missing": "Invitation token is missing.",
+      "catalog-load-failed": "Work areas or specialties could not be loaded.",
       "first-name-required": "First name is required.",
       "last-name-required": "Last name is required.",
       "phone-required": "Phone is required.",
-      "confirm-password-required": "Confirm password is required.",
+      "confirm-password-required": "Password confirmation is required.",
       "password-minlength": "Password must have at least 6 characters.",
-      "admin-title": "Panel administrativo",
-      "supervisor-title": "Panel del supervisor",
-      "doctor-title": "Panel clínico",
-      "subtitle": "Monitoreo inteligente y gestión de turnos",
-      "content-pending": "Esta sección está en preparación."
+      "other-work-area-required": "Enter the work area.",
+      "other-specialty-required": "Enter the specialty."
     },
     "register-brand-title": "Join the intelligent healthcare platform.",
     "register-brand-description": "Complete your registration to access biometric monitoring and shift management.",
@@ -207,6 +212,14 @@
       "cancel": "Cancel",
       "delete": "Delete",
       "empty": "There are no invitations to display.",
+      "sent-success": "The invitation was sent successfully.",
+      "accepted-cannot-be-deleted": "Invitation accepted",
+      "email-status": {
+        "pending": "Pending",
+        "sent": "Sent",
+        "failed": "Failed",
+        "skipped": "Skipped"
+      },
       "metrics": {
         "total": "Total invitations",
         "pending": "Pending",
@@ -231,7 +244,8 @@
         "status": "Status",
         "date": "Date",
         "actions": "Actions",
-        "link": "Link"
+        "link": "Link",
+        "email-status": "Email"
       },
       "error": {
         "no-session": "No active session was found.",
@@ -241,7 +255,8 @@
         "email-invalid": "Enter a valid email address.",
         "accepted-cannot-be-deleted": "Accepted invitations cannot be deleted.",
         "delete-failed": "Invitation could not be deleted.",
-        "cancel-failed": "Invitation could not be cancelled."
+        "cancel-failed": "Invitation could not be cancelled.",
+        "cleanup-failed": "Team assignments could not be cleaned up."
       }
     },
     "staff": {
@@ -1072,50 +1087,92 @@
       }
     },
     "registration": {
-      "badge": "Organization registration",
       "title": "Create medical center",
       "subtitle": "Complete the medical center and administrator account details to activate the selected plan.",
-      "selected-plan": "Selected plan",
       "month": "month",
       "organization-title": "Medical center details",
       "organization-name": "Medical center name",
-      "organization-name-placeholder": "Example: San Gabriel Clinic",
+      "organization-name-placeholder": "E.g. San Gabriel Clinic",
       "ruc": "Tax ID",
       "ruc-placeholder": "20600000000",
       "organization-phone": "Center phone",
+      "organization-phone-placeholder": "999 999 999",
       "address": "Address",
       "address-placeholder": "Health Ave. 123, Lima",
       "admin-title": "Administrator account",
       "first-name": "First name",
+      "first-name-placeholder": "E.g. Marcelo",
       "last-name": "Last name",
+      "last-name-placeholder": "E.g. Ramirez",
       "email": "Email address",
+      "email-placeholder": "admin{'@'}hospital.com",
       "phone": "Phone",
+      "phone-placeholder": "999 999 999",
       "password": "Password",
-      "first-name-placeholder": "Example: Marcelo",
-      "last-name-placeholder": "Example: Administrator",
-      "email-placeholder": "admin{'@'}cortisense.com",
-      "phone-placeholder": "+51 999 999 999",
       "password-placeholder": "At least 6 characters",
+      "confirm-password": "Confirm password",
+      "confirm-password-placeholder": "Repeat your password",
       "back-login": "Back to sign in",
       "pay-and-create": "Pay and create account",
       "processing": "Processing...",
-      "success": "Medical center and administrator account were created successfully. Redirecting to sign in...",
+      "badge": "Organization registration",
+      "selected-plan": "Selected plan",
+      "back-landing": "Back to landing",
+      "toggle-password": "Show or hide password",
+      "toggle-confirm-password": "Show or hide password confirmation",
+      "organization-email": "Institutional email",
+      "organization-email-placeholder": "contact{'@'}clinic.com",
       "error": {
         "plan-not-found": "Selected plan was not found.",
         "load-plans-failed": "Plans could not be loaded.",
-        "create-failed": "Organization registration could not be completed."
+        "create-failed": "Organization registration could not be completed.",
+        "organization-create-failed": "Medical center could not be created.",
+        "admin-create-failed": "Administrator account could not be created.",
+        "subscription-create-failed": "Subscription could not be created.",
+        "checkout-create-failed": "Checkout session could not be created.",
+        "organization-name-required": "Medical center name is required.",
+        "ruc-required": "Tax ID is required.",
+        "organization-phone-required": "Center phone is required.",
+        "address-required": "Address is required.",
+        "first-name-required": "First name is required.",
+        "last-name-required": "Last name is required.",
+        "email-required": "Email is required.",
+        "email-invalid": "Enter a valid email address.",
+        "phone-required": "Phone is required.",
+        "password-required": "Password is required.",
+        "password-minlength": "Password must have at least 6 characters.",
+        "confirm-password-required": "Password confirmation is required.",
+        "passwords-mismatch": "Passwords do not match.",
+        "organization-email-required": "Institutional email is required.",
+        "organization-email-invalid": "Enter a valid institutional email.",
+        "organization-email-already-exists": "An organization with that institutional email already exists.",
+        "ruc-already-exists": "An organization with that Tax ID already exists.",
+        "admin-email-already-exists": "An administrator user with that email already exists.",
+        "stripe-not-configured": "Stripe is not configured correctly in the backend."
       }
     },
     "checkoutSuccess": {
       "title": "Payment completed",
-      "subtitle": "The medical center and administrator account were created successfully. You can now sign in with the registered credentials.",
-      "go-login": "Go to sign in"
+      "subtitle": "The medical center and administrator account were registered. You can now sign in.",
+      "loading-subtitle": "We are validating the payment with Stripe.",
+      "error-subtitle": "The payment session could not be validated.",
+      "validating": "Validating payment...",
+      "activated": "The subscription was validated successfully.",
+      "go-login": "Go to sign in",
+      "error": {
+        "session-missing": "Stripe session identifier was not found.",
+        "validation-failed": "Payment status could not be validated."
+      }
     },
     "checkoutCancelled": {
       "title": "Payment cancelled",
-      "subtitle": "The payment process was cancelled or was not completed. You can try again whenever you want.",
+      "subtitle": "The payment was cancelled or was not completed.",
+      "cancelled": "The checkout session was marked as cancelled.",
       "go-login": "Back to sign in",
-      "try-again": "Try again"
+      "try-again": "Try again",
+      "error": {
+        "cancel-failed": "Checkout session could not be cancelled."
+      }
     },
     "limits": {
       "doctors-exceeded": "You have reached the active doctors limit allowed by your plan.",
