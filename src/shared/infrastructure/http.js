@@ -1,7 +1,16 @@
 import axios from 'axios'
 
-const baseURL = import.meta.env.VITE_CORTISENSE_API_URL || 'http://127.0.0.1:3000/api/v1'
+const normalizeBaseUrl = value =>
+  String(value || '')
+    .trim()
+    .replace(/^["']|["']$/g, '')
+    .replace(/\/+$/, '')
 
+const baseURL = normalizeBaseUrl(
+  import.meta.env.VITE_CORTISENSE_API_URL ||
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://api.cortisense.space/api/v1'
+)
 const http = axios.create({
   baseURL,
   headers: { 'Content-Type': 'application/json' }
