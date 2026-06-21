@@ -1,31 +1,120 @@
-import { listResource, createResource, patchResource, deleteResource, roleToApi } from '../../shared/infrastructure/api.service.js'
+import { deleteResource, listResource, patchResource, roleToApi } from '../../shared/infrastructure/api.service.js'
+import { http, publicHttp } from '../../shared/infrastructure/http.js'
 
-function invitationToken () {
-  return `inv-${Date.now()}-${Math.floor(Math.random() * 9999)}`
+function normalizeEmail(value) {
+  return String(value || '').trim().toLowerCase()
+}
+
+function readField(source, camelName, pascalName = null) {
+  return source?.[camelName] ?? source?.[pascalName ?? camelName]
+}
+
+function normalizeInvitation(resource = {}) {
+  return {
+    id: readField(resource, 'id', 'Id'),
+    organizationId: readField(resource, 'organizationId', 'OrganizationId'),
+    email: readField(resource, 'email', 'Email') || '',
+    role: readField(resource, 'role', 'Role') || '',
+    status: readField(resource, 'status', 'Status') || 'PENDING',
+    token: readField(resource, 'token', 'Token') || '',
+    emailStatus: readField(resource, 'emailStatus', 'EmailStatus') || 'PENDING',
+    resendEmailId: readField(resource, 'resendEmailId', 'ResendEmailId') || null,
+    emailError: readField(resource, 'emailError', 'EmailError') || null,
+    expiresAt: readField(resource, 'expiresAt', 'ExpiresAt') || null,
+    sentAt: readField(resource, 'sentAt', 'SentAt') || null,
+    acceptedAt: readField(resource, 'acceptedAt', 'AcceptedAt') || null,
+    cancelledAt: readField(resource, 'cancelledAt', 'CancelledAt') || null,
+    createdAt: readField(resource, 'createdAt', 'CreatedAt') || null,
+    updatedAt: readField(resource, 'updatedAt', 'UpdatedAt') || null
+  }
+}
+
+function normalizeInvitationList(items = []) {
+  return items.map(normalizeInvitation)
 }
 
 export const invitationApi = {
-  async getAllInvitations () { return listResource('invitations') },
-  async findByToken (token) {
-    const items = await listResource('invitations', { token })
-    return items[0] || null
+  async getAllInvitations(params = {}) {
+    const invitations = await listResource('invitations', params)
+    return normalizeInvitationList(invitations)
   },
-  async findPendingByEmail (email) {
-    const items = await listResource('invitations', { email: email.trim().toLowerCase(), status: 'PENDING' })
-    return items[0] || null
-  },
-  async createInvitation (payload) {
-    return createResource('invitations', {
-      organizationId: payload.organizationId || 1,
-      email: payload.email.trim().toLowerCase(),
-      role: roleToApi(payload.role),
-      status: 'PENDING',
-      token: invitationToken(),
-      createdAt: new Date().toISOString()
+
+  async getInvitationsByOrganizationId(organizationId) {
+    const invitations = await listResource('invitations', {
+      organizationId: Number(organizationId)
     })
+
+    return normalizeInvitationList(invitations)
   },
-  async acceptInvitation (id) {
-    return patchResource('invitations', id, { status: 'ACCEPTED', acceptedAt: new Date().toISOString() })
+
+  async findByToken(token) {
+    if (!token) return null
+
+    const response = await publicHttp.get('/invitations', {
+      params: { token },
+      skipAuthRedirect: true
+    })
+
+    const items = Array.isArray(response.data)
+      ? response.data
+      : [response.data].filter(Boolean)
+
+    return items.length > 0
+      ? normalizeInvitation(items[0])
+      : null
   },
-  async revokeInvitation (id) { return deleteResource('invitations', id) }
+
+  async findPendingByEmail(email) {
+    const items = await listResource('invitations', {
+      email: normalizeEmail(email)
+    })
+
+    return normalizeInvitationList(items)
+      .find(invitation => ['PENDING', 'SENT'].includes(String(invitation.status).toUpperCase())) || null
+  },
+
+  async sendInvitation({ organizationId, email, role, expiresAt = null }) {
+    const response = await http.post('/invitations/send', {
+      organizationId: Number(organizationId),
+      email: normalizeEmail(email),
+      role: roleToApi(role),
+      expiresAt
+    })
+
+    return normalizeInvitation(response.data)
+  },
+
+  async updateInvitation(id, payload) {
+    const response = await patchResource('invitations', id, payload)
+    return normalizeInvitation(response)
+  },
+
+  async cancelInvitation(id) {
+    const response = await deleteResource('invitations', id)
+    return normalizeInvitation(response)
+  },
+
+  async acceptInvitation({
+    token,
+    firstName,
+    lastName,
+    phone,
+    password,
+    workAreaId,
+    specialtyId
+  }) {
+    const response = await publicHttp.post('/invitations/accept', {
+      token,
+      firstName,
+      lastName,
+      phone,
+      password,
+      workAreaId: workAreaId ? Number(workAreaId) : null,
+      specialtyId: specialtyId ? Number(specialtyId) : null
+    }, {
+      skipAuthRedirect: true
+    })
+
+    return response.data
+  }
 }

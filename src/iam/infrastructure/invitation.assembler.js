@@ -1,36 +1,26 @@
-/**
- * @file invitation.assembler.js
- * @description Assembler que convierte respuestas de la API en entidades Invitation.
- */
-
 import { Invitation } from '../domain/model/invitation.entity.js'
+import { roleToVue } from '../../shared/infrastructure/api.service.js'
 
-/**
- * @class InvitationAssembler
- * @description Transforma objetos de la API REST en instancias de la entidad Invitation.
- */
 export class InvitationAssembler {
-  /**
-   * Convierte un recurso de API en una entidad Invitation.
-   * @param {Object} resource
-   * @returns {Invitation}
-   */
-  static toEntity (resource) {
+  static toEntity(resource) {
     return new Invitation({
-      id:        resource.id        ?? null,
-      email:     resource.email     ?? '',
-      role:      resource.role      ?? '',
-      status:    resource.status    ?? 'pending',
-      createdAt: resource.createdAt ?? ''
+      id: resource?.id ?? null,
+      organizationId: resource?.organizationId ?? null,
+      email: resource?.email ?? '',
+      role: roleToVue(resource?.role ?? ''),
+      status: resource?.status ?? 'PENDING',
+      token: resource?.token ?? '',
+      createdAt: resource?.createdAt ?? '',
+      acceptedAt: resource?.acceptedAt ?? null,
+      cancelledAt: resource?.cancelledAt ?? null,
+      expiresAt: resource?.expiresAt ?? null,
+      emailStatus: resource?.emailStatus ?? '',
+      resendEmailId: resource?.resendEmailId ?? null,
+      emailError: resource?.emailError ?? null
     })
   }
 
-  /**
-   * Convierte una lista de recursos en entidades Invitation.
-   * @param {Object[]} resources
-   * @returns {Invitation[]}
-   */
-  static toEntityList (resources) {
+  static toEntityList(resources = []) {
     return resources.map(InvitationAssembler.toEntity)
   }
 }

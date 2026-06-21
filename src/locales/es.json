@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "CortiSense",
-    "sidebarTagline": "Clinical intelligence",
+    "sidebarTagline": "Inteligencia clínica",
     "topbarSubtitle": "Monitoreo inteligente y gestión de turnos",
     "adminMenu": "Menú Administrativo",
     "supervisorMenu": "Menú Supervisor",
@@ -22,6 +22,12 @@
     "register-link": "Regístrate con una invitación",
     "sign-in-tab": "Iniciar sesión",
     "register-tab": "Registro",
+    "toggle-password": "Mostrar u ocultar contraseña",
+    "toggle-confirm-password": "Mostrar u ocultar confirmación de contraseña",
+    "other-option": "Otros",
+    "other-work-area-placeholder": "Escribe el área de trabajo",
+    "other-specialty-placeholder": "Escribe la especialidad",
+    "invitation-accepted-success": "Tu cuenta fue creada correctamente. Redirigiendo al inicio de sesión...",
     "error": {
       "email-required": "El correo electrónico es obligatorio.",
       "email-invalid": "Ingresa un correo electrónico válido.",
@@ -33,7 +39,16 @@
       "invitation-token-required": "Se requiere una invitación válida para crear una cuenta.",
       "invitation-not-found": "La invitación no existe o el enlace es inválido.",
       "invitation-not-available": "Esta invitación ya fue usada o expiró.",
-      "invitation-accept-failed": "No se pudo completar el registro. Inténtalo nuevamente."
+      "invitation-accept-failed": "No se pudo completar el registro. Inténtalo nuevamente.",
+      "invitation-token-missing": "El token de invitación no está presente.",
+      "other-work-area-required": "Ingresa el área de trabajo.",
+      "other-specialty-required": "Ingresa la especialidad.",
+      "password-minlength": "La contraseña debe tener al menos 6 caracteres.",
+      "confirm-password-required": "La confirmación de contraseña es obligatoria.",
+      "first-name-required": "El nombre es obligatorio.",
+      "last-name-required": "El apellido es obligatorio.",
+      "phone-required": "El teléfono es obligatorio.",
+      "catalog-load-failed": "No se pudieron cargar las áreas de trabajo o especialidades."
     },
     "register-brand-title": "Únete a la plataforma de salud inteligente.",
     "register-brand-description": "Completa tu registro para acceder al monitoreo biométrico y gestión de turnos.",
@@ -65,7 +80,9 @@
     "back-to-sign-in": "Volver al inicio de sesión",
     "demoAdmin": "admin{'@'}cortisense.com / admin123",
     "demoSupervisor": "supervisor{'@'}cortisense.com / supervisor123",
-    "demoDoctor": "doctor{'@'}cortisense.com / doctor123"
+    "demoDoctor": "doctor{'@'}cortisense.com / doctor123",
+    "logo-alt": "Logo de CortiSense",
+    "invitation-email-locked": "Este correo pertenece a la invitación y no puede modificarse."
   },
   "layout": {
     "admin-title": "Panel administrativo",
@@ -195,6 +212,14 @@
       "cancel": "Cancelar",
       "delete": "Eliminar",
       "empty": "No hay invitaciones para mostrar.",
+      "sent-success": "La invitación fue enviada correctamente.",
+      "accepted-cannot-be-deleted": "Invitación aceptada",
+      "email-status": {
+        "pending": "Pendiente",
+        "sent": "Enviado",
+        "failed": "Fallido",
+        "skipped": "Omitido"
+      },
       "metrics": {
         "total": "Total de invitaciones",
         "pending": "Pendientes",
@@ -219,7 +244,8 @@
         "status": "Estado",
         "date": "Fecha",
         "actions": "Acciones",
-        "link": "Link"
+        "link": "Link",
+        "email-status": "Correo"
       },
       "error": {
         "no-session": "No se encontró una sesión activa.",
@@ -229,7 +255,8 @@
         "email-invalid": "Ingresa un correo electrónico válido.",
         "accepted-cannot-be-deleted": "No se puede eliminar una invitación aceptada.",
         "delete-failed": "No se pudo eliminar la invitación.",
-        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo."
+        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo.",
+        "cancel-failed": "No se pudo cancelar la invitación."
       }
     },
     "staff": {
@@ -317,7 +344,8 @@
         "supervisor-already-assigned": "Este supervisor ya está asignado a otro equipo activo.",
         "update-status-failed": "No se pudo actualizar el estado del equipo.",
         "inactive-team": "No puedes agregar miembros a un equipo inactivo.",
-        "delete-failed": "No se pudo eliminar el equipo."
+        "delete-failed": "No se pudo eliminar el equipo.",
+        "cleanup-failed": "No se pudieron limpiar las asignaciones del equipo."
       },
       "search-placeholder": "Buscar por nombre o área...",
       "all-work-areas": "Todas las áreas",
@@ -1059,10 +1087,8 @@
       }
     },
     "registration": {
-      "badge": "Registro de organización",
       "title": "Crear centro médico",
       "subtitle": "Completa los datos del centro médico y de la cuenta administradora para activar el plan seleccionado.",
-      "selected-plan": "Plan seleccionado",
       "month": "mes",
       "organization-title": "Datos del centro médico",
       "organization-name": "Nombre del centro médico",
@@ -1070,39 +1096,83 @@
       "ruc": "RUC",
       "ruc-placeholder": "20600000000",
       "organization-phone": "Teléfono del centro",
+      "organization-phone-placeholder": "999 999 999",
       "address": "Dirección",
       "address-placeholder": "Av. Salud 123, Lima",
       "admin-title": "Cuenta del administrador",
       "first-name": "Nombre",
-      "last-name": "Apellido",
-      "email": "Correo electrónico",
-      "phone": "Teléfono",
-      "password": "Contraseña",
       "first-name-placeholder": "Ej: Marcelo",
-      "last-name-placeholder": "Ej: Administrador",
-      "email-placeholder": "admin{'@'}cortisense.com",
-      "phone-placeholder": "+51 999 999 999",
+      "last-name": "Apellido",
+      "last-name-placeholder": "Ej: Ramírez",
+      "email": "Correo electrónico",
+      "email-placeholder": "admin{'@'}hospital.com",
+      "phone": "Teléfono",
+      "phone-placeholder": "999 999 999",
+      "password": "Contraseña",
       "password-placeholder": "Mínimo 6 caracteres",
+      "confirm-password": "Confirmar contraseña",
+      "confirm-password-placeholder": "Repite tu contraseña",
       "back-login": "Volver al inicio de sesión",
       "pay-and-create": "Pagar y crear cuenta",
       "processing": "Procesando...",
-      "success": "Centro médico y administrador creados correctamente. Redirigiendo al inicio de sesión...",
+      "badge": "Registro de organización",
+      "selected-plan": "Plan seleccionado",
+      "back-landing": "Volver a la landing",
+      "toggle-password": "Mostrar u ocultar contraseña",
+      "toggle-confirm-password": "Mostrar u ocultar confirmación de contraseña",
+      "organization-email": "Correo institucional",
+      "organization-email-placeholder": "contacto{'@'}clinica.com",
       "error": {
         "plan-not-found": "No se encontró el plan seleccionado.",
         "load-plans-failed": "No se pudieron cargar los planes.",
-        "create-failed": "No se pudo completar el registro de la organización."
+        "create-failed": "No se pudo completar el registro de la organización.",
+        "organization-create-failed": "No se pudo crear el centro médico.",
+        "admin-create-failed": "No se pudo crear la cuenta administradora.",
+        "subscription-create-failed": "No se pudo crear la suscripción.",
+        "checkout-create-failed": "No se pudo crear la sesión de pago.",
+        "organization-name-required": "El nombre del centro médico es obligatorio.",
+        "ruc-required": "El RUC es obligatorio.",
+        "organization-phone-required": "El teléfono del centro es obligatorio.",
+        "address-required": "La dirección es obligatoria.",
+        "first-name-required": "El nombre es obligatorio.",
+        "last-name-required": "El apellido es obligatorio.",
+        "email-required": "El correo es obligatorio.",
+        "email-invalid": "Ingresa un correo válido.",
+        "phone-required": "El teléfono es obligatorio.",
+        "password-required": "La contraseña es obligatoria.",
+        "password-minlength": "La contraseña debe tener al menos 6 caracteres.",
+        "confirm-password-required": "La confirmación de contraseña es obligatoria.",
+        "passwords-mismatch": "Las contraseñas no coinciden.",
+        "organization-email-required": "El correo institucional es obligatorio.",
+        "organization-email-invalid": "Ingresa un correo institucional válido.",
+        "organization-email-already-exists": "Ya existe una organización con ese correo institucional.",
+        "ruc-already-exists": "Ya existe una organización con ese RUC.",
+        "admin-email-already-exists": "Ya existe un usuario administrador con ese correo.",
+        "stripe-not-configured": "Stripe no está configurado correctamente en el backend."
       }
     },
     "checkoutSuccess": {
       "title": "Pago completado",
-      "subtitle": "El centro médico y la cuenta administradora fueron creados correctamente. Ya puedes iniciar sesión con las credenciales registradas.",
-      "go-login": "Ir al inicio de sesión"
+      "subtitle": "El centro médico y la cuenta administradora fueron registrados. Ya puedes iniciar sesión.",
+      "loading-subtitle": "Estamos validando el pago con Stripe.",
+      "error-subtitle": "No se pudo validar la sesión de pago.",
+      "validating": "Validando pago...",
+      "activated": "La suscripción fue validada correctamente.",
+      "go-login": "Ir al inicio de sesión",
+      "error": {
+        "session-missing": "No se encontró el identificador de sesión de Stripe.",
+        "validation-failed": "No se pudo validar el estado del pago."
+      }
     },
     "checkoutCancelled": {
       "title": "Pago cancelado",
-      "subtitle": "El proceso de pago fue cancelado o no se completó. Puedes volver a intentarlo cuando desees.",
-      "go-login": "Volver al inicio",
-      "try-again": "Intentar nuevamente"
+      "subtitle": "El pago fue cancelado o no se completó.",
+      "cancelled": "La sesión de pago fue marcada como cancelada.",
+      "go-login": "Volver al inicio de sesión",
+      "try-again": "Intentar nuevamente",
+      "error": {
+        "cancel-failed": "No se pudo cancelar la sesión de pago."
+      }
     },
     "limits": {
       "doctors-exceeded": "Has alcanzado el límite de médicos activos permitido por tu plan.",
