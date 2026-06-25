@@ -60,7 +60,7 @@ async function submit () {
   if (!form.password) { localError.value = 'auth.error.password-required'; return }
   try {
     const user = await authStore.login(form)
-    router.push(getDefaultRoute(user.role))
+    router.push(getDefaultRoute(user.apiRole))
   } catch (error) {
     localError.value = error.message || 'auth.error.invalid-credentials'
   }
