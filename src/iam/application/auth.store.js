@@ -21,7 +21,15 @@ export const useAuthStore = defineStore('auth', () => {
 
   const user = computed(() => _userResource.value ? UserAssembler.toEntity(_userResource.value) : null)
   const isAuthenticated = computed(() => Boolean(token.value && _userResource.value))
-  const userRole = computed(() => user.value?.role || null)
+  const userRole = computed(() => {
+    let role = user.value?.role || null
+
+    if (role === "HOSPITAL_ADMIN" || role === "ADMIN") role = 'admin'
+    if (role === "SUPERVISOR") role = 'clinical_supervisor'
+    if (role === "DOCTOR") role = 'medical_staff'
+
+    return String(role || '').toLowerCase()
+  })
 
   function persistSession(rawUser) {
     if (!rawUser?.token) {
