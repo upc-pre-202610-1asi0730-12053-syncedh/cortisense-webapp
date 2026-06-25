@@ -60,6 +60,12 @@ async function submit () {
   if (!form.password) { localError.value = 'auth.error.password-required'; return }
   try {
     const user = await authStore.login(form)
+
+    console.log('Rol Vue:', user.role)
+    console.log('Rol API:', user.apiRole)
+    console.log('Ruta destino:', getDefaultRoute(user.role))
+    console.log('Ruta API destino:', getDefaultRoute(user.apiRole))
+
     router.push(getDefaultRoute(user.apiRole))
   } catch (error) {
     localError.value = error.message || 'auth.error.invalid-credentials'
