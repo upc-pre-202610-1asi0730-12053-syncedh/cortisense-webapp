@@ -18,7 +18,13 @@ export function getDefaultRoute(role) {
     medical_staff: '/doctor/health'
   }
 
-  const normalizedRole = String(role || '').toLowerCase()
+  let dbRole = role;
+
+  if (dbRole === "HOSPITAL_ADMIN") dbRole = 'admin';
+  if (dbRole === "SUPERVISOR") dbRole = 'clinical_supervisor';
+  if (dbRole === "DOCTOR") dbRole = 'medical_staff';
+
+  const normalizedRole = String(dbRole || '').toLowerCase()
 
   return routes[normalizedRole] || '/sign-in'
 }
@@ -83,11 +89,17 @@ router.beforeEach((to) => {
     authStore.restoreSession()
   }
 
+  // 1. Normalizamos el rol del usuario actual para la validación de rutas
+  let userRole = authStore.userRole
+  if (userRole === "HOSPITAL_ADMIN" || userRole === "ADMIN") userRole = 'admin'
+  if (userRole === "SUPERVISOR") userRole = 'clinical_supervisor'
+  if (userRole === "DOCTOR") userRole = 'medical_staff'
+  const normalizedUserRole = String(userRole || '').toLowerCase()
+
   if (!to.meta.requiresAuth) {
     if (authStore.isAuthenticated && to.path === '/sign-in') {
       return getDefaultRoute(authStore.userRole)
     }
-
     return true
   }
 
@@ -100,7 +112,8 @@ router.beforeEach((to) => {
 
   const allowedRoles = to.meta.roles || []
 
-  if (allowedRoles.length > 0 && !allowedRoles.includes(authStore.userRole)) {
+  // 2. Comparamos contra el rol ya normalizado en minúsculas
+  if (allowedRoles.length > 0 && !allowedRoles.includes(normalizedUserRole)) {
     return getDefaultRoute(authStore.userRole)
   }
 
