@@ -18,7 +18,9 @@ export function getDefaultRoute(role) {
     medical_staff: '/doctor/health'
   }
 
-  return routes[role] || '/sign-in'
+  const normalizedRole = String(role || '').toLowerCase()
+
+  return routes[normalizedRole] || '/sign-in'
 }
 
 const router = createRouter({
